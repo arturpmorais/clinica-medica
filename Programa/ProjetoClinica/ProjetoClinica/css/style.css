@@ -1,0 +1,100 @@
+﻿body {
+    background: url("../images/background.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    overflow-x: hidden;
+    padding-left: 300px;
+}
+
+button.btn-entrar {
+    width: 100%;
+}
+
+div.main-sidenav {
+    height: 100%;
+    width: 100%;
+    border-collapse: collapse;
+    display: table;
+}
+
+h2.page-title {
+    padding-bottom: 10px;
+}
+
+div.foot {
+    display: table-row;
+    vertical-align: bottom;
+    height: 1px;
+    padding-top: 5px;
+}
+
+img.item-img  {
+    padding: 5px 0px;
+    width: 100%;
+}
+
+.lightblue {
+    background-color: rgb(147, 234, 255);
+}
+
+.lesslighterblue {
+    background-color: rgb(127, 214, 235);
+}
+
+nav.navbar {
+    display: none;
+}
+
+li.collapsible-logo-container {
+    display: block;
+}
+
+li.collapsible-logo-container h3 {
+    margin: 28px 0;
+    padding: 0 10px;
+}
+
+a.collapsible-logo {
+    color: rgba(0, 0, 0, 0.90);
+}
+
+div.desert {
+    background: url("/images/desert.jpg");
+}
+
+div.koala {
+    background: url("/images/koala.jpg");
+}
+
+div.carousel-item {
+    cursor: pointer;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+@media only screen and (max-width : 992px) {
+    body {
+        padding-left: 0px;
+    }
+
+    nav.navbar {
+        display: block;
+    }
+
+    li.collapsible-logo-container {
+        display: none;
+    }
+}
+
+.sidenav .user-view {
+    padding: 20px 16px;
+}
+
+div .collapsible-body > ul > li > a {
+    background-color: #F8F8F8;
+}
+
+.pagecontent {
+    padding: 15px 15px;
+}
