@@ -11,7 +11,10 @@ namespace ProjetoClinica
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if (Session.IsNewSession)
+            {
+                Response.Redirect("/index.aspx");
+            }
         }
     }
 }

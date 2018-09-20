@@ -88,7 +88,6 @@
     <script>
         $(document).ready(function () {
             $('.sidenav').sidenav({
-                menuWidth: 350,
                 edge: 'left',
                 closeOnClick: true,
                 draggable: true
