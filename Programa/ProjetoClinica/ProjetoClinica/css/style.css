@@ -100,3 +100,7 @@ div .collapsible-body > ul > li > a {
 .pagecontent {
     padding: 15px 15px;
 }
+
+div#map {
+    height: 500px;
+}
