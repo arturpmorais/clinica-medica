@@ -1,36 +1,42 @@
+CREATE TABLE especialidade (
+	id int identity(1,1) primary key,
+	especialidade varchar(50) not null
+)
+
 CREATE TABLE paciente (
 	id int identity(1,1) primary key,
-	nome_completo varchar(250),
-	endereco varchar() not null,
-	data_de_nascimento char(10) not null,
+	nome_completo varchar(100),
 	email varchar(50) not null,
-	idade int not null,
-	celular int not null,
-	telefone int not null,
-	imagem image not null
+	senha binary(240) not null,
+	data_de_nascimento char(10) not null,
+	endereco varchar(100) not null,
+	celular varchar(16) not null,
+	telefone_residencial varchar(16) not null,
+	imagem image,
 )
 
 CREATE TABLE medico (
 	id int identity(1,1) primary key,
-	nome_completo varchar(250) not null,
+	nome_completo varchar(100) not null,
+	email varchar(50) not null,
+	senha binary(240) not null,
 	data_de_nascimento char(10) not null,
-	email varchar(75 not null),
-	idade int,
-	celular varchar(),
-	telefone varchar(),
+	endereco varchar(100) not null,
+	celular varchar(16) not null,
+	telefone_residencial varchar(16) not null,
+	imagem image,
 	especialidade int not null,
-	imagem image not null
+	constraint fkIdEspecialidade foreign key(especialidade) references especialidade(id)
 )
 
-CREATE TABLE consultas (
+CREATE TABLE consulta (
 	id int identity(1,1) primary key,
-	data
-	idMedico
-	idPaciente
-	anotacoes
-)
-
-CREATE TABLE especialidades (
-	id int identity(1,1) primary key,
-	especialidade varchar()
+	data char(16) not null,
+	idMedico int not null,
+	idPaciente int not null,
+	status varchar(9) not null,
+	diagnostico ntext not null,
+	anotacoes ntext not null,
+	constraint fkIdMedico foreign key(idMedico) references medico(id),
+	constraint fkIdPaciente foreign key(idPaciente) references paciente(id)
 )

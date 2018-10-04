@@ -6,7 +6,7 @@ using System.Web;
 
 namespace ProjetoClinica.DB.DBO
 {
-    public class Medico
+    public class Paciente
     {
         public int Id { get; private set; }
         public string Nome_Completo { get; private set; }
@@ -16,10 +16,9 @@ namespace ProjetoClinica.DB.DBO
         public string Celular { get; private set; }
         public string Telefone_Residencial { get; private set; }
         public Image Imagem { get; private set; }
-        public string Especilidade { get; private set; }
 
 
-        public Medico(int id, string nome_completo, string email, string data_de_nascimento, string endereco, string celular, string telefone_residencial, string especialidade)
+        public Paciente(int id, string nome_completo, string email, string data_de_nascimento, string endereco, string celular, string telefone_residencial, Image imagem)
         {
             if (nome_completo == null || nome_completo.Trim() == "")
                 throw new Exception("Nome nulo");

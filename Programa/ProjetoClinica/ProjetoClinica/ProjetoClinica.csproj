@@ -209,6 +209,7 @@
   <ItemGroup>
     <Compile Include="DB\BDActions.cs" />
     <Compile Include="DB\DBO\Medico.cs" />
+    <Compile Include="DB\DBO\Paciente.cs" />
     <Compile Include="secretaria\home.aspx.cs">
       <DependentUpon>home.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
