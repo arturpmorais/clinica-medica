@@ -12,15 +12,17 @@ namespace ProjetoClinica.DB
     {
         private static string cs = WebConfigurationManager.ConnectionStrings["ConexaoBD"].ConnectionString;
 
-        bool LogarMedico(string ) {
+        bool LogarMedico(string a) {
             SqlConnection conn = new SqlConnection(cs);
 
-            if ()
+            //if ()
 
             return true;
         }
 
-        bool LogarPaciente() { }
+        bool LogarPaciente() {
+            return true;
+        }
 
         bool CadastrarMedico(string nome_completo, string email, string senha, string data_de_nascimento, string endereco, string celular, string telefone_residencial, int especialidade) {
             SqlConnection conn = new SqlConnection(cs);

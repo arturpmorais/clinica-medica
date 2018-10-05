@@ -38,13 +38,14 @@ namespace ProjetoClinica.DB.DBO
             if (telefone_residencial == null || telefone_residencial.Trim() == "")
                 throw new Exception("Telefone nulo");
 
-            //if (BDActions.CheckEmail(email))
-            //    this.Email = email;
-            else
-                throw new Exception("E-mail invalido");
-
-            //this.Id = id;
-            //this.Username = username;
+            this.Id = id;
+            this.Nome_Completo = nome_completo;
+            this.Email = email;
+            this.Data_de_Nascimento = data_de_nascimento;
+            this.Endereco = endereco;
+            this.Celular = celular;
+            this.Telefone_Residencial = telefone_residencial;
+            this.Imagem = imagem;
         }
     }
 }

@@ -7,7 +7,16 @@
     padding-left: 300px;
 }
 
-button.btn-entrar {
+i.btn-entrar input {
+    padding: 0;
+    margin: 0;
+    height: 100%;
+    width: 100%;
+    color: white;
+}
+
+i.btn-entrar {
+    padding: 0;
     width: 100%;
 }
 

@@ -10,21 +10,21 @@
                 <div class="row">
                     <div class="input-field">
                         <i class="material-icons prefix">account_circle</i>
-                        <input id="icon_prefix" type="text" class="validate">
-                        <label for="icon_prefix">E-mail:</label>
+                        <asp:TextBox ID="txtEmail" runat="server" CssClass="validate"></asp:TextBox>
+                        <label for="MainContent_txtEmail">E-mail:</label>
                     </div>
                 </div>
 
                 <div class="row">
                     <div class="input-field">
                         <i class="material-icons prefix">lock</i>
-                        <input id="password" type="password" class="validate">
-                        <label for="password">Senha:</label>
+                        <asp:TextBox ID="txtPassword" runat="server" CssClass="validate" TextMode="Password"></asp:TextBox>
+                        <label for="MainContent_txtPassword">Senha:</label>
                     </div>
                 </div>
 
                 <div class="row">
-                    <button class="waves-effect waves-light btn-large btn-entrar">Entrar</button>
+                    <asp:Button ID="BtnEntrar" runat="server" Text="Entrar" CssClass="waves-effect waves-light btn-large btn-entrar" ForeColor="White" OnClick="BtnEntrar_Click"/>
                 </div>
             </div>
         </div>

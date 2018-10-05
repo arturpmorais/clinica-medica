@@ -13,5 +13,13 @@ namespace ProjetoClinica.entrar
         {
 
         }
+
+        protected void BtnEntrar_Click(object sender, EventArgs e)
+        {
+            string email = txtEmail.Text;
+            string pwd = txtPassword.Text;
+
+            Response.Redirect("/paciente/index.aspx");
+        }
     }
 }

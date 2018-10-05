@@ -129,12 +129,13 @@
   <ItemGroup>
     <Content Include="images\equipemedica.jpg" />
     <Content Include="images\hospitalpredio.jpg" />
-    <Content Include="secretaria\home.aspx" />
+    <Content Include="medico\index.aspx" />
+    <Content Include="secretaria\index.aspx" />
     <Content Include="contato.aspx" />
     <Content Include="entrar\medico.aspx" />
     <Content Include="entrar\paciente.aspx" />
     <Content Include="entrar\secretaria.aspx" />
-    <Content Include="paciente\home.aspx" />
+    <Content Include="paciente\index.aspx" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Site.css" />
@@ -208,14 +209,22 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DB\BDActions.cs" />
+    <Compile Include="DB\DBO\Especialidade.cs" />
     <Compile Include="DB\DBO\Medico.cs" />
     <Compile Include="DB\DBO\Paciente.cs" />
-    <Compile Include="secretaria\home.aspx.cs">
-      <DependentUpon>home.aspx</DependentUpon>
+    <Compile Include="medico\index.aspx.cs">
+      <DependentUpon>index.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="secretaria\home.aspx.designer.cs">
-      <DependentUpon>home.aspx</DependentUpon>
+    <Compile Include="medico\index.aspx.designer.cs">
+      <DependentUpon>index.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="secretaria\index.aspx.cs">
+      <DependentUpon>index.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="secretaria\index.aspx.designer.cs">
+      <DependentUpon>index.aspx</DependentUpon>
     </Compile>
     <Compile Include="contato.aspx.cs">
       <DependentUpon>contato.aspx</DependentUpon>
@@ -245,12 +254,12 @@
     <Compile Include="entrar\secretaria.aspx.designer.cs">
       <DependentUpon>secretaria.aspx</DependentUpon>
     </Compile>
-    <Compile Include="paciente\home.aspx.cs">
-      <DependentUpon>home.aspx</DependentUpon>
+    <Compile Include="paciente\index.aspx.cs">
+      <DependentUpon>index.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="paciente\home.aspx.designer.cs">
-      <DependentUpon>home.aspx</DependentUpon>
+    <Compile Include="paciente\index.aspx.designer.cs">
+      <DependentUpon>index.aspx</DependentUpon>
     </Compile>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />

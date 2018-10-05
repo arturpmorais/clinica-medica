@@ -16,10 +16,10 @@ namespace ProjetoClinica.DB.DBO
         public string Celular { get; private set; }
         public string Telefone_Residencial { get; private set; }
         public Image Imagem { get; private set; }
-        public string Especilidade { get; private set; }
+        public Especialidade Especialidade { get; private set; }
 
 
-        public Medico(int id, string nome_completo, string email, string data_de_nascimento, string endereco, string celular, string telefone_residencial, string especialidade)
+        public Medico(int id, string nome_completo, string email, string data_de_nascimento, string endereco, string celular, string telefone_residencial, Image imagem, Especialidade especialidade)
         {
             if (nome_completo == null || nome_completo.Trim() == "")
                 throw new Exception("Nome nulo");
@@ -39,13 +39,18 @@ namespace ProjetoClinica.DB.DBO
             if (telefone_residencial == null || telefone_residencial.Trim() == "")
                 throw new Exception("Telefone nulo");
 
-            //if (BDActions.CheckEmail(email))
-            //    this.Email = email;
-            else
-                throw new Exception("E-mail invalido");
+            if (especialidade == null)
+                throw new Exception("Especialidade nulo");
 
-            //this.Id = id;
-            //this.Username = username;
+            this.Id = id;
+            this.Nome_Completo = nome_completo;
+            this.Email = email;
+            this.Data_de_Nascimento = data_de_nascimento;
+            this.Endereco = endereco;
+            this.Celular = celular;
+            this.Telefone_Residencial = telefone_residencial;
+            this.Imagem = imagem;
+            this.Especialidade = especialidade;
         }
     }
 }
