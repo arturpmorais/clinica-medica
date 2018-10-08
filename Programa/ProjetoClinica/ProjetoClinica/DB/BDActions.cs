@@ -9,6 +9,7 @@ using ProjetoClinica.DB.DBO;
 using System.Text.RegularExpressions;
 using System.Data;
 using System.Drawing;
+using System.IO;
 
 namespace ProjetoClinica.DB
 {
@@ -21,20 +22,76 @@ namespace ProjetoClinica.DB
             this.cs = WebConfigurationManager.ConnectionStrings["ConexaoBD"].ConnectionString;
         }
 
-        public Medico LoginMedico(string a) {
-            Medico m = null;
+        public Medico LoginMedico(string email, string senha)
+        {
+            if (IsEmptyString(email))
+                throw new Exception("Digite um e-mail!");
+
+            if (!IsValidEmail(email))
+                throw new Exception("E-mail inválido!");
+
+            ///
+
+            if (IsEmptyString(senha))
+                throw new Exception("Digite uma senha!");
+
+            ///
 
             SqlConnection conn = new SqlConnection(cs);
-            SqlCommand cmd = new SqlCommand();
+            SqlCommand cmd = new SqlCommand("SELECT * FROM medico WHERE email=@email AND senha=@senha" +
+                                            "SELECT * FROM especialidade e, medico m WHERE" +
+                                            "e.id = m.idEspecialidade AND" +
+                                            "m.email = @email AND m.senha=@senha", conn);
+
+            cmd.Parameters.AddWithValue("@email", email);
+            cmd.Parameters.AddWithValue("@senha", EncodePassword(senha));
+
+            SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+            DataSet ds = new DataSet();
+
+            Medico m = null;
+            object[] dadosMedico;
+            object[] dadosEspecialidade;
 
             try
             {
-
+                // abre conexao
+                conn.Open();
+                // executa a consulta
+                adapter.Fill(ds);
             }
-            catch (Exception e) { }
-            finally { }
+            catch (Exception)
+            {
+                throw new Exception("Erro ao acessar o Banco de Dados!");
+            }
+            finally
+            {
+                // fecha conexao
+                conn.Close();
+                conn.Dispose();
+            }
 
-            return m;
+            if (ds.Tables[0].Rows.Count > 0)
+            {
+                dadosMedico = ds.Tables["Medico"].Rows[0].ItemArray;
+                dadosEspecialidade = ds.Tables["Especialidade"].Rows[0].ItemArray;
+
+                int id = (int)dadosMedico[0];
+                string nome_completo = (string)dadosMedico[1];
+                email = (string)dadosMedico[2];
+                string data_de_nascimento = (string)dadosMedico[3];
+                string endereco = (string)dadosMedico[4];
+                string celular = (string)dadosMedico[5];
+                string telefone_residencial = (string)dadosMedico[6];
+                Image imagem = BytesToImage((byte[])dadosMedico[7]);
+                Especialidade especialidade = new Especialidade((int)dadosEspecialidade[0], (string)dadosEspecialidade[1]);
+
+                m = new Medico(id, nome_completo, email, data_de_nascimento, endereco, celular, telefone_residencial, imagem, especialidade);
+
+                return m;
+            }
+            else
+                throw new Exception("E-mail ou senha incorretos!");
         }
 
         public Paciente LoginPaciente(string email, string senha) {
@@ -52,30 +109,24 @@ namespace ProjetoClinica.DB
             ///
 
             SqlConnection conn = new SqlConnection(cs);
-            SqlCommand cmd = new SqlCommand("SELECT * FROM paciente WHERE email=@email", conn);
+
+            SqlCommand cmd = new SqlCommand("SELECT * FROM paciente WHERE email=@email AND senha=@senha", conn);
 
             cmd.Parameters.AddWithValue("@email", email);
+            cmd.Parameters.AddWithValue("@senha", EncodePassword(senha));
 
             SqlDataAdapter adapter = new SqlDataAdapter(cmd);
             DataSet ds = new DataSet();
 
+            Paciente p = null;
+            object[] dados;
+
             try
             {
-                Paciente p = null;
-                object[] dados;
-
                 // abre conexao
                 conn.Open();
                 // executa a consulta
                 adapter.Fill(ds);
-                dados = ds.Tables[0].Rows[0].ItemArray;
-
-                p = new Paciente((int)dados[0], (string)dados[1],
-                                (string)dados[2], (string)dados[3],
-                                (string)dados[4], (string)dados[5],
-                                (string)dados[6], null);
-
-                return p;
             }
             catch (Exception)
             {
@@ -87,6 +138,26 @@ namespace ProjetoClinica.DB
                 conn.Close();
                 conn.Dispose();
             }
+
+            if (ds.Tables[0].Rows.Count > 0)
+            {
+                dados = ds.Tables[0].Rows[0].ItemArray;
+
+                int id = (int)dados[0];
+                string nome_completo = (string)dados[1];
+                email = (string)dados[2];
+                string data_de_nascimento = (string)dados[3];
+                string endereco = (string)dados[4];
+                string celular = (string)dados[5];
+                string telefone_residencial = (string)dados[6];
+                Image imagem = BytesToImage((byte[])dados[7]);
+
+                p = new Paciente(id, nome_completo, email, data_de_nascimento, endereco, celular, telefone_residencial, imagem);
+
+                return p;
+            }
+            else
+                throw new Exception("E-mail ou senha incorretos!");
         }
 
         public void CadastrarMedico(string nome_completo, string email, string senha, string data_de_nascimento, string endereco, string celular, string telefone_residencial, int especialidade) {
@@ -304,6 +375,14 @@ namespace ProjetoClinica.DB
                 return true;
 
             return false;
+        }
+
+        public Image BytesToImage(byte[] bytes)
+        {
+            MemoryStream memstr = new MemoryStream(bytes);
+            Image img = Image.FromStream(memstr);
+
+            return img;
         }
     }
 }

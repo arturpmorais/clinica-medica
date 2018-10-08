@@ -1,4 +1,6 @@
-﻿using System;
+﻿using ProjetoClinica.DB;
+using ProjetoClinica.DB.DBO;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -19,7 +21,9 @@ namespace ProjetoClinica.entrar
             string email = txtEmail.Text;
             string pwd = txtPassword.Text;
 
-            Response.Redirect("/paciente/index.aspx");
+            BDActions bd = new BDActions();
+
+            Paciente p = bd.LoginPaciente(email, pwd);
         }
     }
 }
