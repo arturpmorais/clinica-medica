@@ -1,4 +1,6 @@
-﻿using System;
+﻿using ProjetoClinica.DB;
+using ProjetoClinica.DB.DBO;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -11,7 +13,7 @@ namespace ProjetoClinica.entrar
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            //Response.Redirect("/medico/index.aspx");
+            Response.Redirect("/medico/index.aspx");
         }
 
         protected void BtnEntrar_Click(object sender, EventArgs e)
@@ -19,7 +21,17 @@ namespace ProjetoClinica.entrar
             string email = txtEmail.Text;
             string pwd = txtPassword.Text;
 
-            Response.Redirect("/medico/index.aspx");
+            try
+            {
+                BDActions bd = new BDActions();
+                MedicoDBO m = bd.LoginMedico(email, pwd);
+
+                Response.Redirect("/medico/index.aspx");
+            }
+            catch (Exception ex)
+            {
+                LblAviso.Text = ex.Message;
+            }
         }
     }
 }

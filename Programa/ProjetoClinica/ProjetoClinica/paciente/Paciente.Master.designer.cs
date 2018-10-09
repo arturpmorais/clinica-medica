@@ -10,7 +10,7 @@
 namespace ProjetoClinica {
     
     
-    public partial class Main {
+    public partial class Paciente {
         
         /// <summary>
         /// Controle head.

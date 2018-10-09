@@ -13,6 +13,15 @@ namespace ProjetoClinica.entrar {
     public partial class paciente {
         
         /// <summary>
+        /// Controle LblAviso.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label LblAviso;
+        
+        /// <summary>
         /// Controle txtEmail.
         /// </summary>
         /// <remarks>

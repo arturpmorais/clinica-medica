@@ -21,9 +21,17 @@ namespace ProjetoClinica.entrar
             string email = txtEmail.Text;
             string pwd = txtPassword.Text;
 
-            BDActions bd = new BDActions();
+            try
+            {
+                BDActions bd = new BDActions();
+                PacienteDBO p = bd.LoginPaciente(email, pwd);
 
-            Paciente p = bd.LoginPaciente(email, pwd);
+                Response.Redirect("/paciente/index.aspx");
+            }
+            catch (Exception ex)
+            {
+                LblAviso.Text = ex.Message;
+            }
         }
     }
 }

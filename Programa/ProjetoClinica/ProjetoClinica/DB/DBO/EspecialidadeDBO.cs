@@ -5,13 +5,13 @@ using System.Web;
 
 namespace ProjetoClinica.DB.DBO
 {
-    public class Especialidade
+    public class EspecialidadeDBO
     {
         public int Id { get; private set; }
         public string Nome { get; private set; }
 
 
-        public Especialidade(int id, string nome)
+        public EspecialidadeDBO(int id, string nome)
         {
             if (nome == null || nome.Trim() == "")
                 throw new Exception("Nome nulo");

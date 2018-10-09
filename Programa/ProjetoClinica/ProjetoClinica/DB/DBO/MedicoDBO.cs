@@ -6,7 +6,7 @@ using System.Web;
 
 namespace ProjetoClinica.DB.DBO
 {
-    public class Paciente
+    public class MedicoDBO
     {
         public int Id { get; private set; }
         public string Nome_Completo { get; private set; }
@@ -16,9 +16,10 @@ namespace ProjetoClinica.DB.DBO
         public string Celular { get; private set; }
         public string Telefone_Residencial { get; private set; }
         public Image Imagem { get; private set; }
+        public EspecialidadeDBO Especialidade { get; private set; }
 
 
-        public Paciente(int id, string nome_completo, string email, string data_de_nascimento, string endereco, string celular, string telefone_residencial, Image imagem)
+        public MedicoDBO(int id, string nome_completo, string email, string data_de_nascimento, string endereco, string celular, string telefone_residencial, Image imagem, EspecialidadeDBO especialidade)
         {
             if (nome_completo == null || nome_completo.Trim() == "")
                 throw new Exception("Nome nulo");
@@ -38,6 +39,9 @@ namespace ProjetoClinica.DB.DBO
             if (telefone_residencial == null || telefone_residencial.Trim() == "")
                 throw new Exception("Telefone nulo");
 
+            if (especialidade == null)
+                throw new Exception("Especialidade nulo");
+
             this.Id = id;
             this.Nome_Completo = nome_completo;
             this.Email = email;
@@ -46,6 +50,7 @@ namespace ProjetoClinica.DB.DBO
             this.Celular = celular;
             this.Telefone_Residencial = telefone_residencial;
             this.Imagem = imagem;
+            this.Especialidade = especialidade;
         }
     }
 }

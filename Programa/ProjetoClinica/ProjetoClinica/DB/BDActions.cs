@@ -22,7 +22,7 @@ namespace ProjetoClinica.DB
             this.cs = WebConfigurationManager.ConnectionStrings["ConexaoBD"].ConnectionString;
         }
 
-        public Medico LoginMedico(string email, string senha)
+        public MedicoDBO LoginMedico(string email, string senha)
         {
             if (IsEmptyString(email))
                 throw new Exception("Digite um e-mail!");
@@ -49,7 +49,7 @@ namespace ProjetoClinica.DB
             SqlDataAdapter adapter = new SqlDataAdapter(cmd);
             DataSet ds = new DataSet();
 
-            Medico m = null;
+            MedicoDBO m = null;
             object[] dadosMedico;
             object[] dadosEspecialidade;
 
@@ -84,9 +84,9 @@ namespace ProjetoClinica.DB
                 string celular = (string)dadosMedico[5];
                 string telefone_residencial = (string)dadosMedico[6];
                 Image imagem = BytesToImage((byte[])dadosMedico[7]);
-                Especialidade especialidade = new Especialidade((int)dadosEspecialidade[0], (string)dadosEspecialidade[1]);
+                EspecialidadeDBO especialidade = new EspecialidadeDBO((int)dadosEspecialidade[0], (string)dadosEspecialidade[1]);
 
-                m = new Medico(id, nome_completo, email, data_de_nascimento, endereco, celular, telefone_residencial, imagem, especialidade);
+                m = new MedicoDBO(id, nome_completo, email, data_de_nascimento, endereco, celular, telefone_residencial, imagem, especialidade);
 
                 return m;
             }
@@ -94,7 +94,7 @@ namespace ProjetoClinica.DB
                 throw new Exception("E-mail ou senha incorretos!");
         }
 
-        public Paciente LoginPaciente(string email, string senha) {
+        public PacienteDBO LoginPaciente(string email, string senha) {
             if (IsEmptyString(email))
                 throw new Exception("Digite um e-mail!");
 
@@ -118,7 +118,7 @@ namespace ProjetoClinica.DB
             SqlDataAdapter adapter = new SqlDataAdapter(cmd);
             DataSet ds = new DataSet();
 
-            Paciente p = null;
+            PacienteDBO p = null;
             object[] dados;
 
             try
@@ -152,12 +152,72 @@ namespace ProjetoClinica.DB
                 string telefone_residencial = (string)dados[6];
                 Image imagem = BytesToImage((byte[])dados[7]);
 
-                p = new Paciente(id, nome_completo, email, data_de_nascimento, endereco, celular, telefone_residencial, imagem);
+                p = new PacienteDBO(id, nome_completo, email, data_de_nascimento, endereco, celular, telefone_residencial, imagem);
 
                 return p;
             }
             else
                 throw new Exception("E-mail ou senha incorretos!");
+        }
+
+        public SecretariaDBO LoginSecretaria(string codigo, string senha)
+        {
+            if (IsEmptyString(codigo))
+                throw new Exception("Digite um código!");
+
+            if (codigo.Trim().Length != 5)
+                throw new Exception("Código inválido!");
+
+            ///
+
+            if (IsEmptyString(senha))
+                throw new Exception("Digite uma senha!");
+
+            ///
+
+            SqlConnection conn = new SqlConnection(cs);
+            SqlCommand cmd = new SqlCommand("SELECT * FROM secretaria WHERE codigo=@codigo AND senha=@senha", conn);
+
+            cmd.Parameters.AddWithValue("@codigo", codigo);
+            cmd.Parameters.AddWithValue("@senha", EncodePassword(senha));
+
+            SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+            DataSet ds = new DataSet();
+
+            SecretariaDBO s = null;
+            object[] dados;
+
+            try
+            {
+                // abre conexao
+                conn.Open();
+                // executa a consulta
+                adapter.Fill(ds);
+            }
+            catch (Exception)
+            {
+                throw new Exception("Erro ao acessar o Banco de Dados!");
+            }
+            finally
+            {
+                // fecha conexao
+                conn.Close();
+                conn.Dispose();
+            }
+
+            if (ds.Tables[0].Rows.Count > 0)
+            {
+                dados = ds.Tables[0].Rows[0].ItemArray;
+
+                codigo = (string)dados[0];
+                string nome_completo = (string)dados[1];
+
+                s = new SecretariaDBO(codigo, nome_completo);
+
+                return s;
+            }
+            else
+                throw new Exception("Código ou senha incorretos!");
         }
 
         public void CadastrarMedico(string nome_completo, string email, string senha, string data_de_nascimento, string endereco, string celular, string telefone_residencial, int especialidade) {

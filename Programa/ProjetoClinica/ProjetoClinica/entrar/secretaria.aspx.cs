@@ -1,4 +1,6 @@
-﻿using System;
+﻿using ProjetoClinica.DB;
+using ProjetoClinica.DB.DBO;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -19,7 +21,17 @@ namespace ProjetoClinica.entrar
             string codigo = txtCodigo.Text;
             string pwd = txtPassword.Text;
 
-            Response.Redirect("/secretaria/index.aspx");
+            try
+            {
+                BDActions bd = new BDActions();
+                SecretariaDBO p = bd.LoginSecretaria(codigo, pwd);
+
+                Response.Redirect("/secretaria/index.aspx");
+            }
+            catch (Exception ex)
+            {
+                LblAviso.Text = ex.Message;
+            }
         }
     }
 }
