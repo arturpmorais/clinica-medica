@@ -40,3 +40,8 @@ CREATE TABLE consulta (
 	constraint fkIdMedico foreign key(idMedico) references medico(id),
 	constraint fkIdPaciente foreign key(idPaciente) references paciente(id)
 )
+
+CREATE TABLE secretaria(
+	codigo char(5) primary key,
+	senha varchar(240) not null
+)

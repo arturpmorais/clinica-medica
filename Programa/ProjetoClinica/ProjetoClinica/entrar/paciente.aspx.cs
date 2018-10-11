@@ -12,9 +12,7 @@ namespace ProjetoClinica.entrar
     public partial class paciente : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
-        {
-
-        }
+        {  }
 
         protected void BtnEntrar_Click(object sender, EventArgs e)
         {
@@ -25,6 +23,8 @@ namespace ProjetoClinica.entrar
             {
                 BDActions bd = new BDActions();
                 PacienteDBO p = bd.LoginPaciente(email, pwd);
+
+                Session["Usuario"] = p;
 
                 Response.Redirect("/paciente/index.aspx");
             }

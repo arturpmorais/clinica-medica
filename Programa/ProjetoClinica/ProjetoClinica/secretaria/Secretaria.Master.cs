@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ProjetoClinica.DB.DBO;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -12,7 +13,10 @@ namespace ProjetoClinica
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Session.IsNewSession)
+            object usuario = Session["Usuario"];
+            Type secretaria = Type.GetType("SecretariaDBO");
+
+            if (Session.IsNewSession || usuario == null || !usuario.GetType().Equals(secretaria))
             {
                 Response.Redirect("/index.aspx");
             }

@@ -13,7 +13,10 @@ namespace ProjetoClinica
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Session.IsNewSession)
+            object usuario = Session["Usuario"];
+            Type medico = Type.GetType("MedicoDBO");
+
+            if (Session.IsNewSession || usuario == null || !usuario.GetType().Equals(medico))
             {
                 Response.Redirect("/index.aspx");
             }

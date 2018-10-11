@@ -10,7 +10,7 @@
 namespace ProjetoClinica {
     
     
-    public partial class LoggedOut {
+    public partial class Main {
         
         /// <summary>
         /// Controle head.

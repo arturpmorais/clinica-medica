@@ -12,9 +12,7 @@ namespace ProjetoClinica.entrar
     public partial class secretaria : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
-        {
-
-        }
+        {  }
 
         protected void BtnEntrar_Click(object sender, EventArgs e)
         {
@@ -24,7 +22,9 @@ namespace ProjetoClinica.entrar
             try
             {
                 BDActions bd = new BDActions();
-                SecretariaDBO p = bd.LoginSecretaria(codigo, pwd);
+                SecretariaDBO s = bd.LoginSecretaria(codigo, pwd);
+
+                Session["Usuario"] = s;
 
                 Response.Redirect("/secretaria/index.aspx");
             }
