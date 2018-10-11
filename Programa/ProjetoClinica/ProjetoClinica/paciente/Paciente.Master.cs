@@ -13,9 +13,8 @@ namespace ProjetoClinica
         protected void Page_Load(object sender, EventArgs e)
         {
             object usuario = Session["Usuario"];
-            Type paciente = Type.GetType("PacienteDBO");
 
-            if (Session.IsNewSession || usuario == null || !usuario.GetType().Equals(paciente))
+            if (Session.IsNewSession || usuario == null || usuario.GetType() != typeof(PacienteDBO))
             {
                 Response.Redirect("/index.aspx");
             }

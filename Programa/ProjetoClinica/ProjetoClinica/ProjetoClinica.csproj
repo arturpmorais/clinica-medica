@@ -130,6 +130,8 @@
     <Content Include="images\equipemedica.jpg" />
     <Content Include="images\hospitalpredio.jpg" />
     <Content Include="medico\index.aspx" />
+    <Content Include="secretaria\cadastrar\medico.aspx" />
+    <Content Include="secretaria\cadastrar\paciente.aspx" />
     <Content Include="secretaria\index.aspx" />
     <Content Include="contato.aspx" />
     <Content Include="entrar\medico.aspx" />
@@ -220,6 +222,20 @@
     </Compile>
     <Compile Include="medico\index.aspx.designer.cs">
       <DependentUpon>index.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="secretaria\cadastrar\medico.aspx.cs">
+      <DependentUpon>medico.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="secretaria\cadastrar\medico.aspx.designer.cs">
+      <DependentUpon>medico.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="secretaria\cadastrar\paciente.aspx.cs">
+      <DependentUpon>paciente.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="secretaria\cadastrar\paciente.aspx.designer.cs">
+      <DependentUpon>paciente.aspx</DependentUpon>
     </Compile>
     <Compile Include="secretaria\index.aspx.cs">
       <DependentUpon>index.aspx</DependentUpon>

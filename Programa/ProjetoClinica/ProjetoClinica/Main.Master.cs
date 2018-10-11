@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ProjetoClinica.DB.DBO;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -15,17 +16,13 @@ namespace ProjetoClinica
 
             if (!Session.IsNewSession && usuario != null)
             {
-                Type paciente = Type.GetType("PacienteDBO");
-                Type medico = Type.GetType("MedicoDBO");
-                Type secretaria = Type.GetType("SecretariaDBO");
-
-                if (usuario.GetType().Equals(paciente))
+                if (usuario.GetType() == typeof(PacienteDBO))
                     Response.Redirect("/paciente/index.aspx");
 
-                if (usuario.GetType().Equals(medico))
+                if (usuario.GetType() == typeof(MedicoDBO))
                     Response.Redirect("/medico/index.aspx");
 
-                if (usuario.GetType().Equals(secretaria))
+                if (usuario.GetType() == typeof(SecretariaDBO))
                     Response.Redirect("/secretaria/index.aspx");
             }
         }

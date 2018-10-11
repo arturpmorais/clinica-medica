@@ -14,9 +14,8 @@ namespace ProjetoClinica
         protected void Page_Load(object sender, EventArgs e)
         {
             object usuario = Session["Usuario"];
-            Type secretaria = Type.GetType("SecretariaDBO");
 
-            if (Session.IsNewSession || usuario == null || !usuario.GetType().Equals(secretaria))
+            if (Session.IsNewSession || usuario == null || usuario.GetType() != typeof(SecretariaDBO))
             {
                 Response.Redirect("/index.aspx");
             }
