@@ -57,7 +57,7 @@
 
                         <div class="row">
                             <div class="input-field">
-                                <i class="material-icons prefix">phone</i>
+                                <i class="material-icons prefix">smartphone</i>
                                 <asp:TextBox ID="txtCelular" runat="server"></asp:TextBox>
                                 <label for="SecretariaContent_txtCelular">Celular:</label>
                             </div>
@@ -69,6 +69,11 @@
                                 <asp:TextBox ID="txtTelefoneResidencial" runat="server"></asp:TextBox>
                                 <label for="SecretariaContent_txtTelefoneResidencial">Telefone residencial:</label>
                             </div>
+                        </div>
+
+                        <div class="row">
+                            <asp:DropDownList ID="DropdownEspecialidaades" runat="server"></asp:DropDownList>
+                            <asp:SqlDataSource ID="SqlDataSourceEspecialidades" runat="server"></asp:SqlDataSource>
                         </div>
 
                         <asp:Button ID="BtnCadastrar" runat="server" Text="Cadastrar" CssClass="waves-effect waves-light btn-large btn-entrar" ForeColor="White" UseSubmitBehavior="false" OnClick="BtnCadastrar_Click"/>

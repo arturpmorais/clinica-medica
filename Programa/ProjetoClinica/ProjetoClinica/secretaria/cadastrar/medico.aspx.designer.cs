@@ -103,6 +103,24 @@ namespace ProjetoClinica.secretaria.cadastrar {
         protected global::System.Web.UI.WebControls.TextBox txtTelefoneResidencial;
         
         /// <summary>
+        /// Controle DropdownEspecialidaades.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList DropdownEspecialidaades;
+        
+        /// <summary>
+        /// Controle SqlDataSourceEspecialidades.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSourceEspecialidades;
+        
+        /// <summary>
         /// Controle BtnCadastrar.
         /// </summary>
         /// <remarks>

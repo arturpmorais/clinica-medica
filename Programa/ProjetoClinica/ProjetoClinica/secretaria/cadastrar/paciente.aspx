@@ -25,7 +25,7 @@
 
                         <div class="row">
                             <div class="input-field">
-                                <i class="material-icons prefix">mail</i>
+                                <i class="material-icons prefix">email</i>
                                 <asp:TextBox ID="txtEmail" runat="server"></asp:TextBox>
                                 <label for="SecretariaContent_txtEmail">E-mail:</label>
                             </div>
@@ -41,7 +41,7 @@
 
                         <div class="row">
                             <div class="input-field">
-                                <i class="material-icons prefix">lock</i>
+                                <i class="material-icons prefix">lock_outline</i>
                                 <asp:TextBox ID="txtConfirmPassword" runat="server" TextMode="Password"></asp:TextBox>
                                 <label for="SecretariaContent_txtConfirmPassword">Confirmar senha:</label>
                             </div>
@@ -49,15 +49,15 @@
 
                         <div class="row">
                             <div class="input-field">
-                                <i class="material-icons prefix">account_circle</i>
+                                <i class="material-icons prefix">home</i>
                                 <asp:TextBox ID="txtEndereco" runat="server" CssClass="validate"></asp:TextBox>
-                                <label for="SecretariaContent_txtEndereco">Endereço:</label>
+                                <label for="SecretariaContent_txtEmail">Endereço:</label>
                             </div>
                         </div>
 
                         <div class="row">
                             <div class="input-field">
-                                <i class="material-icons prefix">account_circle</i>
+                                <i class="material-icons prefix">smartphone</i>
                                 <asp:TextBox ID="txtCelular" runat="server"></asp:TextBox>
                                 <label for="SecretariaContent_txtCelular">Celular:</label>
                             </div>
@@ -65,7 +65,7 @@
 
                         <div class="row">
                             <div class="input-field">
-                                <i class="material-icons prefix">account_circle</i>
+                                <i class="material-icons prefix">phone</i>
                                 <asp:TextBox ID="txtTelefoneResidencial" runat="server"></asp:TextBox>
                                 <label for="SecretariaContent_txtTelefoneResidencial">Telefone residencial:</label>
                             </div>
