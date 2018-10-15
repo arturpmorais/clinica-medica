@@ -31,9 +31,7 @@
                             </div>
                         </div>
 
-                        <div class="row">
-                            <asp:Button ID="BtnEntrar" runat="server" Text="Entrar" CssClass="waves-effect waves-light btn-large btn-entrar" ForeColor="White" OnClick="BtnEntrar_Click" UseSubmitBehavior="false"/>
-                        </div>
+                        <asp:Button ID="BtnEntrar" runat="server" Text="Entrar" CssClass="waves-effect waves-light btn-large btn-entrar" ForeColor="White" OnClick="BtnEntrar_Click" UseSubmitBehavior="false"/>
                     </div>
                 </div>
             </form>

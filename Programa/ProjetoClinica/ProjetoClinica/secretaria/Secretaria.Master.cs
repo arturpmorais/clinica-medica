@@ -19,6 +19,18 @@ namespace ProjetoClinica
             {
                 Response.Redirect("/index.aspx");
             }
+            else
+            {
+                SecretariaDBO s = (SecretariaDBO)Session["Usuario"];
+
+                LblCodigo.Text = s.Codigo.ToUpper();
+            }
+        }
+
+        protected void LbSair_Click(object sender, EventArgs e)
+        {
+            Session.Clear();
+            Response.Redirect("/index.aspx");
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ProjetoClinica.DB.DBO;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -11,7 +12,7 @@ namespace ProjetoClinica
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            Session["Usuario"] = new SecretariaDBO("17167");
         }
     }
 }

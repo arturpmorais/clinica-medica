@@ -129,6 +129,7 @@
   <ItemGroup>
     <Content Include="images\equipemedica.jpg" />
     <Content Include="images\hospitalpredio.jpg" />
+    <Content Include="img\default_profile_picture.png" />
     <Content Include="medico\index.aspx" />
     <Content Include="secretaria\cadastrar\medico.aspx" />
     <Content Include="secretaria\cadastrar\paciente.aspx" />

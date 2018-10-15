@@ -19,5 +19,11 @@ namespace ProjetoClinica
                 Response.Redirect("/index.aspx");
             }
         }
+
+        protected void LbSair_Click(object sender, EventArgs e)
+        {
+            Session.Clear();
+            Response.Redirect("/index.aspx");
+        }
     }
 }

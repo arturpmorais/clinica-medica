@@ -33,18 +33,18 @@
                         <div class="background background-color"></div>
 
                         <center>
-                            <a runat="server" href="~/perfil/paciente.aspx"><img class="circle" src="/images/koala.jpg"></a>
-                            <a runat="server" href="~/perfil/paciente.aspx"><span class="black-text name">Paciente</span></a>
+                            <a runat="server" href="#"><img class="circle" src="/images/koala.jpg"></a>
+                            <a runat="server" href="#"><span class="black-text name">Paciente</span></a>
                         </center>
                     </div>
                 </li>
 
-                <li><a runat="server" href="~/perfil/paciente.aspx"><i class="material-icons">account_circle</i>Perfil</a></li>
+                <li><a runat="server" href="~/paciente/perfil.aspx"><i class="material-icons">account_circle</i>Perfil</a></li>
                 <li><a runat="server" href="#"><i class="material-icons">event_note</i>Agenda (não sei)</a></li>
                 <li><a runat="server" href="#"><i class="material-icons">add_box</i>Marcar nova consulta</a></li>
                 <li><a runat="server" href="#"><i class="material-icons">restore</i>Histórico de consultas</a></li>
                 <li><a runat="server" href="#"><i class="material-icons">settings</i>Configurações</a></li>
-                <li><a runat="server" href="~/index.aspx"><i class="material-icons">exit_to_app</i>Sair</a></li>
+                <asp:LinkButton ID="LbSair" runat="server" OnClick="LbSair_Click"><i class="material-icons">exit_to_app</i>Sair</asp:LinkButton>
             </ul>
 
             <div class="pagecontent">

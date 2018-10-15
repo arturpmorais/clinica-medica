@@ -15,10 +15,10 @@ namespace ProjetoClinica.DB.DBO
         public string Endereco { get; private set; }
         public string Celular { get; private set; }
         public string Telefone_Residencial { get; private set; }
-        public Image Imagem { get; private set; }
+        public string Imagem { get; private set; }
 
 
-        public PacienteDBO(int id, string nome_completo, string email, string data_de_nascimento, string endereco, string celular, string telefone_residencial, Image imagem)
+        public PacienteDBO(int id, string nome_completo, string email, string data_de_nascimento, string endereco, string celular, string telefone_residencial, string imagem)
         {
             if (nome_completo == null || nome_completo.Trim() == "")
                 throw new Exception("Nome nulo");
@@ -37,6 +37,9 @@ namespace ProjetoClinica.DB.DBO
 
             if (telefone_residencial == null || telefone_residencial.Trim() == "")
                 throw new Exception("Telefone nulo");
+
+            if (imagem != null && imagem.Trim() == "")
+                throw new Exception("Imagem nula");
 
             this.Id = id;
             this.Nome_Completo = nome_completo;

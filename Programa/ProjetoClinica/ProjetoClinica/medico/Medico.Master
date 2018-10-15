@@ -36,7 +36,7 @@
 
                         <center>
                             <a href="#"><img class="circle" src="images/koala.jpg"></a>
-                            <a href="#"><span class="black-text name">Médico</span></a>
+                            <a href="#"><asp:Label ID="LblNome" runat="server" Text="" class="black-text name"></asp:Label></a>
                         </center>
                     </div>
                 </li>
@@ -45,6 +45,7 @@
                 <li><a href="#">Agenda</a></li>
                 <li><a href="#">Consultas marcadas</a></li>
                 <li><a href="#">Histórico de consultas</a></li>
+                <asp:LinkButton ID="LbSair" runat="server" OnClick="LbSair_Click"><i class="material-icons">exit_to_app</i>Sair</asp:LinkButton>
             </ul>
 
             <div class="pagecontent">

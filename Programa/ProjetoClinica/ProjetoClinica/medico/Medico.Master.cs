@@ -18,7 +18,18 @@ namespace ProjetoClinica
             if (Session.IsNewSession || usuario == null || usuario.GetType() != typeof(MedicoDBO))
             {
                 Response.Redirect("/index.aspx");
+            } else
+            {
+                MedicoDBO m = (MedicoDBO) Session["Usuario"];
+
+                LblNome.Text = m.Nome_Completo.Split(' ')[0];
             }
+        }
+
+        protected void LbSair_Click(object sender, EventArgs e)
+        {
+            Session.Clear();
+            Response.Redirect("/index.aspx");
         }
     }
 }

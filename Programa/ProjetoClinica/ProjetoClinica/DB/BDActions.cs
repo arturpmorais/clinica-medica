@@ -83,7 +83,7 @@ namespace ProjetoClinica.DB
                 string endereco = (string)dadosMedico[4];
                 string celular = (string)dadosMedico[5];
                 string telefone_residencial = (string)dadosMedico[6];
-                Image imagem = BytesToImage((byte[])dadosMedico[7]);
+                string imagem = (string)dadosMedico[7];
                 EspecialidadeDBO especialidade = new EspecialidadeDBO((int)dadosEspecialidade[0], (string)dadosEspecialidade[1]);
 
                 m = new MedicoDBO(id, nome_completo, email, data_de_nascimento, endereco, celular, telefone_residencial, imagem, especialidade);
@@ -150,7 +150,7 @@ namespace ProjetoClinica.DB
                 string endereco = (string)dados[4];
                 string celular = (string)dados[5];
                 string telefone_residencial = (string)dados[6];
-                Image imagem = BytesToImage((byte[])dados[7]);
+                string imagem = (string)dados[7];
 
                 p = new PacienteDBO(id, nome_completo, email, data_de_nascimento, endereco, celular, telefone_residencial, imagem);
 
@@ -210,9 +210,10 @@ namespace ProjetoClinica.DB
                 dados = ds.Tables[0].Rows[0].ItemArray;
 
                 codigo = (string)dados[0];
-                string nome_completo = (string)dados[1];
+                //string nome_completo = (string)dados[1];
 
-                s = new SecretariaDBO(codigo, nome_completo);
+                //s = new SecretariaDBO(codigo, nome_completo);
+                s = new SecretariaDBO(codigo);
 
                 return s;
             }
@@ -220,8 +221,8 @@ namespace ProjetoClinica.DB
                 throw new Exception("Código ou senha incorretos!");
         }
 
-        public void CadastrarMedico(string nome_completo, string email, string senha, string data_de_nascimento, string endereco, string celular, string telefone_residencial, int especialidade) {
-            ValidarInformacoes(nome_completo, email, senha, data_de_nascimento, endereco, celular, telefone_residencial);
+        public void CadastrarMedico(string nome_completo, string email, string senha, string senhaConf, string data_de_nascimento, string endereco, string celular, string telefone_residencial, int especialidade, Image imagem) {
+            ValidarInformacoes(nome_completo, email, senha, senhaConf, data_de_nascimento, endereco, celular, telefone_residencial);
 
             if (EhCadastrado(email, "MEDICO"))
                 throw new Exception("E-mail já cadastrado!");
@@ -240,7 +241,7 @@ namespace ProjetoClinica.DB
             cmd.Parameters.AddWithValue("@endereco", endereco);
             cmd.Parameters.AddWithValue("@celular", celular);
             cmd.Parameters.AddWithValue("@telefone_residencial", telefone_residencial);
-            cmd.Parameters.AddWithValue("@imagem", null);
+            cmd.Parameters.AddWithValue("@imagem", imagem);
             cmd.Parameters.AddWithValue("@especialidade", especialidade);
 
             try
@@ -261,8 +262,8 @@ namespace ProjetoClinica.DB
             }
         }
 
-        public void CadastrarPaciente(string nome_completo, string email, string senha, string data_de_nascimento, string endereco, string celular, string telefone_residencial) {
-            ValidarInformacoes(nome_completo, email, senha, data_de_nascimento, endereco, celular, telefone_residencial);
+        public void CadastrarPaciente(string nome_completo, string email, string senha, string senhaConf, string data_de_nascimento, string endereco, string celular, string telefone_residencial, Image imagem) {
+            ValidarInformacoes(nome_completo, email, senha, senhaConf, data_de_nascimento, endereco, celular, telefone_residencial);
 
             if (EhCadastrado(email, "PACIENTE"))
                 throw new Exception("E-mail já cadastrado!");
@@ -281,7 +282,7 @@ namespace ProjetoClinica.DB
             cmd.Parameters.AddWithValue("@endereco", endereco);
             cmd.Parameters.AddWithValue("@celular", celular);
             cmd.Parameters.AddWithValue("@telefone_residencial", telefone_residencial);
-            cmd.Parameters.AddWithValue("@imagem", null);
+            cmd.Parameters.AddWithValue("@imagem", imagem);
 
             try
             {
@@ -346,7 +347,7 @@ namespace ProjetoClinica.DB
             }
         }
 
-        private void ValidarInformacoes(string nome_completo, string email, string senha, string data_de_nascimento, string endereco, string celular, string telefone_residencial)
+        private void ValidarInformacoes(string nome_completo, string email, string senha, string senhaConf, string data_de_nascimento, string endereco, string celular, string telefone_residencial)
         {
             if (IsEmptyString(nome_completo))
                 throw new Exception("Digite um nome!");
@@ -372,6 +373,9 @@ namespace ProjetoClinica.DB
 
             if (PasswordCheck.GetPasswordStrength(senha) < PasswordStrength.Medium)
                 throw new Exception("Senha muito fraca!");
+
+            if (!senha.Equals(senhaConf))
+                throw new Exception("Senhas diferentes!");
 
             ///
 
@@ -435,14 +439,6 @@ namespace ProjetoClinica.DB
                 return true;
 
             return false;
-        }
-
-        public Image BytesToImage(byte[] bytes)
-        {
-            MemoryStream memstr = new MemoryStream(bytes);
-            Image img = Image.FromStream(memstr);
-
-            return img;
         }
     }
 }
