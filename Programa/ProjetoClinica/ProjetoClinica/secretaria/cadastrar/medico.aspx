@@ -11,6 +11,7 @@
             <form>
                 <div class="container">
                     <div class="col m9 s12">
+                        <div class="col m9 s12">
                         <div class="row">
                             <asp:Label ID="LblAviso" runat="server" Text=""></asp:Label>
                         </div>
@@ -68,6 +69,14 @@
                                 <i class="material-icons prefix">phone</i>
                                 <asp:TextBox ID="txtTelefoneResidencial" runat="server"></asp:TextBox>
                                 <label for="SecretariaContent_txtTelefoneResidencial">Telefone residencial:</label>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="input-field">
+                                <i class="material-icons prefix">today</i>
+                                <label for="SecretariaContent_txtDataNascimento">Data de nascimento:</label>
+                                <asp:TextBox ID="txtDataNascimento" runat="server" CssClass="datanascimento"></asp:TextBox>
                             </div>
                         </div>
 

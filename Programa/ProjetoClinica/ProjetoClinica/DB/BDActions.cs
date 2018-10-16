@@ -333,6 +333,45 @@ namespace ProjetoClinica.DB
 
         //////////////////////////////////////////////////////
 
+        private bool ExisteEspecialidade(string especialidade)
+        {
+            SqlConnection conn = new SqlConnection(cs);
+            SqlCommand cmd = null;
+
+            cmd = new SqlCommand("SELECT count(id) FROM medico WHERE email=@especialidade", conn);
+
+            cmd.Parameters.AddWithValue("@especialidade", especialidade);
+
+            SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+            DataSet ds = new DataSet();
+
+            try
+            {
+                // abre conexao
+                conn.Open();
+                // executa a consulta
+                adapter.Fill(ds);
+
+                int count = (int)ds.Tables[0].Rows[0].ItemArray[0];
+
+                if (count > 0)
+                    return true;
+                else
+                    return false;
+
+            }
+            catch (Exception)
+            {
+                throw new Exception("Erro ao acessar o Banco de Dados!");
+            }
+            finally
+            {
+                // fecha conexao
+                conn.Close();
+                conn.Dispose();
+            }
+        }
+
         private bool EhCadastrado(string email, string funcao)
         {
             SqlConnection conn = new SqlConnection(cs);

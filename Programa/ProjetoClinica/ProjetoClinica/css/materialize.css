@@ -2413,7 +2413,8 @@ html [type="button"],
 [type="reset"],
 [type="submit"] {
   -webkit-appearance: button;
-  /* 2 */
+    top: 0px;
+    left: 0px;
 }
 
 /**
