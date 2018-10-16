@@ -135,6 +135,7 @@
     <Content Include="secretaria\cadastrar\especialidade.aspx" />
     <Content Include="secretaria\cadastrar\medico.aspx" />
     <Content Include="secretaria\cadastrar\paciente.aspx" />
+    <Content Include="secretaria\consultas.aspx" />
     <Content Include="secretaria\index.aspx" />
     <Content Include="contato.aspx" />
     <Content Include="entrar\medico.aspx" />
@@ -208,6 +209,7 @@
     <Content Include="Scripts\WebForms\WebForms.js" />
     <Content Include="Scripts\WebForms\WebParts.js" />
     <Content Include="Scripts\WebForms\WebUIValidation.js" />
+    <Content Include="secretaria\relatorios.aspx" />
     <Content Include="ViewSwitcher.ascx" />
     <Content Include="Web.config" />
     <Content Include="Bundle.config" />
@@ -246,6 +248,13 @@
     </Compile>
     <Compile Include="secretaria\cadastrar\paciente.aspx.designer.cs">
       <DependentUpon>paciente.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="secretaria\consultas.aspx.cs">
+      <DependentUpon>consultas.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="secretaria\consultas.aspx.designer.cs">
+      <DependentUpon>consultas.aspx</DependentUpon>
     </Compile>
     <Compile Include="secretaria\index.aspx.cs">
       <DependentUpon>index.aspx</DependentUpon>
@@ -343,6 +352,13 @@
     </Compile>
     <Compile Include="quemsomos.aspx.designer.cs">
       <DependentUpon>quemsomos.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="secretaria\relatorios.aspx.cs">
+      <DependentUpon>relatorios.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="secretaria\relatorios.aspx.designer.cs">
+      <DependentUpon>relatorios.aspx</DependentUpon>
     </Compile>
     <Compile Include="secretaria\Secretaria.Master.cs">
       <DependentUpon>Secretaria.Master</DependentUpon>

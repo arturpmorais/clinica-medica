@@ -1,0 +1,20 @@
+-- Relatórios:
+
+	Lista de todas as consultas do dia - tanto as que aconteceram quanto as que
+	vão acontecer - que é atualizada a cada consulta dizendo se aconteceu ou não;
+
+	Relatório que mostra para o médico as últimas consultas do paciente e seus dados;
+
+	Gráfico de coluna - consultas canceladas mensalmente por médico;
+	Gráfico de coluna - Consultas Mensal por médico;
+	Gráfico de pizza - Atendimento diário por especialidade;
+	Gráfico de barra - Pacientes por médico;
+
+-- Funcionalidades:
+
+	Não agendar consultas com data anterior a data do dia;
+	Se o paciente não aparecer na consulta, no final do dia o sistema deve marcá-la
+	como CANCELADA;
+	Se o paciente comparecer, o médico deve marcá-la como OCORRIDA;
+	Dois dias antes da consulta, enviar e-mail lembrando o paciente da consulta;
+	COnsulta de satisfação do cliente;

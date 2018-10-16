@@ -17,6 +17,14 @@ namespace ProjetoClinica
             if (Session.IsNewSession || usuario == null || usuario.GetType() != typeof(PacienteDBO))
             {
                 Response.Redirect("/index.aspx");
+            } else
+            {
+                PacienteDBO p = (PacienteDBO)Session["Usuario"];
+
+                if (p.Imagem == null)
+                    ImgPerfil.ImageUrl = "/img/default_profile_picture.png";
+
+                LblNome.Text = p.Nome_Completo.Split(' ')[0];
             }
         }
 

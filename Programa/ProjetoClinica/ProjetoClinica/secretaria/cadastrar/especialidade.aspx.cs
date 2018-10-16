@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ProjetoClinica.DB;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -12,6 +13,23 @@ namespace ProjetoClinica.secretaria.cadastrar
         protected void Page_Load(object sender, EventArgs e)
         {
 
+        }
+
+        protected void BtnCadastrar_Click(object sender, EventArgs e)
+        {
+            string especialidade = txtEspecialidade.Text.Trim();
+
+            BDActions bd = new BDActions();
+            try
+            {
+                bd.CadastrarEspecialidade(especialidade);
+                txtEspecialidade.Text = "";
+                LblAviso.Text = "Especialidade cadastrada com sucesso!";
+            }
+            catch(Exception ex)
+            {
+                LblAviso.Text = ex.Message;
+            }
         }
     }
 }

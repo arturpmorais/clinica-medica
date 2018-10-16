@@ -35,17 +35,18 @@
                         </div>
 
                         <center>
-                            <a href="#"><img class="circle" src="images/koala.jpg"></a>
+                            <a href="#"><asp:Image ID="ImgPerfil" runat="server" CssClass="circle"></asp:Image></a>
                             <a href="#"><asp:Label ID="LblNome" runat="server" Text="" class="black-text name"></asp:Label></a>
                         </center>
                     </div>
                 </li>
 
-                <li><a href="#">Perfil</a></li>
-                <li><a href="#">Agenda</a></li>
-                <li><a href="#">Consultas marcadas</a></li>
-                <li><a href="#">Histórico de consultas</a></li>
-                <asp:LinkButton ID="LbSair" runat="server" OnClick="LbSair_Click"><i class="material-icons">exit_to_app</i>Sair</asp:LinkButton>
+                <li><a href="~/paciente/index.aspx"><i class="material-icons">home</i>Home</a></li>
+                <li><a href="~/paciente/perfil.aspx"><i class="material-icons">account_circle</i>Perfil</a></li>
+                <li><a href="#"><i class="material-icons">event_note</i>Agenda</a></li>
+                <li><a href="#"><i class="material-icons">add_box</i>Consultas pendentes</a></li>
+                <li><a href="#"><i class="material-icons">restore</i>Histórico de consultas</a></li>
+                <li><asp:LinkButton ID="LbSair" runat="server" OnClick="LbSair_Click"><i class="material-icons">exit_to_app</i>Sair</asp:LinkButton></li>
             </ul>
 
             <div class="pagecontent">

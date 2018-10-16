@@ -12,25 +12,35 @@ namespace ProjetoClinica.secretaria.cadastrar
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
         }
 
         protected void BtnCadastrar_Click(object sender, EventArgs e)
         {
-            //string nome_completo = txtNome.Text;
-            //int especialidade = sei lal;
-            //string endereco = txtEndereco.Text;
-            //string email = txtEmail.Text;
-            //string celular = ;
-            //string telefone_residencial = ;
-            //string senha = txtPassword.Text;
-            //string senhaConf = txtConfirmPassword.Text;
+            string nome_completo = txtNomeCompleto.Text.Trim();
+            string email = txtEmail.Text.Trim();
+            string senha = txtPassword.Text.Trim();
+            string senhaConf = txtConfirmPassword.Text.Trim();
+            string endereco = txtEndereco.Text.Trim();
+            string celular = txtCelular.Text.Trim();
+            string telefone_residencial = txtTelefoneResidencial.Text.Trim();
+            string data_de_nascimento = txtDataNascimento.Text.Trim();
+            int especialidade = int.Parse(DropdownEspecialidades.SelectedValue);
 
             BDActions bd = new BDActions();
 
             try
             {
-                //bd.CadastrarMedico(nome_completo, email, senha, senhaConf, data_de_nascimento, endereco, celular, telefone_residencial, null, especialidade);
+                bd.CadastrarMedico(nome_completo, email, senha, senhaConf, data_de_nascimento, endereco, celular, telefone_residencial, null, especialidade);
+                txtNomeCompleto.Text = "";
+                txtEmail.Text = "";
+                txtPassword.Text = "";
+                txtConfirmPassword.Text = "";
+                txtEndereco.Text = "";
+                txtCelular.Text = "";
+                txtTelefoneResidencial.Text = "";
+                txtDataNascimento.Text = "";
+                DropdownEspecialidades.SelectedIndex = 0;
+                LblAviso.Text = "Médico cadastrado com sucesso!";
             }
             catch (Exception ex)
             {

@@ -38,9 +38,9 @@ namespace ProjetoClinica.DB
             ///
 
             SqlConnection conn = new SqlConnection(cs);
-            SqlCommand cmd = new SqlCommand("SELECT * FROM medico WHERE email=@email AND senha=@senha" +
-                                            "SELECT * FROM especialidade e, medico m WHERE" +
-                                            "e.id = m.idEspecialidade AND" +
+            SqlCommand cmd = new SqlCommand("SELECT * FROM medico WHERE email=@email AND senha=@senha " +
+                                            "SELECT * FROM especialidade e, medico m WHERE " +
+                                            "e.id = m.especialidade AND " +
                                             "m.email = @email AND m.senha=@senha", conn);
 
             cmd.Parameters.AddWithValue("@email", email);
@@ -60,7 +60,7 @@ namespace ProjetoClinica.DB
                 // executa a consulta
                 adapter.Fill(ds);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 throw new Exception("Erro ao acessar o Banco de Dados!");
             }
@@ -71,7 +71,7 @@ namespace ProjetoClinica.DB
                 conn.Dispose();
             }
 
-            if (ds.Tables[0].Rows.Count > 0)
+            if (ds.Tables["Medico"].Rows.Count > 0 && ds.Tables["Especialidade"].Rows.Count > 0)
             {
                 dadosMedico = ds.Tables["Medico"].Rows[0].ItemArray;
                 dadosEspecialidade = ds.Tables["Especialidade"].Rows[0].ItemArray;
@@ -79,11 +79,15 @@ namespace ProjetoClinica.DB
                 int id = (int)dadosMedico[0];
                 string nome_completo = (string)dadosMedico[1];
                 email = (string)dadosMedico[2];
-                string data_de_nascimento = (string)dadosMedico[3];
-                string endereco = (string)dadosMedico[4];
-                string celular = (string)dadosMedico[5];
-                string telefone_residencial = (string)dadosMedico[6];
-                string imagem = (string)dadosMedico[7];
+                string data_de_nascimento = (string)dadosMedico[4];
+                string endereco = (string)dadosMedico[5];
+                string celular = (string)dadosMedico[6];
+                string telefone_residencial = (string)dadosMedico[7];
+                string imagem;
+                if (dadosMedico[8] is System.DBNull)
+                    imagem = null;
+                else
+                    imagem = (string)dadosMedico[8];
                 EspecialidadeDBO especialidade = new EspecialidadeDBO((int)dadosEspecialidade[0], (string)dadosEspecialidade[1]);
 
                 m = new MedicoDBO(id, nome_completo, email, data_de_nascimento, endereco, celular, telefone_residencial, imagem, especialidade);
@@ -146,11 +150,15 @@ namespace ProjetoClinica.DB
                 int id = (int)dados[0];
                 string nome_completo = (string)dados[1];
                 email = (string)dados[2];
-                string data_de_nascimento = (string)dados[3];
-                string endereco = (string)dados[4];
-                string celular = (string)dados[5];
-                string telefone_residencial = (string)dados[6];
-                string imagem = (string)dados[7];
+                string data_de_nascimento = (string)dados[4];
+                string endereco = (string)dados[5];
+                string celular = (string)dados[6];
+                string telefone_residencial = (string)dados[7];
+                string imagem;
+                if (dados[8] is System.DBNull)
+                    imagem = null;
+                else
+                    imagem = (string)dados[8];
 
                 p = new PacienteDBO(id, nome_completo, email, data_de_nascimento, endereco, celular, telefone_residencial, imagem);
 
@@ -221,19 +229,22 @@ namespace ProjetoClinica.DB
                 throw new Exception("Código ou senha incorretos!");
         }
 
-        public void CadastrarMedico(string nome_completo, string email, string senha, string senhaConf, string data_de_nascimento, string endereco, string celular, string telefone_residencial, int especialidade, string imagem)
+        public void CadastrarMedico(string nome_completo, string email, string senha, string senhaConf, string data_de_nascimento, string endereco, string celular, string telefone_residencial, string imagem, int especialidade)
         {
             ValidarInformacoes(nome_completo, email, senha, senhaConf, data_de_nascimento, endereco, celular, telefone_residencial);
 
             if (EhCadastrado(email, "MEDICO"))
                 throw new Exception("E-mail já cadastrado!");
 
+            if (especialidade < 0)
+                throw new Exception("Escolha uma especialidade!");
+
             SqlConnection conn = new SqlConnection(cs);
             SqlCommand cmd = new SqlCommand("INSERT INTO medico VALUES(" +
                                             "@nome_completo, @email, @senha, " +
                                             "@data_de_nascimento, @endereco, " +
                                             "@celular, @telefone_residencial, " +
-                                            "@imagem, @especialidade)", conn);
+                                            "null, @especialidade)", conn);
 
             cmd.Parameters.AddWithValue("@nome_completo", nome_completo);
             cmd.Parameters.AddWithValue("@email", email);
@@ -242,7 +253,6 @@ namespace ProjetoClinica.DB
             cmd.Parameters.AddWithValue("@endereco", endereco);
             cmd.Parameters.AddWithValue("@celular", celular);
             cmd.Parameters.AddWithValue("@telefone_residencial", telefone_residencial);
-            cmd.Parameters.AddWithValue("@imagem", imagem);
             cmd.Parameters.AddWithValue("@especialidade", especialidade);
 
             try
@@ -251,7 +261,7 @@ namespace ProjetoClinica.DB
                 conn.Open();
                 cmd.ExecuteNonQuery();
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 throw new Exception("Erro ao cadastrar!");
             }
@@ -274,7 +284,7 @@ namespace ProjetoClinica.DB
                                             "@nome_completo, @email, @senha, " +
                                             "@data_de_nascimento, @endereco, " +
                                             "@celular, @telefone_residencial, " +
-                                            "@imagem)", conn);
+                                            "null)", conn);
 
             cmd.Parameters.AddWithValue("@nome_completo", nome_completo);
             cmd.Parameters.AddWithValue("@email", email);
@@ -283,7 +293,6 @@ namespace ProjetoClinica.DB
             cmd.Parameters.AddWithValue("@endereco", endereco);
             cmd.Parameters.AddWithValue("@celular", celular);
             cmd.Parameters.AddWithValue("@telefone_residencial", telefone_residencial);
-            cmd.Parameters.AddWithValue("@imagem", imagem);
 
             try
             {
@@ -309,7 +318,7 @@ namespace ProjetoClinica.DB
                 throw new Exception("Especialidade já cadastrada!");
 
             SqlConnection conn = new SqlConnection(cs);
-            SqlCommand cmd = new SqlCommand("INSERT INTO especialidades VALUES(@especialidade)", conn);
+            SqlCommand cmd = new SqlCommand("INSERT INTO especialidade VALUES(@especialidade)", conn);
             cmd.Parameters.AddWithValue("@especialidade", especialidade);
 
             try
@@ -338,8 +347,7 @@ namespace ProjetoClinica.DB
             SqlConnection conn = new SqlConnection(cs);
             SqlCommand cmd = null;
 
-            cmd = new SqlCommand("SELECT count(id) FROM medico WHERE email=@especialidade", conn);
-
+            cmd = new SqlCommand("SELECT count(id) FROM especialidade WHERE especialidade=@especialidade", conn);
             cmd.Parameters.AddWithValue("@especialidade", especialidade);
 
             SqlDataAdapter adapter = new SqlDataAdapter(cmd);
@@ -419,7 +427,7 @@ namespace ProjetoClinica.DB
             if (IsEmptyString(nome_completo))
                 throw new Exception("Digite um nome!");
 
-            if (nome_completo.Length >= 10 && nome_completo.Length <= 100)
+            if (!(nome_completo.Length >= 10 && nome_completo.Length <= 100))
                 throw new Exception("Tamanho do nome é inválido!");
 
             ///
@@ -427,7 +435,7 @@ namespace ProjetoClinica.DB
             if (IsEmptyString(email))
                 throw new Exception("Digite um nome!");
 
-            if (email.Length >= 5 && email.Length <= 50)
+            if (!(email.Length >= 5 && email.Length <= 50))
                 throw new Exception("Tamanho do e-mail é inválido!");
 
             if (!IsValidEmail(email))
@@ -465,16 +473,10 @@ namespace ProjetoClinica.DB
             if (IsEmptyString(celular))
                 throw new Exception("Digite um celular!");
 
-            if (!IsValidPhoneNumber(celular))
-                throw new Exception("Celular inválido!");
-
             ///
 
             if (IsEmptyString(telefone_residencial))
                 throw new Exception("Digite um telefone residencial!");
-
-            if (!IsValidPhoneNumber(telefone_residencial))
-                throw new Exception("Telefone residencial inválido!");
         }
 
         private bool IsValidEmail(string email)
@@ -484,14 +486,6 @@ namespace ProjetoClinica.DB
             var regex = new Regex(pattern, RegexOptions.IgnoreCase);
 
             return regex.IsMatch(email);
-        }
-
-        private bool IsValidPhoneNumber(string num)
-        {
-            if (IsEmptyString(num))
-                return false;
-
-            return Regex.Match(num, @"^([\+]?55[-]?|[0])?[1-9][0-9]{8}$").Success;
         }
 
         private string EncodePassword(string plainText)

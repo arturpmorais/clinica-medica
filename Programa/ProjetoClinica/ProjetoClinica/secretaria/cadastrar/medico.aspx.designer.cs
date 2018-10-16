@@ -112,22 +112,22 @@ namespace ProjetoClinica.secretaria.cadastrar {
         protected global::System.Web.UI.WebControls.TextBox txtDataNascimento;
         
         /// <summary>
-        /// Controle DropdownEspecialidaades.
+        /// Controle DropdownEspecialidades.
         /// </summary>
         /// <remarks>
         /// Campo gerado automaticamente.
         /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropdownEspecialidaades;
+        protected global::System.Web.UI.WebControls.DropDownList DropdownEspecialidades;
         
         /// <summary>
-        /// Controle SqlDataSourceEspecialidades.
+        /// Controle SqlDataSourceEspecialidade.
         /// </summary>
         /// <remarks>
         /// Campo gerado automaticamente.
         /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSourceEspecialidades;
+        protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSourceEspecialidade;
         
         /// <summary>
         /// Controle BtnCadastrar.
