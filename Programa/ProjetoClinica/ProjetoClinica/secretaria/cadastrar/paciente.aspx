@@ -71,6 +71,14 @@
                             </div>
                         </div>
 
+                        <div class="row">
+                            <div class="input-field">
+                                <i class="material-icons prefix">today</i>
+                                <label for="SecretariaContent_txtDataNascimento">Data de nascimento:</label>
+                                <asp:TextBox ID="txtDataNascimento" runat="server" CssClass="datanascimento"></asp:TextBox>
+                            </div>
+                        </div>
+
                         <asp:Button ID="BtnCadastrar" runat="server" Text="Cadastrar" CssClass="waves-effect waves-light btn-large btn-entrar" ForeColor="White" UseSubmitBehavior="false" OnClick="BtnCadastrar_Click"/>
                     </div>
                 </div>
