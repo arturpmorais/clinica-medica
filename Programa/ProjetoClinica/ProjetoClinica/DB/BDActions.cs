@@ -221,7 +221,8 @@ namespace ProjetoClinica.DB
                 throw new Exception("Código ou senha incorretos!");
         }
 
-        public void CadastrarMedico(string nome_completo, string email, string senha, string senhaConf, string data_de_nascimento, string endereco, string celular, string telefone_residencial, int especialidade, Image imagem) {
+        public void CadastrarMedico(string nome_completo, string email, string senha, string senhaConf, string data_de_nascimento, string endereco, string celular, string telefone_residencial, int especialidade, string imagem)
+        {
             ValidarInformacoes(nome_completo, email, senha, senhaConf, data_de_nascimento, endereco, celular, telefone_residencial);
 
             if (EhCadastrado(email, "MEDICO"))
@@ -262,14 +263,14 @@ namespace ProjetoClinica.DB
             }
         }
 
-        public void CadastrarPaciente(string nome_completo, string email, string senha, string senhaConf, string data_de_nascimento, string endereco, string celular, string telefone_residencial, Image imagem) {
+        public void CadastrarPaciente(string nome_completo, string email, string senha, string senhaConf, string data_de_nascimento, string endereco, string celular, string telefone_residencial, string imagem) {
             ValidarInformacoes(nome_completo, email, senha, senhaConf, data_de_nascimento, endereco, celular, telefone_residencial);
 
             if (EhCadastrado(email, "PACIENTE"))
                 throw new Exception("E-mail já cadastrado!");
 
             SqlConnection conn = new SqlConnection(cs);
-            SqlCommand cmd = new SqlCommand("INSERT INTO medico VALUES(" +
+            SqlCommand cmd = new SqlCommand("INSERT INTO paciente VALUES(" +
                                             "@nome_completo, @email, @senha, " +
                                             "@data_de_nascimento, @endereco, " +
                                             "@celular, @telefone_residencial, " +
@@ -283,6 +284,33 @@ namespace ProjetoClinica.DB
             cmd.Parameters.AddWithValue("@celular", celular);
             cmd.Parameters.AddWithValue("@telefone_residencial", telefone_residencial);
             cmd.Parameters.AddWithValue("@imagem", imagem);
+
+            try
+            {
+                // abre conexao
+                conn.Open();
+                cmd.ExecuteNonQuery();
+            }
+            catch (Exception)
+            {
+                throw new Exception("Erro ao cadastrar!");
+            }
+            finally
+            {
+                // fecha conexao
+                conn.Close();
+                conn.Dispose();
+            }
+        }
+
+        public void CadastrarEspecialidade(string especialidade)
+        {
+            if (ExisteEspecialidade(especialidade))
+                throw new Exception("Especialidade já cadastrada!");
+
+            SqlConnection conn = new SqlConnection(cs);
+            SqlCommand cmd = new SqlCommand("INSERT INTO especialidades VALUES(@especialidade)", conn);
+            cmd.Parameters.AddWithValue("@especialidade", especialidade);
 
             try
             {
