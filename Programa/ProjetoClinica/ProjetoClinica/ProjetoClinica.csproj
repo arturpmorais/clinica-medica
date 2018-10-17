@@ -221,6 +221,7 @@
     <Compile Include="DB\DBO\PacienteDBO.cs" />
     <Compile Include="DB\DBO\SecretariaDBO.cs" />
     <Compile Include="DB\PasswordCheck.cs" />
+    <Compile Include="email\EmailSender.cs" />
     <Compile Include="medico\index.aspx.cs">
       <DependentUpon>index.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
