@@ -38,16 +38,19 @@ namespace ProjetoClinica.DB
             ///
 
             SqlConnection conn = new SqlConnection(cs);
-            SqlCommand cmd = new SqlCommand("SELECT * FROM medico WHERE email=@email AND senha=@senha " +
-                                            "SELECT * FROM especialidade e, medico m WHERE " +
-                                            "e.id = m.especialidade AND " +
-                                            "m.email = @email AND m.senha=@senha", conn);
+            SqlCommand cmdMedico = new SqlCommand("SELECT * FROM medico as Medico WHERE email=@email AND senha=@senha", conn);
+            SqlCommand cmdEspecialidade = new SqlCommand("SELECT * FROM especialidade e, medico m WHERE e.id = m.especialidade " +
+                                                         "AND m.email = @email AND m.senha=@senha", conn);
 
-            cmd.Parameters.AddWithValue("@email", email);
-            cmd.Parameters.AddWithValue("@senha", EncodePassword(senha));
+            cmdMedico.Parameters.AddWithValue("@email", email);
+            cmdMedico.Parameters.AddWithValue("@senha", EncodePassword(senha));
+            cmdEspecialidade.Parameters.AddWithValue("@email", email);
+            cmdEspecialidade.Parameters.AddWithValue("@senha", EncodePassword(senha));
 
-            SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+            SqlDataAdapter adapter = new SqlDataAdapter();
             DataSet ds = new DataSet();
+            ds.Tables.Add("Medico");
+            ds.Tables.Add("Especialidade");
 
             MedicoDBO m = null;
             object[] dadosMedico;
@@ -58,12 +61,15 @@ namespace ProjetoClinica.DB
                 // abre conexao
                 conn.Open();
                 // executa a consulta
-                adapter.Fill(ds);
+                adapter.SelectCommand = cmdMedico;
+                adapter.Fill(ds.Tables["Medico"]);
+                adapter.SelectCommand = cmdEspecialidade;
+                adapter.Fill(ds.Tables["Especialidade"]);
             }
             catch (Exception ex)
             {
                 throw new Exception("Erro ao acessar o Banco de Dados!");
-            }
+}
             finally
             {
                 // fecha conexao
@@ -78,7 +84,7 @@ namespace ProjetoClinica.DB
 
                 int id = (int)dadosMedico[0];
                 string nome_completo = (string)dadosMedico[1];
-                email = (string)dadosMedico[2];
+                email = (string) dadosMedico[2];
                 string data_de_nascimento = (string)dadosMedico[4];
                 string endereco = (string)dadosMedico[5];
                 string celular = (string)dadosMedico[6];
@@ -87,7 +93,7 @@ namespace ProjetoClinica.DB
                 if (dadosMedico[8] is System.DBNull)
                     imagem = null;
                 else
-                    imagem = (string)dadosMedico[8];
+                    imagem = (string) dadosMedico[8];
                 EspecialidadeDBO especialidade = new EspecialidadeDBO((int)dadosEspecialidade[0], (string)dadosEspecialidade[1]);
 
                 m = new MedicoDBO(id, nome_completo, email, data_de_nascimento, endereco, celular, telefone_residencial, imagem, especialidade);
@@ -121,6 +127,7 @@ namespace ProjetoClinica.DB
 
             SqlDataAdapter adapter = new SqlDataAdapter(cmd);
             DataSet ds = new DataSet();
+            ds.Tables.Add("Paciente");
 
             PacienteDBO p = null;
             object[] dados;
@@ -130,7 +137,7 @@ namespace ProjetoClinica.DB
                 // abre conexao
                 conn.Open();
                 // executa a consulta
-                adapter.Fill(ds);
+                adapter.Fill(ds.Tables["Paciente"]);
             }
             catch (Exception)
             {
@@ -143,9 +150,9 @@ namespace ProjetoClinica.DB
                 conn.Dispose();
             }
 
-            if (ds.Tables[0].Rows.Count > 0)
+            if (ds.Tables["Paciente"].Rows.Count > 0)
             {
-                dados = ds.Tables[0].Rows[0].ItemArray;
+                dados = ds.Tables["Paciente"].Rows[0].ItemArray;
 
                 int id = (int)dados[0];
                 string nome_completo = (string)dados[1];
@@ -191,6 +198,7 @@ namespace ProjetoClinica.DB
 
             SqlDataAdapter adapter = new SqlDataAdapter(cmd);
             DataSet ds = new DataSet();
+            ds.Tables.Add("Secretaria");
 
             SecretariaDBO s = null;
             object[] dados;
@@ -200,7 +208,7 @@ namespace ProjetoClinica.DB
                 // abre conexao
                 conn.Open();
                 // executa a consulta
-                adapter.Fill(ds);
+                adapter.Fill(ds.Tables["Secretaria"]);
             }
             catch (Exception)
             {
@@ -213,9 +221,9 @@ namespace ProjetoClinica.DB
                 conn.Dispose();
             }
 
-            if (ds.Tables[0].Rows.Count > 0)
+            if (ds.Tables["Secretaria"].Rows.Count > 0)
             {
-                dados = ds.Tables[0].Rows[0].ItemArray;
+                dados = ds.Tables["Secretaria"].Rows[0].ItemArray;
 
                 codigo = (string)dados[0];
                 //string nome_completo = (string)dados[1];
