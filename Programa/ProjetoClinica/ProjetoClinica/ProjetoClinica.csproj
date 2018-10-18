@@ -136,6 +136,7 @@
     <Content Include="secretaria\cadastrar\medico.aspx" />
     <Content Include="secretaria\cadastrar\paciente.aspx" />
     <Content Include="secretaria\consultas.aspx" />
+    <Content Include="secretaria\enviaremail.aspx" />
     <Content Include="secretaria\index.aspx" />
     <Content Include="contato.aspx" />
     <Content Include="entrar\medico.aspx" />
@@ -256,6 +257,13 @@
     </Compile>
     <Compile Include="secretaria\consultas.aspx.designer.cs">
       <DependentUpon>consultas.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="secretaria\enviaremail.aspx.cs">
+      <DependentUpon>enviaremail.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="secretaria\enviaremail.aspx.designer.cs">
+      <DependentUpon>enviaremail.aspx</DependentUpon>
     </Compile>
     <Compile Include="secretaria\index.aspx.cs">
       <DependentUpon>index.aspx</DependentUpon>
