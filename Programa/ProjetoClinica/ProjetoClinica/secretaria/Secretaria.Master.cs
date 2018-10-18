@@ -24,6 +24,7 @@ namespace ProjetoClinica
                 SecretariaDBO s = (SecretariaDBO)Session["Usuario"];
 
                 LblCodigo.Text = s.Codigo.ToUpper();
+                LblNome.Text = s.Nome_Completo.Split(' ')[0];
             }
         }
 

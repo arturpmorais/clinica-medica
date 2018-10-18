@@ -226,10 +226,9 @@ namespace ProjetoClinica.DB
                 dados = ds.Tables["Secretaria"].Rows[0].ItemArray;
 
                 codigo = (string)dados[0];
-                //string nome_completo = (string)dados[1];
+                string nome_completo = (string)dados[1];
 
-                //s = new SecretariaDBO(codigo, nome_completo);
-                s = new SecretariaDBO(codigo);
+                s = new SecretariaDBO(codigo, nome_completo);
 
                 return s;
             }

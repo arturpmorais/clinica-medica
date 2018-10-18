@@ -4,7 +4,7 @@
     background-repeat: no-repeat;
     background-attachment: fixed;
     overflow-x: hidden;
-    padding-left: 300px;
+    padding-left: 350px;
 }
 
 i.btn-entrar input {
@@ -112,4 +112,25 @@ div .collapsible-body > ul > li > a {
 
 div#map {
     height: 500px;
+}
+
+div.whitecontainer {
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 5px;
+}
+
+div.containerform {
+    padding: 1px 40px 30px 40px;
+}
+
+div.containerform *:not(h1):not(h2):not(h3):not(h4):not(i) {
+    font-size: 100%;
+}
+
+ul.sidenav *:not(h1):not(h2):not(h3):not(h4):not(i) {
+    font-size: 100%;
+}
+
+h1 {
+    margin: 25px 0;
 }

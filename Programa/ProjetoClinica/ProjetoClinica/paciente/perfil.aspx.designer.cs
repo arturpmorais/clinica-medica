@@ -13,6 +13,15 @@ namespace ProjetoClinica.perfil {
     public partial class paciente {
         
         /// <summary>
+        /// Controle LblApelido.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label LblApelido;
+        
+        /// <summary>
         /// Controle ImgPerfil.
         /// </summary>
         /// <remarks>

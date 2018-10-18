@@ -12,7 +12,6 @@ namespace ProjetoClinica
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            Session["Usuario"] = new SecretariaDBO("17167");
         }
     }
 }

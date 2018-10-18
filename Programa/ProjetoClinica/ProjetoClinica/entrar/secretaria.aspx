@@ -2,17 +2,17 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
-    <center><h1>Secretária</h1></center>
-
     <asp:ScriptManager ID="ScriptManager" runat="server"></asp:ScriptManager>
 
     <asp:UpdatePanel ID="UpdatePanel" runat="server">
         <ContentTemplate>
             <form>
-                <div class="container">
+                <div class="container whitecontainer containerform">
                     <div class="col m9 s12">
+                        <center><h2>Secretária</h2></center>
+
                         <div class="row">
-                            <asp:Label ID="LblAviso" runat="server" Text=""></asp:Label>
+                            <center><asp:Label ID="LblAviso" runat="server" Text=""></asp:Label></center>
                         </div>
 
                         <div class="row">
