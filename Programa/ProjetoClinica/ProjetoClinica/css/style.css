@@ -134,3 +134,12 @@ ul.sidenav *:not(h1):not(h2):not(h3):not(h4):not(i) {
 h1 {
     margin: 25px 0;
 }
+
+img.profile-pic {
+    margin: 20px 0 0 0;
+    max-width: 150px;
+}
+
+div.contentcontainer {
+    padding: 1px 0 10px 0;
+}

@@ -35,8 +35,8 @@ CREATE TABLE consulta (
 	idMedico int not null,
 	idPaciente int not null,
 	status varchar(9) not null,
-	diagnostico ntext not null,
-	anotacoes ntext not null,
+	diagnostico ntext,
+	anotacoes ntext,
 	constraint fkIdMedico foreign key(idMedico) references medico(id),
 	constraint fkIdPaciente foreign key(idPaciente) references paciente(id)
 )

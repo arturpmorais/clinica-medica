@@ -7,36 +7,75 @@
     <div class="col s12 whitecontainer">
         <div class="container">
             <div class="row">
-                <center><h4>Pacientes por médico (barra/coluna)</h4></center>
+                <div class="col s12 m6">
+                    <center>
+                        <h4>Pacientes por médico (barra/coluna)</h4>
 
-                <asp:Chart ID="Chart1" runat="server">
-                    <Series>
-                        <asp:Series Name="Series1">
-                        </asp:Series>
-                    </Series>
-                    <ChartAreas>
-                        <asp:ChartArea Name="ChartArea1">
-                        </asp:ChartArea>
-                    </ChartAreas>
-                </asp:Chart>
+                        <asp:Chart ID="Chart1" runat="server">
+                            <Series>
+                                <asp:Series Name="Series1">
+                                </asp:Series>
+                            </Series>
+                            <ChartAreas>
+                                <asp:ChartArea Name="ChartArea1">
+                                </asp:ChartArea>
+                            </ChartAreas>
+                        </asp:Chart>
+                    </center>
+                </div>
+
+                <div class="col s12 m6">
+                    <center>
+                        <h4>Consultas canceladas mensalmente por médico (barra/coluna)</h4>
+
+                        <asp:Chart ID="Chart2" runat="server">
+                            <Series>
+                                <asp:Series Name="Series1">
+                                </asp:Series>
+                            </Series>
+                            <ChartAreas>
+                                <asp:ChartArea Name="ChartArea1">
+                                </asp:ChartArea>
+                            </ChartAreas>
+                        </asp:Chart>
+                    </center>
+                </div>
             </div>
-
-            <div class="divider"></div>
-
-            <div class="row">
-                <center><h4>Consultas canceladas mensalmente por médico (barra/coluna)</h4></center>
-            </div>
-
-            <div class="divider"></div>
             
             <div class="row">
-                <center><h4>Consultas mensais por médico (barra/coluna)</h4></center>
-            </div>
+                <div class="col s12 m6">
+                    <center>
+                        <h4>Consultas mensais por médico (barra/coluna)</h4>
 
-            <div class="divider"></div>
+                        <asp:Chart ID="Chart3" runat="server">
+                            <Series>
+                                <asp:Series Name="Series1">
+                                </asp:Series>
+                            </Series>
+                            <ChartAreas>
+                                <asp:ChartArea Name="ChartArea1">
+                                </asp:ChartArea>
+                            </ChartAreas>
+                        </asp:Chart>
+                    </center>
+                </div>
 
-            <div class="row">
-                <center><h4>Atendimento diário por especialidade (pizza)</h4></center>
+                <div class="col s12 m6">
+                    <center>
+                        <h4>Atendimento diário por especialidade (pizza)</h4>
+
+                        <asp:Chart ID="Chart4" runat="server">
+                            <Series>
+                                <asp:Series Name="Series1">
+                                </asp:Series>
+                            </Series>
+                            <ChartAreas>
+                                <asp:ChartArea Name="ChartArea1">
+                                </asp:ChartArea>
+                            </ChartAreas>
+                        </asp:Chart>
+                    </center>
+                </div>
             </div>
         </div>
     </div>
