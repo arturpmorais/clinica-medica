@@ -2,8 +2,9 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MedicoContent" runat="server">
-    <div class="col s12 whitecontainer contentcontainer">
-        <div class="container">
+    <div class="container whitecontainer contentcontainer">
+        <div class="col s12">
+        
             <center><h4 class="apelido"><asp:Label ID="LblApelido" runat="server" Text=""></asp:Label></h4></center>
 
             <div class="divider"></div>
