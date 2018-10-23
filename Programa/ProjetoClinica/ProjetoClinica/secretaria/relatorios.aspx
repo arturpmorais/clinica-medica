@@ -2,11 +2,13 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="SecretariaContent" runat="server">
-    <center><h2>Relatórios</h2></center>
-    
     <div class="container whitecontainer contentcontainer">
         <div class="col s12">
+            <center><h2>Relatórios</h2></center>
         
+            <div class="divider"></div>
+            <br />
+
             <div class="row">
                 <div class="col s12 m6">
                     <center>

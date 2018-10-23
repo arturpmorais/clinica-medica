@@ -4,7 +4,7 @@
     background-repeat: no-repeat;
     background-attachment: fixed;
     overflow-x: hidden;
-    padding-left: 350px;
+    padding-left: 400px;
 }
 
 i.btn-entrar input {
@@ -19,8 +19,6 @@ i.btn-entrar {
     padding: 0;
     width: 100%;
 }
-
-div.center {}
 
 div.main-sidenav {
     height: 100%;
@@ -106,8 +104,8 @@ div .collapsible-body > ul > li > a {
     background-color: #F8F8F8;
 }
 
-.pagecontent {
-    padding: 15px 15px;
+div.pagecontent {
+    margin: 30px 15px 45px 15px;
 }
 
 div#map {
@@ -142,4 +140,12 @@ img.profile-pic {
 
 div.contentcontainer {
     padding: 10px 30px;
+}
+
+div.profilecontent * {
+    font-size: 105%;
+}
+
+ul.sidenav {
+    width: 400px;
 }

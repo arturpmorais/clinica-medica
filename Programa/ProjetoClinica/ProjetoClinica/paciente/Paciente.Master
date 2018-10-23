@@ -22,12 +22,12 @@
         <div>
             <nav class="navbar">
                 <div class="nav-wrapper lightblue">
-                    <a runat="server" href="~/index.aspx" class="brand-logo right">Clínica Médica&nbsp</a>
+                    <a runat="server" href="~/paciente/index.aspx" class="brand-logo right">Clínica Médica&nbsp</a>
                     <a href="#" data-target="nav-mobile" class="left sidenav-trigger"><i class="material-icons">menu</i></a>
                 </div>
             </nav>
 
-            <ul class="slide-out sidenav sidenav-fixed" id="nav-mobile">
+            <ul class="slide-out sidenav sidenav-fixed profile-sidenav" id="nav-mobile">
                 <li>
                     <div class="user-view">
                         <div class="background background-color"></div>
@@ -56,15 +56,6 @@
 
     <script src="/Scripts/jquery-1.10.2.js"></script>
     <script src="/Scripts/materialize.js"></script>
-    <script>
-        $(document).ready(function () {
-            $('.sidenav').sidenav({
-                menuWidth: 350,
-                edge: 'left',
-                closeOnClick: true,
-                draggable: true
-            });
-        });
-    </script>
+    <script src="/Scripts/controls.js"></script>
 </body>
 </html>

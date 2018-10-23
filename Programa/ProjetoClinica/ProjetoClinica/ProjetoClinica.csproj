@@ -132,6 +132,7 @@
     <Content Include="images\hospitalpredio.jpg" />
     <Content Include="img\default_profile_picture.png" />
     <Content Include="medico\index.aspx" />
+    <Content Include="Scripts\controls.js" />
     <Content Include="secretaria\cadastrar\especialidade.aspx" />
     <Content Include="secretaria\cadastrar\medico.aspx" />
     <Content Include="secretaria\cadastrar\paciente.aspx" />

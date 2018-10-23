@@ -22,6 +22,8 @@ namespace ProjetoClinica.DB
             this.cs = WebConfigurationManager.ConnectionStrings["ConexaoBD"].ConnectionString;
         }
 
+        public void MarcarConsulta(int idMedico, int idPaciente, string data, string hora) { }
+
         public MedicoDBO LoginMedico(string email, string senha)
         {
             if (IsEmptyString(email))

@@ -16,34 +16,38 @@
 
             <br />
 
-            <div class="row">
-                <label>Nome completo:</label>
-                <asp:Label ID="LblNome" runat="server" Text=""></asp:Label>
-            </div>
+            <div class="profilecontent">
+                <center>
+                    <div class="row">
+                        <label>Nome completo:&nbsp</label>
+                        <asp:Label ID="LblNome" runat="server" Text=""></asp:Label>
+                    </div>
 
-            <div class="row">
-                <label>E-mail:</label>
-                <asp:Label ID="LblEmail" runat="server" Text=""></asp:Label>
-            </div>
+                    <div class="row">
+                        <label>E-mail:&nbsp</label>
+                        <asp:Label ID="LblEmail" runat="server" Text=""></asp:Label>
+                    </div>
 
-            <div class="row">
-                <label>Data de nascimento:</label>
-                <asp:Label ID="LblDataDeNascimento" runat="server" Text=""></asp:Label>
-            </div>
+                    <div class="row">
+                        <label>Data de nascimento:&nbsp</label>
+                        <asp:Label ID="LblDataDeNascimento" runat="server" Text=""></asp:Label>
+                    </div>
 
-            <div class="row">
-                <label>Endereço:</label>
-                <asp:Label ID="LblEndereco" runat="server" Text=""></asp:Label>
-            </div>
+                    <div class="row">
+                        <label>Endereço:&nbsp</label>
+                        <asp:Label ID="LblEndereco" runat="server" Text=""></asp:Label>
+                    </div>
 
-            <div class="row">
-                <label>Celular:</label>
-                <asp:Label ID="LblCelular" runat="server" Text=""></asp:Label>
-            </div>
+                    <div class="row">
+                        <label>Celular:&nbsp</label>
+                        <asp:Label ID="LblCelular" runat="server" Text=""></asp:Label>
+                    </div>
 
-            <div class="row">
-                <label>Telefone residencial:</label>
-                <asp:Label ID="LblTelefoneResidencial" runat="server" Text=""></asp:Label>
+                    <div class="row">
+                        <label>Telefone residencial:&nbsp</label>
+                        <asp:Label ID="LblTelefoneResidencial" runat="server" Text=""></asp:Label>
+                    </div>
+                </center>
             </div>
         </div>
     </div>

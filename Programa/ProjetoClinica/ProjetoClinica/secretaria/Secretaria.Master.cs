@@ -11,21 +11,24 @@ namespace ProjetoClinica
     public partial class Secretaria : System.Web.UI.MasterPage
     {
 
-        protected void Page_Load(object sender, EventArgs e)
+        protected void Page_Init(object sender, EventArgs e)
         {
+            Session["Usuario"] = new SecretariaDBO("17167", "Caio Petrucci dos Santos Rosa");
+
             object usuario = Session["Usuario"];
 
             if (Session.IsNewSession || usuario == null || usuario.GetType() != typeof(SecretariaDBO))
             {
                 Response.Redirect("/index.aspx");
             }
-            else
-            {
-                SecretariaDBO s = (SecretariaDBO)Session["Usuario"];
+        }
 
-                LblCodigo.Text = s.Codigo.ToUpper();
-                LblNome.Text = s.Nome_Completo.Split(' ')[0];
-            }
+        protected void Page_Load(object sender, EventArgs e)
+        {
+            SecretariaDBO s = (SecretariaDBO)Session["Usuario"];
+
+            LblCodigo.Text = s.Codigo.ToUpper();
+            LblNome.Text = s.Nome_Completo.Split(' ')[0];
         }
 
         protected void LbSair_Click(object sender, EventArgs e)

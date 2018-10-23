@@ -2,7 +2,13 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="SecretariaContent" runat="server">
-    <asp:ScriptManager ID="ScriptManager" runat="server"></asp:ScriptManager>
+    <asp:ScriptManager ID="ScriptManager" ScriptMode="Release" runat="server">
+        <Scripts>
+            <asp:ScriptReference Path="~/Scripts/jquery-1.10.2.js" />
+            <asp:ScriptReference Path="~/Scripts/materialize.js" />
+            <asp:ScriptReference Path="~/Scripts/controls.js" />
+        </Scripts>
+    </asp:ScriptManager>
 
     <asp:UpdatePanel ID="UpdatePanel" runat="server">
         <ContentTemplate>
@@ -10,6 +16,9 @@
                 <div class="container whitecontainer containerform">
                     <div class="col m9 s12">
                         <center><h3>Cadastrar médico</h3></center>
+
+                        <div class="divider"></div>
+                        <br />
 
                         <div class="row">
                             <center><asp:Label ID="LblAviso" runat="server" Text=""></asp:Label></center>
@@ -82,11 +91,11 @@
                         <div class="row">
                             <div class="input-field">
                                 <i class="material-icons prefix">star</i>
-                                <asp:DropDownList ID="DropdownEspecialidades" runat="server" DataSourceID="SqlDataSourceEspecialidade" DataTextField="especialidade" DataValueField="id" AppendDataBoundItems="True">
+                                <asp:DropDownList ID="dllEspecialidades" runat="server" DataSourceID="SqlDataSourceEspecialidades" DataTextField="especialidade" DataValueField="id" AppendDataBoundItems="True">
                                     <asp:ListItem Text="Especialidade:" Value ="-1"></asp:ListItem>
                                 </asp:DropDownList>
                             </div>
-                            <asp:SqlDataSource ID="SqlDataSourceEspecialidade" runat="server" ConnectionString="<%$ ConnectionStrings:ConexaoBD %>" SelectCommand="SELECT * FROM [especialidade]"></asp:SqlDataSource>
+                            <asp:SqlDataSource ID="SqlDataSourceEspecialidades" runat="server" ConnectionString="<%$ ConnectionStrings:ConexaoBD %>" SelectCommand="SELECT * FROM [especialidade]"></asp:SqlDataSource>
                         </div>
 
                         <asp:Button ID="BtnCadastrar" runat="server" Text="Cadastrar" CssClass="waves-effect waves-light btn-large btn-entrar" ForeColor="White" UseSubmitBehavior="false" OnClick="BtnCadastrar_Click"/>
@@ -95,5 +104,4 @@
             </form>
         </ContentTemplate>
     </asp:UpdatePanel>
-
 </asp:Content>

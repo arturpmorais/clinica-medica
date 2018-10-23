@@ -11,6 +11,9 @@
                     <div class="col m9 s12">
                         <center><h2>Médico</h2></center>
 
+                        <div class="divider"></div>
+                        <br />
+
                         <div class="row">
                             <center><asp:Label ID="LblAviso" runat="server" Text=""></asp:Label></center>
                         </div>

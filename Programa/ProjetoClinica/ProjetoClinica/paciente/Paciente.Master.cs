@@ -10,22 +10,24 @@ namespace ProjetoClinica
 {
     public partial class Paciente : System.Web.UI.MasterPage
     {
-        protected void Page_Load(object sender, EventArgs e)
+        protected void Page_Init(object sender, EventArgs e)
         {
+            Session["Usuario"] = new PacienteDBO(1, "Caio Petrucci dos Santos Rosa", "caiopetruccirosa@gmail.com", "24/09/2002", "Rua Manoel Soares da Rocha, 63", "(19) 99302-1717", "(19) 99302-1717", null);
+
             object usuario = Session["Usuario"];
 
             if (Session.IsNewSession || usuario == null || usuario.GetType() != typeof(PacienteDBO))
-            {
                 Response.Redirect("/index.aspx");
-            } else
-            {
-                PacienteDBO p = (PacienteDBO)Session["Usuario"];
+        }
 
-                if (p.Imagem == null)
-                    ImgPerfil.ImageUrl = "/img/default_profile_picture.png";
+        protected void Page_Load(object sender, EventArgs e)
+        {
+            PacienteDBO p = (PacienteDBO)Session["Usuario"];
 
-                LblNome.Text = p.Nome_Completo.Split(' ')[0];
-            }
+            if (p.Imagem == null)
+                ImgPerfil.ImageUrl = "/img/default_profile_picture.png";
+
+            LblNome.Text = p.Nome_Completo.Split(' ')[0];
         }
 
         protected void LbSair_Click(object sender, EventArgs e)

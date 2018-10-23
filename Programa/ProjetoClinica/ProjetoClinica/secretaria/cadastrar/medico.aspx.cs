@@ -24,7 +24,7 @@ namespace ProjetoClinica.secretaria.cadastrar
             string celular = txtCelular.Text.Trim();
             string telefone_residencial = txtTelefoneResidencial.Text.Trim();
             string data_de_nascimento = txtDataNascimento.Text.Trim();
-            int especialidade = int.Parse(DropdownEspecialidades.SelectedValue);
+            int especialidade = int.Parse(dllEspecialidades.SelectedValue);
 
             BDActions bd = new BDActions();
 
@@ -39,7 +39,7 @@ namespace ProjetoClinica.secretaria.cadastrar
                 txtCelular.Text = "";
                 txtTelefoneResidencial.Text = "";
                 txtDataNascimento.Text = "";
-                DropdownEspecialidades.SelectedIndex = 0;
+                dllEspecialidades.SelectedIndex = 0;
                 LblAviso.Text = "Médico cadastrado com sucesso!";
             }
             catch (Exception ex)
