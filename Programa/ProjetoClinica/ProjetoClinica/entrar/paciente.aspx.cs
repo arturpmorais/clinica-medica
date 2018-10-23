@@ -16,7 +16,7 @@ namespace ProjetoClinica.entrar
 
         protected void BtnEntrar_Click(object sender, EventArgs e)
         {
-            string email = txtEmail.Text;
+            string email = txtEmail.Text.Trim();
             string pwd = txtPassword.Text;
 
             try

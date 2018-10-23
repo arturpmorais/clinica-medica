@@ -84,6 +84,25 @@
 
     <script src="/Scripts/jquery-1.10.2.js"></script>
     <script src="/Scripts/materialize.js"></script>
-    <script src="/Scripts/controls.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('.sidenav').sidenav({
+                edge: 'left',
+                closeOnClick: true,
+                draggable: true
+            });
+
+            $('.collapsible').collapsible();
+
+            $('.materialboxed').materialbox();
+
+            $('.carousel.carousel-slider').carousel({
+                fullWidth: true,
+                indicators: true
+            });
+
+            M.updateTextFields();
+        });
+    </script>
 </body>
 </html>

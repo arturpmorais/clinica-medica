@@ -18,8 +18,8 @@ namespace ProjetoClinica.secretaria.cadastrar
         {
             string nome_completo = txtNomeCompleto.Text.Trim();
             string email = txtEmail.Text.Trim();
-            string senha = txtPassword.Text.Trim();
-            string senhaConf = txtConfirmPassword.Text.Trim();
+            string senha = txtPassword.Text;
+            string senhaConf = txtConfirmPassword.Text;
             string endereco = txtEndereco.Text.Trim();
             string celular = txtCelular.Text.Trim();
             string telefone_residencial = txtTelefoneResidencial.Text.Trim();

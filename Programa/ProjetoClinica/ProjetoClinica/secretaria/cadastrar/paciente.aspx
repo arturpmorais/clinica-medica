@@ -2,32 +2,26 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="SecretariaContent" runat="server">
-    <asp:ScriptManager ID="ScriptManager" runat="server">
-        <Scripts>
-            <asp:ScriptReference Path="~/Scripts/jquery-1.10.2.js" />
-            <asp:ScriptReference Path="~/Scripts/materialize.js" />
-            <asp:ScriptReference Path="~/Scripts/controls.js" />
-        </Scripts>
-    </asp:ScriptManager>
+    <asp:ScriptManager ID="ScriptManager" runat="server"></asp:ScriptManager>
 
     <asp:UpdatePanel ID="UpdatePanel" EnableViewState="true" runat="server">
         <ContentTemplate>
-            <form>
-                <div class="container whitecontainer containerform">
-                    <div class="col m9 s12">
-                        <center><h3>Cadastrar paciente</h3></center>
+            <div class="container whitecontainer containerform">
+                <div class="col m9 s12">
+                    <center><h3>Cadastrar paciente</h3></center>
 
-                        <div class="divider"></div>
-                        <br />
+                    <div class="divider"></div>
+                    <br />
 
-                        <div class="row">
-                            <center><asp:Label ID="LblAviso" runat="server" Text=""></asp:Label></center>
-                        </div>
+                    <div class="row">
+                        <center><asp:Label ID="LblAviso" runat="server" Font-Size="Large" ForeColor="#CC0000"></asp:Label></center>
+                    </div>
 
+                    <form>
                         <div class="row">
                             <div class="input-field">
                                 <i class="material-icons prefix">account_circle</i>
-                                <asp:TextBox ID="txtNomeCompleto" runat="server"></asp:TextBox>
+                                <asp:TextBox ID="txtNomeCompleto" runat="server" MaxLength="100"></asp:TextBox>
                                 <label for="SecretariaContent_txtNomeCompleto">Nome completo:</label>
                             </div>
                         </div>
@@ -35,7 +29,7 @@
                         <div class="row">
                             <div class="input-field">
                                 <i class="material-icons prefix">email</i>
-                                <asp:TextBox ID="txtEmail" runat="server"></asp:TextBox>
+                                <asp:TextBox ID="txtEmail" runat="server" MaxLength="50" TextMode="Email"></asp:TextBox>
                                 <label for="SecretariaContent_txtEmail">E-mail:</label>
                             </div>
                         </div>
@@ -43,7 +37,7 @@
                         <div class="row">
                             <div class="input-field">
                                 <i class="material-icons prefix">lock</i>
-                                <asp:TextBox ID="txtPassword" runat="server" TextMode="Password"></asp:TextBox>
+                                <asp:TextBox ID="txtPassword" runat="server" TextMode="Password" MaxLength="30"></asp:TextBox>
                                 <label for="SecretariaContent_txtPassword">Senha:</label>
                             </div>
                         </div>
@@ -51,7 +45,7 @@
                         <div class="row">
                             <div class="input-field">
                                 <i class="material-icons prefix">lock_outline</i>
-                                <asp:TextBox ID="txtConfirmPassword" runat="server" TextMode="Password"></asp:TextBox>
+                                <asp:TextBox ID="txtConfirmPassword" runat="server" TextMode="Password" MaxLength="30"></asp:TextBox>
                                 <label for="SecretariaContent_txtConfirmPassword">Confirmar senha:</label>
                             </div>
                         </div>
@@ -65,33 +59,33 @@
                         </div>
 
                         <div class="row">
-                            <div class="input-field">
-                                <i class="material-icons prefix">smartphone</i>
-                                <asp:TextBox ID="txtCelular" runat="server"></asp:TextBox>
-                                <label for="SecretariaContent_txtCelular">Celular:</label>
-                            </div>
-                        </div>
+                                <div class="input-field col s6 numbers">
+                                    <i class="material-icons prefix">smartphone</i>
+                                    <asp:TextBox ID="txtCelular" runat="server" MaxLength="16" TextMode="Phone"></asp:TextBox>
+                                    <label for="SecretariaContent_txtCelular">Celular:</label>
+                                </div>
 
-                        <div class="row">
-                            <div class="input-field">
-                                <i class="material-icons prefix">phone</i>
-                                <asp:TextBox ID="txtTelefoneResidencial" runat="server"></asp:TextBox>
-                                <label for="SecretariaContent_txtTelefoneResidencial">Telefone residencial:</label>
-                            </div>
+                                <div class="input-field col s6 numbers">
+                                    <i class="material-icons prefix">phone</i>
+                                    <asp:TextBox ID="txtTelefoneResidencial" runat="server" MaxLength="16" TextMode="Phone"></asp:TextBox>
+                                    <label for="SecretariaContent_txtTelefoneResidencial">Telefone residencial:</label>
+                                </div>
                         </div>
 
                         <div class="row">
                             <div class="input-field">
                                 <i class="material-icons prefix">today</i>
                                 <label for="SecretariaContent_txtDataNascimento">Data de nascimento:</label>
-                                <asp:TextBox ID="txtDataNascimento" runat="server" CssClass="datanascimento"></asp:TextBox>
+                                <asp:TextBox ID="txtDataNascimento" runat="server" CssClass="datanascimento" MaxLength="10"></asp:TextBox>
                             </div>
                         </div>
 
                         <asp:Button ID="BtnCadastrar" runat="server" Text="Cadastrar" CssClass="waves-effect waves-light btn-large btn-entrar" ForeColor="White" UseSubmitBehavior="false" OnClick="BtnCadastrar_Click"/>
-                    </div>
+                    </form>
                 </div>
-            </form>
+            </div>
+
+            <script src="/Scripts/ajaxcontrols.js"></script>
         </ContentTemplate>
     </asp:UpdatePanel>
 

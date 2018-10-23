@@ -1,22 +1,5 @@
-﻿$(document).ready(function () {
-    $('.sidenav').sidenav({
-        edge: 'left',
-        closeOnClick: true,
-        draggable: true
-    });
-
-    $('.collapsible').collapsible();
-
-    $('.materialboxed').materialbox();
-
-    $('.carousel.carousel-slider').carousel({
-        fullWidth: true,
-        indicators: true
-    });
-
+﻿Sys.Application.add_load(function () {
     $('select').formSelect();
-
-    $('.modal').modal();
 
     $('.datanascimento').datepicker({
         format: 'dd/mm/yyyy',
@@ -65,4 +48,6 @@
         },
         vibrate: true
     });
+
+    M.updateTextFields();
 });

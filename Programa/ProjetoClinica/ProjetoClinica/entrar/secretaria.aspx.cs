@@ -16,7 +16,7 @@ namespace ProjetoClinica.entrar
 
         protected void BtnEntrar_Click(object sender, EventArgs e)
         {
-            string codigo = txtCodigo.Text;
+            string codigo = txtCodigo.Text.Trim();
             string pwd = txtPassword.Text;
 
             try

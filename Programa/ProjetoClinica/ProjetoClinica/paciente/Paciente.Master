@@ -21,7 +21,7 @@
     <form id="form1" runat="server">
         <div>
             <nav class="navbar">
-                <div class="nav-wrapper lightblue">
+                <div class="nav-wrapper">
                     <a runat="server" href="~/paciente/index.aspx" class="brand-logo right">Clínica Médica&nbsp</a>
                     <a href="#" data-target="nav-mobile" class="left sidenav-trigger"><i class="material-icons">menu</i></a>
                 </div>
@@ -56,6 +56,17 @@
 
     <script src="/Scripts/jquery-1.10.2.js"></script>
     <script src="/Scripts/materialize.js"></script>
-    <script src="/Scripts/controls.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('.sidenav').sidenav({
+                menuWidth: 350,
+                edge: 'left',
+                closeOnClick: true,
+                draggable: true
+            });
+
+            M.updateTextFields();
+        });
+    </script>
 </body>
 </html>

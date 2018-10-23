@@ -323,6 +323,12 @@ namespace ProjetoClinica.DB
 
         public void CadastrarEspecialidade(string especialidade)
         {
+            if (IsEmptyString(especialidade))
+                throw new Exception("Digite uma especialidade!");
+
+            if (especialidade.Trim().Length > 50)
+                throw new Exception("Especialidade de tamanho muito grande!");
+
             if (ExisteEspecialidade(especialidade))
                 throw new Exception("Especialidade já cadastrada!");
 

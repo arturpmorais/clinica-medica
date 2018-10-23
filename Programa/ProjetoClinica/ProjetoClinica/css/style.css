@@ -7,7 +7,7 @@
     padding-left: 400px;
 }
 
-i.btn-entrar input {
+i.btn-entrar input, input.btn-entrar {
     padding: 0;
     margin: 0;
     height: 100%;
@@ -18,6 +18,22 @@ i.btn-entrar input {
 i.btn-entrar {
     padding: 0;
     width: 100%;
+}
+
+div.modalform {
+    padding: 0 15px;
+}
+
+div.ddl input {
+    color: #9E9E9E;
+}
+
+div.last-item, div.last-item div {
+    margin-bottom: 0;
+}
+
+div.numbers {
+    margin-top: 0;
 }
 
 div.main-sidenav {
@@ -41,14 +57,6 @@ div.foot {
 img.item-img  {
     padding: 5px 0px;
     width: 100%;
-}
-
-.lightblue {
-    background-color: rgb(147, 234, 255);
-}
-
-.lesslighterblue {
-    background-color: rgb(127, 214, 235);
 }
 
 nav.navbar {
@@ -100,7 +108,7 @@ div.carousel-item {
     padding: 20px 16px;
 }
 
-div .collapsible-body > ul > li > a {
+div.collapsible-body > ul > li > a {
     background-color: #F8F8F8;
 }
 
