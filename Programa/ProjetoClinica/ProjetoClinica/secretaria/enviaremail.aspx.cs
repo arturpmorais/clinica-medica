@@ -13,5 +13,23 @@ namespace ProjetoClinica.secretaria
 		{
 
 		}
-	}
+
+        protected void BtnEnviar_Click(object sender, EventArgs e)
+        {
+            string emailbody = TxtAreaEmailBody.Text.Trim();
+
+            try
+            {
+                //
+
+                LblAviso.ForeColor = System.Drawing.ColorTranslator.FromHtml("#4BB543");
+                LblAviso.Text = "E-mail enviado com sucesso!";
+            }
+            catch (Exception ex)
+            {
+                LblAviso.ForeColor = System.Drawing.ColorTranslator.FromHtml("#CC0000");
+                LblAviso.Text = ex.Message;
+            }
+        }
+    }
 }

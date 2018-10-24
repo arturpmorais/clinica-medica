@@ -24,10 +24,13 @@ namespace ProjetoClinica.secretaria.cadastrar
             {
                 bd.CadastrarEspecialidade(especialidade);
                 txtEspecialidade.Text = "";
+
+                LblAviso.ForeColor = System.Drawing.ColorTranslator.FromHtml("#4BB543");
                 LblAviso.Text = "Especialidade cadastrada com sucesso!";
             }
             catch(Exception ex)
             {
+                LblAviso.ForeColor = System.Drawing.ColorTranslator.FromHtml("#CC0000");
                 LblAviso.Text = ex.Message;
             }
         }

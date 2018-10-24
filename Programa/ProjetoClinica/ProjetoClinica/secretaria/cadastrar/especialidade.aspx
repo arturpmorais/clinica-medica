@@ -14,7 +14,7 @@
                     <br />
 
                     <div class="row">
-                        <center><asp:Label ID="LblAviso" runat="server" Font-Size="Large" ForeColor="#CC0000"></asp:Label></center>
+                        <center><asp:Label ID="LblAviso" runat="server" Font-Size="Large"></asp:Label></center>
                     </div>
 
                     <form>
@@ -26,7 +26,7 @@
                             </div>
                         </div>
 
-                        <asp:Button ID="BtnCadastrar" runat="server" Text="Cadastrar" CssClass="waves-effect waves-light btn-large btn-entrar" ForeColor="White" UseSubmitBehavior="false" OnClick="BtnCadastrar_Click"/>
+                        <asp:Button ID="BtnCadastrar" runat="server" Text="Cadastrar" CssClass="waves-effect waves-light btn-large btn-asp" ForeColor="White" OnClick="BtnCadastrar_Click"/>
                     </form>
                 </div>
             </div>

@@ -49,5 +49,5 @@
         vibrate: true
     });
 
-    M.updateTextFields();
+    M.updateTextFields();;
 });

@@ -34,10 +34,13 @@ namespace ProjetoClinica.secretaria.cadastrar
                 txtCelular.Text = "";
                 txtTelefoneResidencial.Text = "";
                 txtDataNascimento.Text = "";
+
+                LblAviso.ForeColor = System.Drawing.ColorTranslator.FromHtml("#4BB543");
                 LblAviso.Text = "Paciente cadastrado com sucesso!";
             }
             catch (Exception ex)
             {
+                LblAviso.ForeColor = System.Drawing.ColorTranslator.FromHtml("#CC0000");
                 LblAviso.Text = ex.Message;
             }
         }

@@ -9,6 +9,8 @@
             <div class="divider"></div>
             <br />
 
+            <center><asp:Label ID="LblAviso" runat="server" Font-Size="Large" ForeColor="#4BB543"></asp:Label></center>
+
             <a class="waves-effect waves-light btn modal-trigger" href="#modalNovaConsulta">Nova consulta</a>
 
             <div class="containerpicker"></div>
@@ -19,7 +21,7 @@
                     <div class="divider"></div>
                     <br />
 
-                    <center><asp:Label ID="LblAviso" runat="server" Text="Avisos!!" Font-Size="Large" ForeColor="#CC0000"></asp:Label></center>
+                    <center><asp:Label ID="LblAvisoMarcarConsulta" runat="server" Font-Size="Large" ForeColor="#22FF99"></asp:Label></center>
 
                     <p>Escolha os dados da consulta:</p>
 

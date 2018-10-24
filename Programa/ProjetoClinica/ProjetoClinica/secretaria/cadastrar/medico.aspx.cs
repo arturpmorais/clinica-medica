@@ -40,10 +40,13 @@ namespace ProjetoClinica.secretaria.cadastrar
                 txtTelefoneResidencial.Text = "";
                 txtDataNascimento.Text = "";
                 dllEspecialidades.SelectedIndex = 0;
+
+                LblAviso.ForeColor = System.Drawing.ColorTranslator.FromHtml("#4BB543");
                 LblAviso.Text = "Médico cadastrado com sucesso!";
             }
             catch (Exception ex)
             {
+                LblAviso.ForeColor = System.Drawing.ColorTranslator.FromHtml("#CC0000");
                 LblAviso.Text = ex.Message;
             }
         }
