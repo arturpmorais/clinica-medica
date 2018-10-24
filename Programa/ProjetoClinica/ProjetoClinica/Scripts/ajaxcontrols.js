@@ -51,3 +51,9 @@
 
     M.updateTextFields();;
 });
+
+function closeModal(elem) {
+    var modal = M.Modal.getInstance($(elem));
+
+    modal.close();
+}

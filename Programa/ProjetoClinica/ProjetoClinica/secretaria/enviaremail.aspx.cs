@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ProjetoClinica.email;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -18,12 +19,15 @@ namespace ProjetoClinica.secretaria
         {
             string emailbody = TxtAreaEmailBody.Text.Trim();
 
+            //EmailSender sender = new EmailSender();
             try
             {
                 //
 
                 LblAviso.ForeColor = System.Drawing.ColorTranslator.FromHtml("#4BB543");
                 LblAviso.Text = "E-mail enviado com sucesso!";
+
+                TxtAreaEmailBody.Text = "";
             }
             catch (Exception ex)
             {

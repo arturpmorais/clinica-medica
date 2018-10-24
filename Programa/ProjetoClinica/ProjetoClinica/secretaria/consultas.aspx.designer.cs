@@ -13,6 +13,24 @@ namespace ProjetoClinica.secretaria {
     public partial class consultas {
         
         /// <summary>
+        /// Controle ScriptManager.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.ScriptManager ScriptManager;
+        
+        /// <summary>
+        /// Controle UpdatePanelLblAviso.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.UpdatePanel UpdatePanelLblAviso;
+        
+        /// <summary>
         /// Controle LblAviso.
         /// </summary>
         /// <remarks>
@@ -20,6 +38,15 @@ namespace ProjetoClinica.secretaria {
         /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label LblAviso;
+        
+        /// <summary>
+        /// Controle UpdatePanelModalConsulta.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.UpdatePanel UpdatePanelModalConsulta;
         
         /// <summary>
         /// Controle LblAvisoMarcarConsulta.

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ProjetoClinica.DB;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -12,6 +13,35 @@ namespace ProjetoClinica.secretaria
         protected void Page_Load(object sender, EventArgs e)
         {
 
+        }
+
+        protected void BtnMarcarConsulta_Click(object sender, EventArgs e)
+        {
+            string dataconsulta = txtDataNovaConsulta.Text.Trim();
+            string horaconsulta = txtHorarioNovaConsulta.Text.Trim();
+            int idPaciente = int.Parse(ddlPacienteConsulta.SelectedValue);
+            int idMedico = int.Parse(ddlMedicoConsulta.SelectedValue);
+
+            BDActions bd = new BDActions();
+            try
+            {
+                bd.MarcarConsulta(idMedico, idPaciente, dataconsulta, horaconsulta);
+
+                // fecha o modal
+                ScriptManager.RegisterStartupScript(this.Page, this.Page.GetType(), "Pop", "closeModal('#modalNovaConsulta');", true);
+
+                LblAvisoMarcarConsulta.Text = "";
+                txtDataNovaConsulta.Text = "";
+                txtHorarioNovaConsulta.Text = "";
+                ddlMedicoConsulta.SelectedIndex = 0;
+                ddlPacienteConsulta.SelectedIndex = 0;
+
+                LblAviso.Text = "Consulta marcada com sucesso!";
+            }
+            catch (Exception ex)
+            {
+                LblAvisoMarcarConsulta.Text = ex.Message;
+            }
         }
     }
 }

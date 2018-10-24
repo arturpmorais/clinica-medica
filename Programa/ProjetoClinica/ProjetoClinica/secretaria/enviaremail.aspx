@@ -22,7 +22,7 @@
                             <div class="input-field">
                                 <i class="material-icons prefix">mode_edit</i>
                                 <asp:TextBox ID="TxtAreaEmailBody" runat="server" TextMode="MultiLine" CssClass="materialize-textarea" data-length="1024"></asp:TextBox>
-                                <label for="SecretariaContent_TxtAreaEmailBody">Conteúdo:</label>
+                                <label for="<%= TxtAreaEmailBody.ClientID %>">Conteúdo:</label>
                             </div>
                         </div>
 

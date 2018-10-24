@@ -22,7 +22,48 @@ namespace ProjetoClinica.DB
             this.cs = WebConfigurationManager.ConnectionStrings["ConexaoBD"].ConnectionString;
         }
 
-        public void MarcarConsulta(int idMedico, int idPaciente, string data, string hora) { }
+        public void MarcarConsulta(int idMedico, int idPaciente, string data, string horario)
+        {
+            if (idMedico < 0)
+                throw new Exception("Escolha um médico!");
+
+            if (idPaciente < 0)
+                throw new Exception("Escolha um paciente!");
+
+            if (IsEmptyString(data))
+                throw new Exception("Escolha uma data!");
+
+            if (IsEmptyString(horario))
+                throw new Exception("Escolha um horário!");
+
+            string datetime = VerificarDataNovaConsulta(data, horario);
+
+            VerificarDisponibilidade(idMedico, idPaciente, datetime);
+
+            SqlConnection conn = new SqlConnection(cs);
+            SqlCommand cmd = new SqlCommand("INSERT INTO consulta VALUES(@data, @idMedico, @idPaciente, @status, null, null, 0)", conn);
+            cmd.Parameters.AddWithValue("@data", datetime);
+            cmd.Parameters.AddWithValue("@idMedico", idMedico);
+            cmd.Parameters.AddWithValue("@idPaciente", idPaciente);
+            cmd.Parameters.AddWithValue("@status", "PENDENTE");
+
+            try
+            {
+                // abre conexao
+                conn.Open();
+                cmd.ExecuteNonQuery();
+            }
+            catch (Exception)
+            {
+                throw new Exception("Erro ao marcar consulta!");
+            }
+            finally
+            {
+                // fecha conexao
+                conn.Close();
+                conn.Dispose();
+            }
+        }
 
         public MedicoDBO LoginMedico(string email, string senha)
         {
@@ -356,6 +397,70 @@ namespace ProjetoClinica.DB
 
 
         //////////////////////////////////////////////////////
+
+        private void VerificarDisponibilidade(int idMedico, int idPaciente, string datetime)
+        {
+            SqlConnection conn = new SqlConnection(cs);
+            SqlCommand cmdMedico = new SqlCommand("SELECT count(*) FROM consulta WHERE idMedico=@idMedico AND data=@data", conn);
+            SqlCommand cmdPaciente = new SqlCommand("SELECT count(*) FROM consulta WHERE idPaciente=@idPaciente AND data=@data", conn);
+
+            cmdMedico.Parameters.AddWithValue("@idMedico", idMedico);
+            cmdMedico.Parameters.AddWithValue("@data", datetime);
+            cmdPaciente.Parameters.AddWithValue("@idPaciente", idPaciente);
+            cmdPaciente.Parameters.AddWithValue("@data", datetime);
+
+            SqlDataAdapter adapter = new SqlDataAdapter();
+            DataSet ds = new DataSet();
+            ds.Tables.Add("ConsultasMedico");
+            ds.Tables.Add("ConsultasPaciente");
+
+            try
+            {
+                // abre conexao
+                conn.Open();
+                // executa a consulta
+                adapter.SelectCommand = cmdMedico;
+                adapter.Fill(ds.Tables["ConsultasMedico"]);
+                adapter.SelectCommand = cmdPaciente;
+                adapter.Fill(ds.Tables["ConsultasPaciente"]);
+            }
+            catch (Exception)
+            {
+                throw new Exception("Erro ao acessar o Banco de Dados!");
+            }
+            finally
+            {
+                // fecha conexao
+                conn.Close();
+                conn.Dispose();
+            }
+
+            if ((int)ds.Tables["ConsultasPaciente"].Rows[0].ItemArray[0] > 0)
+                throw new Exception("O paciente já possui uma consulta marcada nesse horário!");
+
+            if ((int)ds.Tables["ConsultasMedico"].Rows[0].ItemArray[0] > 0)
+                throw new Exception("O médico já possui uma consulta marcada nesse horário!");
+        }
+
+        private string VerificarDataNovaConsulta(string data, string horario)
+        {
+            if (data.Length != 10)
+                throw new Exception("Escolha uma data válida!");
+
+            if (horario.Length != 5)
+                throw new Exception("Escolha um horário válido!");
+
+            string datetime = data + " " + horario;
+            DateTime dataConsulta = DateTime.Parse(datetime);
+
+            if (dataConsulta <= DateTime.Now)
+                throw new Exception("Escolha uma data futura!");
+
+            if (dataConsulta.Hour < 7 || dataConsulta.Hour > 22)
+                throw new Exception("A Clínica estará fechada nesse horário!");
+
+            return datetime;
+        }
 
         private bool ExisteEspecialidade(string especialidade)
         {

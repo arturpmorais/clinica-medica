@@ -1,4 +1,4 @@
-﻿ <%@ Page Title="" Language="C#" MasterPageFile="~/secretaria/Secretaria.Master" AutoEventWireup="true" CodeBehind="medico.aspx.cs" Inherits="ProjetoClinica.secretaria.cadastrar.medico" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/secretaria/Secretaria.Master" AutoEventWireup="true" CodeBehind="medico.aspx.cs" Inherits="ProjetoClinica.secretaria.cadastrar.medico" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="SecretariaContent" runat="server">
@@ -22,7 +22,7 @@
                             <div class="input-field">
                                 <i class="material-icons prefix">account_circle</i>
                                 <asp:TextBox ID="txtNomeCompleto" runat="server" MaxLength="100"></asp:TextBox>
-                                <label for="SecretariaContent_txtNomeCompleto">Nome completo:</label>
+                                <label for="<%= txtNomeCompleto.ClientID %>">Nome completo:</label>
                             </div>
                         </div>
 
@@ -30,7 +30,7 @@
                             <div class="input-field">
                                 <i class="material-icons prefix">email</i>
                                 <asp:TextBox ID="txtEmail" runat="server" MaxLength="50" TextMode="Email"></asp:TextBox>
-                                <label for="SecretariaContent_txtEmail">E-mail:</label>
+                                <label for="<%= txtEmail.ClientID %>">E-mail:</label>
                             </div>
                         </div>
 
@@ -38,7 +38,7 @@
                             <div class="input-field">
                                 <i class="material-icons prefix">lock</i>
                                 <asp:TextBox ID="txtPassword" runat="server" TextMode="Password" MaxLength="30"></asp:TextBox>
-                                <label for="SecretariaContent_txtPassword">Senha:</label>
+                                <label for="<%= txtPassword.ClientID %>">Senha:</label>
                             </div>
                         </div>
 
@@ -46,7 +46,7 @@
                             <div class="input-field">
                                 <i class="material-icons prefix">lock_outline</i>
                                 <asp:TextBox ID="txtConfirmPassword" runat="server" TextMode="Password" MaxLength="30"></asp:TextBox>
-                                <label for="SecretariaContent_txtConfirmPassword">Confirmar senha:</label>
+                                <label for="<%= txtConfirmPassword.ClientID %>">Confirmar senha:</label>
                             </div>
                         </div>
 
@@ -54,7 +54,7 @@
                             <div class="input-field">
                                 <i class="material-icons prefix">home</i>
                                 <asp:TextBox ID="txtEndereco" runat="server" CssClass="validate"></asp:TextBox>
-                                <label for="SecretariaContent_txtEmail">Endereço:</label>
+                                <label for="<%= txtDataNascimento.ClientID %>">Endereço:</label>
                             </div>
                         </div>
 
@@ -62,21 +62,21 @@
                                 <div class="input-field col s6 numbers">
                                     <i class="material-icons prefix">smartphone</i>
                                     <asp:TextBox ID="txtCelular" runat="server" MaxLength="16" TextMode="Phone"></asp:TextBox>
-                                    <label for="SecretariaContent_txtCelular">Celular:</label>
+                                    <label for="<%= txtCelular.ClientID %>">Celular:</label>
                                 </div>
 
                                 <div class="input-field col s6 numbers">
                                     <i class="material-icons prefix">phone</i>
                                     <asp:TextBox ID="txtTelefoneResidencial" runat="server" MaxLength="16" TextMode="Phone"></asp:TextBox>
-                                    <label for="SecretariaContent_txtTelefoneResidencial">Telefone residencial:</label>
+                                    <label for="<%= txtTelefoneResidencial.ClientID %>">Telefone residencial:</label>
                                 </div>
                         </div>
 
                         <div class="row">
                             <div class="input-field">
                                 <i class="material-icons prefix">today</i>
-                                <label for="SecretariaContent_txtDataNascimento">Data de nascimento:</label>
                                 <asp:TextBox ID="txtDataNascimento" runat="server" CssClass="datanascimento" MaxLength="10"></asp:TextBox>
+                                <label for="<%= txtDataNascimento.ClientID %>">Data de nascimento:</label>
                             </div>
                         </div>
 
@@ -88,7 +88,8 @@
                                     <asp:ListItem Text="Especialidade:" Value ="-1"></asp:ListItem>
                                 </asp:DropDownList>
                             </div>
-                            <asp:SqlDataSource ID="SqlDataSourceEspecialidades" runat="server" ConnectionString="<%$ ConnectionStrings:ConexaoBD %>" SelectCommand="SELECT * FROM [especialidade]"></asp:SqlDataSource>
+
+                            <asp:SqlDataSource ID="SqlDataSourceEspecialidades" runat="server" ConnectionString="<%$ ConnectionStrings:ConexaoBD %>" SelectCommand="SELECT * FROM [especialidade] ORDER BY [especialidade]"></asp:SqlDataSource>
                         </div>
 
                         <asp:Button ID="BtnCadastrar" runat="server" Text="Cadastrar" CssClass="waves-effect waves-light btn-large btn-asp" ForeColor="White" OnClick="BtnCadastrar_Click"/>

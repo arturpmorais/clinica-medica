@@ -27,7 +27,6 @@ namespace ProjetoClinica.secretaria.cadastrar
             int especialidade = int.Parse(dllEspecialidades.SelectedValue);
 
             BDActions bd = new BDActions();
-
             try
             {
                 bd.CadastrarMedico(nome_completo, email, senha, senhaConf, data_de_nascimento, endereco, celular, telefone_residencial, null, especialidade);

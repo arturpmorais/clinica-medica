@@ -22,7 +22,7 @@
                             <div class="input-field">
                                 <i class="material-icons prefix">account_circle</i>
                                 <asp:TextBox ID="txtCodigo" runat="server" MaxLength="5"></asp:TextBox>
-                                <label for="MainContent_txtCodigo">Código:</label>
+                                <label for="<%= txtCodigo.ClientID %>">Código:</label>
                             </div>
                         </div>
 
@@ -30,7 +30,7 @@
                             <div class="input-field">
                                 <i class="material-icons prefix">lock</i>
                                 <asp:TextBox ID="txtPassword" runat="server" TextMode="Password" MaxLength="30"></asp:TextBox>
-                                <label for="MainContent_txtPassword">Senha:</label>
+                                <label for="<%= txtPassword.ClientID %>">Senha:</label>
                             </div>
                         </div>
 

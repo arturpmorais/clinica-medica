@@ -22,7 +22,7 @@
                             <div class="input-field">
                                 <i class="material-icons prefix">account_circle</i>
                                 <asp:TextBox ID="txtEspecialidade" runat="server" MaxLength="50"></asp:TextBox>
-                                <label for="SecretariaContent_txtEspecialidade">Nova especialidade:</label>
+                                <label for="<%= txtEspecialidade.ClientID %>">Nova especialidade:</label>
                             </div>
                         </div>
 
