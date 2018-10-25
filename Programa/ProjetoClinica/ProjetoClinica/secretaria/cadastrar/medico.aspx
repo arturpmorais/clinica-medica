@@ -53,7 +53,7 @@
                         <div class="row">
                             <div class="input-field">
                                 <i class="material-icons prefix">home</i>
-                                <asp:TextBox ID="txtEndereco" runat="server" CssClass="validate"></asp:TextBox>
+                                <asp:TextBox ID="txtEndereco" runat="server"></asp:TextBox>
                                 <label for="<%= txtDataNascimento.ClientID %>">Endereço:</label>
                             </div>
                         </div>

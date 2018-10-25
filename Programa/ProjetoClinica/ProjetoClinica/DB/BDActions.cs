@@ -22,7 +22,7 @@ namespace ProjetoClinica.DB
             this.cs = WebConfigurationManager.ConnectionStrings["ConexaoBD"].ConnectionString;
         }
 
-        public void MarcarConsulta(int idMedico, int idPaciente, string data, string horario)
+        public void MarcarConsulta(int idMedico, int idPaciente, string data, string horario, string duracao)
         {
             if (idMedico < 0)
                 throw new Exception("Escolha um médico!");
@@ -36,13 +36,17 @@ namespace ProjetoClinica.DB
             if (IsEmptyString(horario))
                 throw new Exception("Escolha um horário!");
 
+            if (IsEmptyString(duracao))
+                throw new Exception("Escolha uma duração!");
+
             string datetime = VerificarDataNovaConsulta(data, horario);
 
             VerificarDisponibilidade(idMedico, idPaciente, datetime);
 
             SqlConnection conn = new SqlConnection(cs);
-            SqlCommand cmd = new SqlCommand("INSERT INTO consulta VALUES(@data, @idMedico, @idPaciente, @status, null, null, 0)", conn);
+            SqlCommand cmd = new SqlCommand("INSERT INTO consulta VALUES(@data, @duracao, @idMedico, @idPaciente, @status, null, null, null, 0)", conn);
             cmd.Parameters.AddWithValue("@data", datetime);
+            cmd.Parameters.AddWithValue("@duracao", duracao);
             cmd.Parameters.AddWithValue("@idMedico", idMedico);
             cmd.Parameters.AddWithValue("@idPaciente", idPaciente);
             cmd.Parameters.AddWithValue("@status", "PENDENTE");

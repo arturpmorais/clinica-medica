@@ -133,9 +133,17 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="css\materialize.css" />
+    <Content Include="images\appointment-book.jpg" />
+    <Content Include="images\architecture-buildings.jpg" />
+    <Content Include="images\arms-care-check.jpg" />
+    <Content Include="images\backbone-check.jpg" />
+    <Content Include="images\clinic.jpg" />
+    <Content Include="images\close-up-doctor-health.jpg" />
     <Content Include="images\equipemedica.jpg" />
+    <Content Include="images\exam-checking.jpg" />
     <Content Include="images\hospitalpredio.jpg" />
-    <Content Include="img\default_profile_picture.png" />
+    <Content Include="images\default_profile_picture.png" />
+    <Content Include="medico\consultas\agenda.aspx" />
     <Content Include="medico\index.aspx" />
     <Content Include="Scripts\ajaxcontrols.js" />
     <Content Include="secretaria\cadastrar\especialidade.aspx" />
@@ -228,6 +236,13 @@
     <Compile Include="DB\DBO\SecretariaDBO.cs" />
     <Compile Include="DB\PasswordCheck.cs" />
     <Compile Include="email\EmailSender.cs" />
+    <Compile Include="medico\consultas\agenda.aspx.cs">
+      <DependentUpon>agenda.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="medico\consultas\agenda.aspx.designer.cs">
+      <DependentUpon>agenda.aspx</DependentUpon>
+    </Compile>
     <Compile Include="medico\index.aspx.cs">
       <DependentUpon>index.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

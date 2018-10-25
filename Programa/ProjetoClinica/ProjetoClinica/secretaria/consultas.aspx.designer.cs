@@ -112,6 +112,15 @@ namespace ProjetoClinica.secretaria {
         protected global::System.Web.UI.WebControls.TextBox txtHorarioNovaConsulta;
         
         /// <summary>
+        /// Controle ddlDuracao.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlDuracao;
+        
+        /// <summary>
         /// Controle BtnMarcarConsulta.
         /// </summary>
         /// <remarks>

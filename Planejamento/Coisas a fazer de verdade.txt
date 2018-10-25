@@ -1,0 +1,48 @@
+INSTALAR FONTAWESOME
+
+USAR ASP LISTBOX PARA SELECT MULTIPLE
+
+MENU Consultas
+
+Agendamento Consulta
+Exibe as Consultas do dia por médico
+
+Atualizar consulta Médica (incluir nos
+dados da consulta: exames, diagnostico e medicacao
+
+O medico informa: data, hora, paciente
+
+abre o formulario com os dados:
+
+data da consulta: 25/11
+Hora da consulta: 16h
+Paciente:
+
+Exames?: registrar os exames
+
+resultado exames: sdfsdf
+
+sintomas:sdfsdf
+
+diagnostico:sdfsd
+
+medicacao:sdfsd
+
+
+*******************
+PACIENTE : consultar consultas para o login dele (minhas consutas)
+
+data/hora - medico
+registrar satisfacao da consulta (combobox: pessimo, regular)
+text - observacoes: 
+
+
+
+
+
+
+
+
+
+
+

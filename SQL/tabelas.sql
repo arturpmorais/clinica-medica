@@ -32,11 +32,14 @@ CREATE TABLE medico (
 CREATE TABLE consulta (
 	id int identity(1,1) primary key,
 	data char(16) not null,
+	duracao char(5) not null,
 	idMedico int not null,
-	idPaciente int not null,
-	status varchar(9) not null,
+	idPaciente int not null, 
+	status varchar(9) not null, /* PENDENTE CANCELADA REALIZADA */
 	diagnostico ntext,
-	anotacoes ntext,
+	sintomas ntext,
+	medicacao ntext,
+	observacoes ntext,
 	pacienteAvisado bit not null default 0,
 	constraint fkIdMedico foreign key(idMedico) references medico(id),
 	constraint fkIdPaciente foreign key(idPaciente) references paciente(id)
@@ -46,4 +49,17 @@ CREATE TABLE secretaria (
 	codigo char(5) primary key,
 	nome_completo varchar(50) not null,
 	senha varchar(400) not null
+)
+
+CREATE TABLE exameConsulta (
+	idConsulta int not null,
+	idExame int not null,
+	resultado ntext not null,
+	constraint fkIdConsulta foreign key(idConsulta) references consulta(id),
+	constraint fkIdExame foreign key(idExame) references exame(id)
+)
+
+CREATE TABLE exame (
+	id int identity(1,1) primary key,
+	exame varchar(50) not null
 )

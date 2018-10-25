@@ -19,7 +19,7 @@
                 </ContentTemplate>
             </asp:UpdatePanel>
 
-            <a class="waves-effect waves-light btn modal-trigger" href="#modalNovaConsulta">Nova consulta</a>
+            <a class="waves-effect waves-light btn btn-small right modal-trigger" href="#modalNovaConsulta">Nova consulta</a>
 
             <div class="containerpicker"></div>
 
@@ -65,11 +65,22 @@
                                     </div>
                                 </div>
 
-                                <div class="row last-item">
+                                <div class="row">
                                     <div class="input-field">
                                         <i class="material-icons prefix">access_time</i>
                                         <asp:TextBox ID="txtHorarioNovaConsulta" runat="server" CssClass="horarionovaconsulta"></asp:TextBox>
                                         <label for="<%= txtHorarioNovaConsulta.ClientID %>">Horário:</label>
+                                    </div>
+                                </div>
+
+                                <div class="row last-item">
+                                    <div class="input-field ddl">
+                                        <i class="material-icons prefix">hourglass_empty</i>
+                                        <asp:DropDownList ID="ddlDuracao" runat="server" AppendDataBoundItems="True">
+                                            <asp:ListItem Text="Escolha a duração:" Value =""></asp:ListItem>
+                                            <asp:ListItem Text="30 minutos" Value="00:30"></asp:ListItem>
+                                            <asp:ListItem Text="1 hora" Value="01:00"></asp:ListItem>
+                                        </asp:DropDownList>
                                     </div>
                                 </div>
                             </div>

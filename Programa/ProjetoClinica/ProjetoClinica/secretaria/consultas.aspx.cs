@@ -19,13 +19,14 @@ namespace ProjetoClinica.secretaria
         {
             string dataconsulta = txtDataNovaConsulta.Text.Trim();
             string horaconsulta = txtHorarioNovaConsulta.Text.Trim();
+            string duracao = ddlDuracao.SelectedValue;
             int idPaciente = int.Parse(ddlPacienteConsulta.SelectedValue);
             int idMedico = int.Parse(ddlMedicoConsulta.SelectedValue);
 
             BDActions bd = new BDActions();
             try
             {
-                bd.MarcarConsulta(idMedico, idPaciente, dataconsulta, horaconsulta);
+                bd.MarcarConsulta(idMedico, idPaciente, dataconsulta, horaconsulta, duracao);
 
                 // fecha o modal
                 ScriptManager.RegisterStartupScript(this.Page, this.Page.GetType(), "Pop", "closeModal('#modalNovaConsulta');", true);

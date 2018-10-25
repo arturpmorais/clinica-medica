@@ -43,9 +43,22 @@
 
                 <li><a runat="server" href="~/medico/index.aspx"><i class="material-icons">home</i>Home</a></li>
                 <li><a runat="server" href="~/medico/perfil.aspx"><i class="material-icons">account_circle</i>Perfil</a></li>
-                <li><a runat="server" href="#"><i class="material-icons">event_note</i>Agenda</a></li>
-                <li><a runat="server" href="#"><i class="material-icons">add_box</i>Consultas pendentes</a></li>
-                <li><a runat="server" href="#"><i class="material-icons">restore</i>Histórico de consultas</a></li>
+
+                <li>
+                    <ul class="collapsible collapsible-accordion">
+                        <li>
+                            <a class="collapsible-header"><i class="fa fa-heartbeat"></i>Consultas</a>
+                            <div class="collapsible-body">
+                                <ul>
+                                    <li><a runat="server" href="~/secretaria/cadastrar/paciente.aspx"><i class="material-icons">list</i>Agenda</a></li>
+                                    <li><a runat="server" href="~/secretaria/cadastrar/medico.aspx"><i class="material-icons">border_color</i>Diagnosticar</a></li>
+                                    <li><a runat="server" href="#"><i class="material-icons">restore</i>Histórico</a></li>
+                                </ul>
+                            </div>
+                        </li>
+                    </ul>
+                </li>
+
                 <li><asp:LinkButton ID="LbSair" runat="server" OnClick="LbSair_Click"><i class="material-icons">exit_to_app</i>Sair</asp:LinkButton></li>
             </ul>
 
@@ -66,6 +79,8 @@
                 closeOnClick: true,
                 draggable: true
             });
+
+            $('.collapsible').collapsible();
 
             M.updateTextFields();
         });
