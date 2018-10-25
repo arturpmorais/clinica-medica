@@ -15,6 +15,7 @@ namespace ProjetoClinica.email
         {
             if (!(isValidEmail(email)))
                 throw new Exception("E-mail inválido!");
+
             try
             {
                 this.myEmail = email;
@@ -29,13 +30,14 @@ namespace ProjetoClinica.email
             }
             catch (Exception)
             {
-                throw new Exception("Erro no login!");
+                throw new Exception("Erro ao acessar o e-mail!");
             }
         }
         public void sendEmail(string emailTo, string subject, string body)
         {
             if (!(isValidEmail(emailTo)))
                 throw new Exception("E-mail inválido!");
+
             try
             {
                 MailMessage mm = new MailMessage(this.myEmail, emailTo, subject, body);
@@ -55,6 +57,7 @@ namespace ProjetoClinica.email
                 "Esperamos você aqui! Caso não puder comparecer, entre em contato conosco. \n \n" +
                 "Atenciosamente, \n" +
                 "Clínica Médica.";
+
             this.sendEmail(emailPaciente, subject, body);
         }
         private bool isValidEmail(string email)

@@ -4,7 +4,7 @@
     background-repeat: no-repeat;
     background-attachment: fixed;
     overflow-x: hidden;
-    padding-left: 400px;
+    padding-left: 375px;
 }
 
 i.btn-asp input, input.btn-asp {
@@ -155,5 +155,5 @@ div.profilecontent * {
 }
 
 ul.sidenav {
-    width: 400px;
+    width: 375px;
 }

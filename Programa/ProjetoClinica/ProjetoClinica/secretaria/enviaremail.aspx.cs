@@ -17,11 +17,15 @@ namespace ProjetoClinica.secretaria
 
         protected void BtnEnviar_Click(object sender, EventArgs e)
         {
-            string emailbody = TxtAreaEmailBody.Text.Trim();
+            string emailTo = "nicholaspruiz@gmail.com";
+            string subject = "Lembrete: você tem uma consulta marcada!";
+            string body = TxtAreaEmailBody.Text.Trim();
 
-            //EmailSender sender = new EmailSender();
             try
             {
+                EmailSender mailer = new EmailSender("clinicamedica@gmail.com", "ClinicaMedicaPR3");
+                mailer.sendEmail(emailTo, subject, body);
+
                 //
 
                 LblAviso.ForeColor = System.Drawing.ColorTranslator.FromHtml("#4BB543");
