@@ -19,12 +19,20 @@
 
                     <form>
                         <div class="row">
+                            <div class="input-field ddl">
+                                <i class="material-icons prefix">hourglass_empty</i>
+                                <asp:ListBox ID="LbPacientes" runat="server" SelectionMode="Multiple"></asp:ListBox>
+                            </div>
+                        </div>
+
+                        <div class="row">
                             <div class="input-field">
                                 <i class="material-icons prefix">mode_edit</i>
-                                <asp:TextBox ID="TxtAreaEmailBody" runat="server" TextMode="MultiLine" CssClass="materialize-textarea" data-length="1024"></asp:TextBox>
+                                <asp:TextBox ID="TxtAreaEmailBody" runat="server" TextMode="MultiLine" CssClass="materialize-textarea emailcontent" data-length="1024"></asp:TextBox>
                                 <label for="<%= TxtAreaEmailBody.ClientID %>">Conteúdo:</label>
                             </div>
                         </div>
+
 
                         <asp:Button ID="BtnEnviar" runat="server" CssClass="waves-effect waves-light btn-large btn-asp" Text="Enviar e-mail" OnClick="BtnEnviar_Click" />
                     </form>

@@ -25,7 +25,7 @@ namespace ProjetoClinica
             PacienteDBO p = (PacienteDBO)Session["Usuario"];
 
             if (p.Imagem == null)
-                ImgPerfil.ImageUrl = "/img/default_profile_picture.png";
+                ImgPerfil.ImageUrl = "/images/default_profile_picture.png";
 
             LblNome.Text = p.Nome_Completo.Split(' ')[0];
         }

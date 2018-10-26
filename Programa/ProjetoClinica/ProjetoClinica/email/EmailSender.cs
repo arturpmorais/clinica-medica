@@ -10,7 +10,8 @@ namespace ProjetoClinica.email
     public class EmailSender
     {
         private SmtpClient client;
-        private string myEmail;
+        private string email;
+
         public EmailSender(string email, string senha)
         {
             if (!(isValidEmail(email)))
@@ -18,7 +19,7 @@ namespace ProjetoClinica.email
 
             try
             {
-                this.myEmail = email;
+                this.email = email;
                 this.client = new SmtpClient();
                 this.client.Port = 587;
                 this.client.Host = "smtp.gmail.com";
@@ -26,7 +27,7 @@ namespace ProjetoClinica.email
                 this.client.Timeout = 10000;
                 this.client.DeliveryMethod = SmtpDeliveryMethod.Network;
                 this.client.UseDefaultCredentials = false;
-                this.client.Credentials = new System.Net.NetworkCredential(email, senha);
+                this.client.Credentials = new System.Net.NetworkCredential(this.email, senha);
             }
             catch (Exception)
             {
@@ -40,7 +41,7 @@ namespace ProjetoClinica.email
 
             try
             {
-                MailMessage mm = new MailMessage(this.myEmail, emailTo, subject, body);
+                MailMessage mm = new MailMessage(this.email, emailTo, subject, body);
                 mm.BodyEncoding = UTF8Encoding.UTF8;
                 mm.DeliveryNotificationOptions = DeliveryNotificationOptions.OnFailure;
                 client.Send(mm);
@@ -50,16 +51,7 @@ namespace ProjetoClinica.email
                 throw new Exception("Erro ao enviar e-mail!");
             }
         }
-        public void sendEmailClinica(string nomePaciente, string emailPaciente)
-        {
-            string subject = "Lembrete: " + nomePaciente + ", você tem uma consulta marcada!";
-            string body = nomePaciente + ", nosso sistema diz que você tem uma consulta em nossa clínica daqui a dois dias! \n" +
-                "Esperamos você aqui! Caso não puder comparecer, entre em contato conosco. \n \n" +
-                "Atenciosamente, \n" +
-                "Clínica Médica.";
 
-            this.sendEmail(emailPaciente, subject, body);
-        }
         private bool isValidEmail(string email)
         {
             const string pattern = @"^(?!\.)(""([^""\r\\]|\\[""\r\\])*""|" + @"([-a-z0-9!#$%&'*+/=?^_`{|}~]|(?<!\.)\.)*)(?<!\.)" + @"@[a-z0-9][\w\.-]*[a-z0-9]\.[a-z][a-z\.]*[a-z]$";

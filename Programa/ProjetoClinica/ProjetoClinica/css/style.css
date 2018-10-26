@@ -20,6 +20,11 @@ i.btn-asp {
     width: 100%;
 }
 
+textarea.emailcontent
+{
+    height: 150px;
+}
+
 div.modalform {
     padding: 0 15px;
 }
@@ -141,6 +146,11 @@ h1 {
     margin: 25px 0;
 }
 
+img.sidenav-profile-pic {
+    min-width: 100px;
+    min-height: 100px;
+}
+
 img.profile-pic {
     margin: 20px 0 0 0;
     max-width: 150px;
@@ -156,4 +166,9 @@ div.profilecontent * {
 
 ul.sidenav {
     width: 375px;
+}
+
+div.nopaddingbottom 
+{
+    padding-bottom: 0 !important;
 }

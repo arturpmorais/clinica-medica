@@ -11,6 +11,7 @@
 
     <link runat="server" href="~/css/fonts.css" rel="stylesheet">
     <link runat="server" href="~/css/materialize.css" rel="stylesheet" media="screen,projection"/>
+    <link href="/css/fontawesome.css" rel="stylesheet" />
     <link runat="server" href="~/css/style.css" rel="stylesheet" />
 
     <asp:ContentPlaceHolder ID="head" runat="server">

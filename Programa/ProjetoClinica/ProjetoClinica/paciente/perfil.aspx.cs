@@ -15,7 +15,7 @@ namespace ProjetoClinica.perfil
             PacienteDBO usuario = (PacienteDBO)Session["Usuario"];
 
             if (usuario.Imagem == null)
-                ImgPerfil.ImageUrl = "/img/default_profile_picture.png";
+                ImgPerfil.ImageUrl = "/images/default_profile_picture.png";
             else
                 ImgPerfil.ImageUrl = usuario.Imagem;
 

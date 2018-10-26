@@ -22,6 +22,86 @@ namespace ProjetoClinica.DB
             this.cs = WebConfigurationManager.ConnectionStrings["ConexaoBD"].ConnectionString;
         }
 
+        public void MarcarConsultaComoAvisada(int id)
+        {
+            SqlConnection conn = new SqlConnection(cs);
+            SqlCommand cmd = new SqlCommand("UPDATE consulta SET pacienteAvisado=1 WHERE id=@id", conn);
+            cmd.Parameters.AddWithValue("@id", id);
+
+            try
+            {
+                // abre conexao
+                conn.Open();
+                cmd.ExecuteNonQuery();
+            }
+            catch (Exception)
+            {
+                throw new Exception("Erro ao atualizar o registro da consulta!");
+            }
+            finally
+            {
+                // fecha conexao
+                conn.Close();
+                conn.Dispose();
+            }
+        }
+
+        public string[][] PacientesComConsultaProxima()
+        {
+            SqlConnection conn = new SqlConnection(cs);
+            SqlCommand cmd = new SqlCommand("SELECT p.nome_completo, p.email, c.id, c.data FROM paciente p, consulta c " +
+                                            "WHERE " +
+                                            "p.id = c.idPaciente AND " +
+                                            "c.status != 'CANCELADA' AND " +
+                                            "DATEDIFF(DAY, GETDATE(), CONVERT(DATE, c.data, 103)) >= 0 AND " +
+                                            "DATEDIFF(DAY, GETDATE(), CONVERT(DATE, c.data, 103)) <= 2 AND " +
+                                            "c.pacienteAvisado = 0", conn);
+
+            SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+            DataSet ds = new DataSet();
+            DataTable dt = null;
+            DataRow dr = null;
+
+            string[][] dados = null;
+            try
+            {
+                // abre conexao
+                conn.Open();
+                // executa a consulta
+                adapter.Fill(ds);
+
+                dt = ds.Tables[0];
+                int count = dt.Rows.Count;
+                if (count > 0)
+                {
+                    dados = new string[count][];
+
+                    for (int i = 0; i < count; i++)
+                    {
+                        dados[i] = new string[4];
+                        dr = dt.Rows[i];
+
+                        dados[i][0] = dr.ItemArray[0].ToString();
+                        dados[i][1] = dr.ItemArray[1].ToString();
+                        dados[i][2] = dr.ItemArray[2].ToString();
+                        dados[i][3] = dr.ItemArray[3].ToString();
+                    }
+                }
+
+                return dados;
+            }
+            catch (Exception)
+            {
+                throw new Exception("Erro ao acessar o Banco de Dados!");
+            }
+            finally
+            {
+                // fecha conexao
+                conn.Close();
+                conn.Dispose();
+            }
+        }
+
         public void MarcarConsulta(int idMedico, int idPaciente, string data, string horario, string duracao)
         {
             if (idMedico < 0)
