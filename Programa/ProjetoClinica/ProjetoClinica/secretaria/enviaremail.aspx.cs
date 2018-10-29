@@ -27,41 +27,52 @@ namespace ProjetoClinica.secretaria
 
         protected void BtnEnviar_Click(object sender, EventArgs e)
         {
-            string subject = "Lembrete: você tem uma consulta marcada!";
-            string body = TxtAreaEmailBody.Text.Trim();
             List<ListItem> selecteditems = LbPacientes.GetSelectedItems();
 
             try
             {
-                EmailSender mailer = new EmailSender("clinicamedicapr3@gmail.com", "ClinicaMedicaPR3");
-                BDActions bd = new BDActions();
-                for (int i = 0; i < selecteditems.Count; i++)
+                if (selecteditems.Count > 0)
                 {
-                    string valor = selecteditems[i].Value;
+                    EmailSender mailer = new EmailSender("clinicamedicapr3@gmail.com", "ClinicaMedicaPR3");
+                    BDActions bd = new BDActions();
 
-                    if (valor == "")
-                        throw new Exception("Escolha algum paciente!");
-                    else
+                    string subject = "Lembrete: você tem uma consulta marcada!";
+                    string body = TxtAreaEmailBody.Text.Trim();
+
+                    for (int i = 0; i < selecteditems.Count; i++)
                     {
-                        string emailPaciente = valor.Split('-')[0];
-                        int idConsulta = int.Parse(valor.Split('-')[1]);
+                        string valor = selecteditems[i].Value;
 
-                        mailer.sendEmail(emailPaciente, subject, body);
-                        bd.MarcarConsultaComoAvisada(idConsulta);
+                        if (valor == "")
+                            throw new Exception("Não existem pacientes com consulta próxima!");
+                        else
+                        {
+                            string emailPaciente = valor.Split('-')[0];
+                            int idConsulta = int.Parse(valor.Split('-')[1]);
+
+                            mailer.sendEmail(emailPaciente, subject, body);
+                            bd.MarcarConsultaComoAvisada(idConsulta);
+                        }
                     }
+
+                    LblAviso.ForeColor = System.Drawing.ColorTranslator.FromHtml("#4BB543");
+                    if (selecteditems.Count > 1)
+                        LblAviso.Text = "E-mails enviados com sucesso!";
+                    else
+                        LblAviso.Text = "E-mail enviado com sucesso!";
+
+                    TxtAreaEmailBody.Text = "Querido paciente, \n\n" +
+                                            "Nosso sistema diz que você tem uma consulta em nossa clínica daqui a dois dias! \n" +
+                                            "Esperamos você aqui! Caso não puder comparecer, entre em contato conosco. \n \n" +
+                                            "Atenciosamente, \n" +
+                                            "Clínica Médica.";
+                }
+                else
+                {
+                    LblAviso.ForeColor = System.Drawing.ColorTranslator.FromHtml("#CC0000");
+                    LblAviso.Text = "Escolha algum paciente!";
                 }
 
-                LblAviso.ForeColor = System.Drawing.ColorTranslator.FromHtml("#4BB543");
-                if (selecteditems.Count > 1)
-                    LblAviso.Text = "E-mails enviados com sucesso!";
-                else
-                    LblAviso.Text = "E-mail enviado com sucesso!";
-
-                TxtAreaEmailBody.Text = "Querido paciente, \n\n" +
-                                        "Nosso sistema diz que você tem uma consulta em nossa clínica daqui a dois dias! \n" +
-                                        "Esperamos você aqui! Caso não puder comparecer, entre em contato conosco. \n \n" +
-                                        "Atenciosamente, \n" +
-                                        "Clínica Médica.";
                 CarregarLbPacientes();
             }
             catch (Exception ex)

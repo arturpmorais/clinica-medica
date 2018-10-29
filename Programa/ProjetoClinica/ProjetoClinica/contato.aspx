@@ -2,21 +2,19 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
-    <div class="whitecontainer">
+    <div class="whitecontainer contentcontainer">
         <center>
             <h2 class="page-title">Deseja nos contatar?</h2>
 
             <div class="divider"></div>
 
             <div class="row">
-                <div class="col s12">
-                    <div class="col s12 m6">
-                        <p></p>
-                    </div>
+                <div class="col s12 m6">
+                    <p></p>
+                </div>
 
-                    <div class="col s12 m6">
-                        <div id="map"></div>
-                    </div>
+                <div class="col s12 m6">
+                    <div id="map"></div>
                 </div>
             </div>
         </center>

@@ -11,7 +11,23 @@
 
     <link href="/css/fonts.css" rel="stylesheet">
     <link href="/css/materialize.css" rel="stylesheet" media="screen,projection"/>
+    <link href="/css/fontawesome.css" rel="stylesheet" />
     <link href="/css/style.css" rel="stylesheet" />
+
+    <script src="/Scripts/jquery-1.10.2.js"></script>
+    <script src="/Scripts/materialize.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('.sidenav').sidenav({
+                menuWidth: 350,
+                edge: 'left',
+                closeOnClick: true,
+                draggable: true
+            });
+
+            M.updateTextFields();
+        });
+    </script>
 
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
@@ -23,7 +39,7 @@
             <nav class="navbar">
                 <div class="nav-wrapper">
                     <a runat="server" href="~/paciente/index.aspx" class="brand-logo right">Clínica Médica&nbsp</a>
-                    <a href="#" data-target="nav-mobile" class="left sidenav-trigger"><i class="material-icons">menu</i></a>
+                    <a data-target="nav-mobile" class="left sidenav-trigger"><i class="material-icons">menu</i></a>
                 </div>
             </nav>
 
@@ -33,8 +49,8 @@
                         <div class="background blue lighten-3"></div>
 
                         <center>
-                            <a href="#"><asp:Image ID="ImgPerfil" runat="server" CssClass="circle sidenav-profile-pic"></asp:Image></a>
-                            <a href="#"><asp:Label ID="LblNome" runat="server" Text="" class="black-text name" Font-Size="X-Large"></asp:Label></a>
+                            <a runat="server" href="~/paciente/index.aspx"><asp:Image ID="ImgPerfil" runat="server" CssClass="circle sidenav-profile-pic"></asp:Image></a>
+                            <a runat="server" href="~/paciente/perfil.aspx"><asp:Label ID="LblNome" runat="server" Text="" class="black-text name" Font-Size="X-Large"></asp:Label></a>
                         </center>
                     </div>
                 </li>
@@ -65,20 +81,5 @@
             </div>
         </div>
     </form>
-
-    <script src="/Scripts/jquery-1.10.2.js"></script>
-    <script src="/Scripts/materialize.js"></script>
-    <script>
-        $(document).ready(function () {
-            $('.sidenav').sidenav({
-                menuWidth: 350,
-                edge: 'left',
-                closeOnClick: true,
-                draggable: true
-            });
-
-            M.updateTextFields();
-        });
-    </script>
 </body>
 </html>

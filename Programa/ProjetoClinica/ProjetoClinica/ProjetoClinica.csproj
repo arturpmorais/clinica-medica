@@ -134,15 +134,17 @@
   <ItemGroup>
     <Content Include="css\materialize.css" />
     <Content Include="css\fontawesome.css" />
+    <Content Include="images\adult-blood.jpg" />
     <Content Include="images\appointment-book.jpg" />
     <Content Include="images\architecture-buildings.jpg" />
     <Content Include="images\arms-care-check.jpg" />
     <Content Include="images\backbone-check.jpg" />
+    <Content Include="images\bed-clinic-empty.jpg" />
+    <Content Include="images\chart-check-up.jpg" />
     <Content Include="images\clinic.jpg" />
     <Content Include="images\close-up-doctor-health.jpg" />
-    <Content Include="images\equipemedica.jpg" />
+    <Content Include="images\medical-team.jpg" />
     <Content Include="images\exam-checking.jpg" />
-    <Content Include="images\hospitalpredio.jpg" />
     <Content Include="images\default_profile_picture.png" />
     <Content Include="medico\consultas\agenda.aspx" />
     <Content Include="medico\consultas\historico.aspx" />
@@ -177,8 +179,6 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="images\background.png" />
-    <Content Include="images\Desert.jpg" />
-    <Content Include="images\Koala.jpg" />
     <Content Include="index.aspx" />
     <Content Include="paciente\Paciente.Master" />
     <Content Include="fonts\icons\icons.woff2" />

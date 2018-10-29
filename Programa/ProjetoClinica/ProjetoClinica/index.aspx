@@ -2,28 +2,37 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
-    <div class="carousel carousel-slider center">
-        <div class="carousel-fixed-item">
-            <div class="container">
-                <h3 class="white-text">Nos preocupamos com você!</h3>
+    <div class="main-slider carousel carousel-slider center light-blue custom-lightblue">
+
+        <div class="carousel-fixed-item center middle-indicator">
+            <div class="left">
+                <a class="movePrevious middle-indicator-text waves-effect waves-light content-indicator"><i class="middle-indicator-text material-icons left">chevron_left</i></a>
+            </div>
+     
+            <div class="right">
+                <a class="moveNext middle-indicator-text waves-effect waves-light content-indicator"><i class="middle-indicator-text material-icons right">chevron_right</i></a>
             </div>
         </div>
 
-        <div class="carousel-item white-text desert">
+        <div class="carousel-item white-text arms-care-check">
             <h2>First Panel</h2>
             <p class="white-text">This is your first panel</p>
         </div>
-        <div class="carousel-item white-text koala">
+        <div class="carousel-item white-text exam-checking">
             <h2>Second Panel</h2>
             <p class="white-text">This is your second panel</p>;
         </div>
-        <div class="carousel-item white-text desert">
+        <div class="carousel-item white-text bed-clinic-empty">
             <h2>Third Panel</h2>
             <p class="white-text">This is your third panel</p>
         </div>
-        <div class="carousel-item white-text koala">
+        <div class="carousel-item white-text adult-blood">
             <h2>Fourth Panel</h2>
             <p class="white-text">This is your fourth panel</p>
+        </div>
+        <div class="carousel-item white-text chart-check-up">
+            <h2>Third Panel</h2>
+            <p class="white-text">This is your third panel</p>
         </div>
     </div>
 
@@ -35,13 +44,13 @@
     <div class="col s12">
         <div class="row">
             <div class="col s4">
-                <div class="card">
+                <div class="card topic">
                     <div class="card-image waves-effect waves-block waves-light">
-                        <img class="activator" src="/images/desert.jpg">
+                        <img class="activator" src="/images/backbone-check.jpg">
                     </div>
                     <div class="card-content">
                         <span class="card-title activator grey-text text-darken-4">Consultas<i class="material-icons right">more_vert</i></span>
-                        <p><a href="#">This is a link</a></p>
+                        <p>Saiba como são as consultas!</p>
                     </div>
                     <div class="card-reveal">
                         <span class="card-title grey-text text-darken-4">Consultas<i class="material-icons right">close</i></span>
@@ -54,14 +63,15 @@
                     </div>
                 </div>
             </div>
+
             <div class="col s4">
-                <div class="card">
+                <div class="card topic">
                     <div class="card-image waves-effect waves-block waves-light">
-                        <img class="activator" src="/images/desert.jpg">
+                        <img class="activator" src="/images/close-up-doctor-health.jpg">
                     </div>
                     <div class="card-content">
                         <span class="card-title activator grey-text text-darken-4">Equipe Médica<i class="material-icons right">more_vert</i></span>
-                        <p><a href="#">This is a link</a></p>
+                        <p>Conheça nossa equipe médica!</p>
                     </div>
                     <div class="card-reveal">
                         <span class="card-title grey-text text-darken-4">Equipe Médica<i class="material-icons right">close</i></span>
@@ -76,13 +86,13 @@
             </div>
 
             <div class="col s4">
-                <div class="card">
+                <div class="card topic">
                     <div class="card-image waves-effect waves-block waves-light">
-                        <img class="activator" src="/images/desert.jpg">
+                        <img class="activator" src="/images/appointment-book.jpg">
                     </div>
                     <div class="card-content">
                         <span class="card-title activator grey-text text-darken-4">Nossos Princípios<i class="material-icons right">more_vert</i></span>
-                        <p><a href="#">This is a link</a></p>
+                        <p>Entenda nossos princípios!</p>
                     </div>
                     <div class="card-reveal">
                         <span class="card-title grey-text text-darken-4">Nossos Princípios<i class="material-icons right">close</i></span>
@@ -99,4 +109,30 @@
             </div>
         </div>
     </div>
+    <script>
+        $(document).ready(function () {
+            $('.main-slider').carousel({
+                duration: 300,
+                fullWidth: true,
+                indicators: true
+            });
+
+            setInterval(function() {
+                if (!$('.main-slider').is(':hover'))
+                    $('.main-slider').carousel('next');
+            }, 4000);
+        });
+
+        $('.moveNext').click(function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+            $('.main-slider').carousel('next');
+        });
+
+        $('.movePrevious').click(function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+            $('.main-slider').carousel('prev');
+        });
+    </script>
 </asp:Content>

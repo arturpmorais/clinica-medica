@@ -49,7 +49,7 @@ div.main-sidenav {
 }
 
 h2.page-title {
-    padding-bottom: 10px;
+    margin: 15px 0 30px 0;
 }
 
 div.foot {
@@ -59,9 +59,16 @@ div.foot {
     padding-top: 5px;
 }
 
-img.item-img  {
-    padding: 5px 0px;
-    width: 100%;
+img.item-img.left {
+    padding: 20px 20px 10px 0;
+    width: 450px !important;
+    max-width: 100%;
+}
+
+img.item-img.right {
+    padding: 20px 0 10px 20px;
+    width: 450px !important;
+    max-width: 100%;
 }
 
 nav.navbar {
@@ -81,16 +88,31 @@ a.collapsible-logo {
     color: rgba(0, 0, 0, 0.90);
 }
 
-div.desert {
-    background: url("/images/desert.jpg");
+div.carousel-item {
+    user-select: none !important;
 }
 
-div.koala {
-    background: url("/images/koala.jpg");
+div.exam-checking {
+    background: transparent url("/images/exam-checking.jpg") center center no-repeat;
+}
+
+div.adult-blood {
+    background: transparent url("/images/adult-blood.jpg") center center no-repeat;
+}
+
+div.bed-clinic-empty {
+    background: transparent url("/images/bed-clinic-empty.jpg") center center no-repeat;
+}
+
+div.chart-check-up {
+    background: transparent url("/images/chart-check-up.jpg") center center no-repeat;
+}
+
+div.arms-care-check {
+    background: transparent url("/images/arms-care-check.jpg") center center no-repeat;
 }
 
 div.carousel-item {
-    cursor: pointer;
     background-size: cover;
     background-repeat: no-repeat;
 }
@@ -168,7 +190,21 @@ ul.sidenav {
     width: 375px;
 }
 
-div.nopaddingbottom 
-{
-    padding-bottom: 0 !important;
+div.middle-indicator {
+    position: absolute;
+    top: 45%;
+}
+
+a.middle-indicator-text, i.middle-indicator-text {
+    font-size: 4.2rem !important;
+    color: white !important;
+}
+
+a.content-indicator {
+    width: 60px;
+    height: 60px;
+    background: none;
+    -moz-border-radius: 50px;
+    -webkit-border-radius: 50px;
+    border-radius: 50px;
 }
