@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ProjetoClinica.extensions;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -12,10 +13,10 @@ namespace ProjetoClinica.DB.DBO
 
         public SecretariaDBO(string codigo, string nome_completo)
         {
-            if (codigo == null || codigo.Trim() == "")
+            if (codigo.IsEmptyString())
                 throw new Exception("Codigo nulo");
 
-            if (nome_completo == null || nome_completo.Trim() == "")
+            if (nome_completo.IsEmptyString())
                 throw new Exception("Nome nulo");
 
             this.Codigo = codigo;

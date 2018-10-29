@@ -44,5 +44,31 @@ namespace ProjetoClinica.secretaria
                 LblAvisoMarcarConsulta.Text = ex.Message;
             }
         }
+
+        protected void SqlDataSourcePacientesConsulta_Selected(object sender, SqlDataSourceStatusEventArgs e)
+        {
+            if (e.Exception != null)
+            {
+                ddlPacienteConsulta.Items.Clear();
+                ddlPacienteConsulta.Items.Add(new ListItem("Não foi possível carregar os pacientes!", "-1"));
+                ddlPacienteConsulta.Items[0].Attributes.Add("disabled", "true");
+                ddlPacienteConsulta.SelectedIndex = 0;
+
+                e.ExceptionHandled = true;
+            }
+        }
+
+        protected void SqlDataSourceMedicosConsulta_Selected(object sender, SqlDataSourceStatusEventArgs e)
+        {
+            if (e.Exception != null)
+            {
+                ddlMedicoConsulta.Items.Clear();
+                ddlMedicoConsulta.Items.Add(new ListItem("Não foi possível carregar os médicos!", "-1"));
+                ddlMedicoConsulta.Items[0].Attributes.Add("disabled", "true");
+                ddlMedicoConsulta.SelectedIndex = 0;
+
+                e.ExceptionHandled = true;
+            }
+        }
     }
 }

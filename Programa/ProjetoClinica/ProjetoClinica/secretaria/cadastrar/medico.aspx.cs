@@ -24,7 +24,7 @@ namespace ProjetoClinica.secretaria.cadastrar
             string celular = txtCelular.Text.Trim();
             string telefone_residencial = txtTelefoneResidencial.Text.Trim();
             string data_de_nascimento = txtDataNascimento.Text.Trim();
-            int especialidade = int.Parse(dllEspecialidades.SelectedValue);
+            int especialidade = int.Parse(ddlEspecialidades.SelectedValue);
 
             BDActions bd = new BDActions();
             try
@@ -38,7 +38,7 @@ namespace ProjetoClinica.secretaria.cadastrar
                 txtCelular.Text = "";
                 txtTelefoneResidencial.Text = "";
                 txtDataNascimento.Text = "";
-                dllEspecialidades.SelectedIndex = 0;
+                ddlEspecialidades.SelectedIndex = 0;
 
                 LblAviso.ForeColor = System.Drawing.ColorTranslator.FromHtml("#4BB543");
                 LblAviso.Text = "Médico cadastrado com sucesso!";
@@ -47,6 +47,19 @@ namespace ProjetoClinica.secretaria.cadastrar
             {
                 LblAviso.ForeColor = System.Drawing.ColorTranslator.FromHtml("#CC0000");
                 LblAviso.Text = ex.Message;
+            }
+        }
+
+        protected void SqlDataSourceEspecialidades_Selected(object sender, SqlDataSourceStatusEventArgs e)
+        {
+            if (e.Exception != null)
+            {
+                ddlEspecialidades.Items.Clear();
+                ddlEspecialidades.Items.Add(new ListItem("Não foi possível carregar as especialidades!", "-1"));
+                ddlEspecialidades.Items[0].Attributes.Add("disabled", "true");
+                ddlEspecialidades.SelectedIndex = 0;
+
+                e.ExceptionHandled = true;
             }
         }
     }

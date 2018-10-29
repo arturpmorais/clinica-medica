@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ProjetoClinica.extensions;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
@@ -20,25 +21,28 @@ namespace ProjetoClinica.DB.DBO
 
         public PacienteDBO(int id, string nome_completo, string email, string data_de_nascimento, string endereco, string celular, string telefone_residencial, string imagem)
         {
-            if (nome_completo == null || nome_completo.Trim() == "")
+            if (id < 0)
+                throw new Exception("ID inválido");
+
+            if (nome_completo.IsEmptyString())
                 throw new Exception("Nome nulo");
 
-            if (email == null || email.Trim() == "")
+            if (email.IsEmptyString())
                 throw new Exception("E-mail nulo");
 
-            if (data_de_nascimento == null || data_de_nascimento.Trim() == "")
+            if (data_de_nascimento.IsEmptyString())
                 throw new Exception("Data de nascimento nula");
 
-            if (endereco == null || endereco.Trim() == "")
+            if (endereco.IsEmptyString())
                 throw new Exception("Endereco nulo");
 
-            if (celular == null || celular.Trim() == "")
+            if (celular.IsEmptyString())
                 throw new Exception("Celular nulo");
 
-            if (telefone_residencial == null || telefone_residencial.Trim() == "")
+            if (telefone_residencial.IsEmptyString())
                 throw new Exception("Telefone nulo");
 
-            if (imagem != null && imagem.Trim() == "")
+            if (imagem.IsEmptyString())
                 throw new Exception("Imagem nula");
 
             this.Id = id;

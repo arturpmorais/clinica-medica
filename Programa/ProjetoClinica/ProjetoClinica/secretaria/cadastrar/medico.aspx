@@ -84,12 +84,12 @@
                             <div class="input-field ddl">
                                 <i class="material-icons prefix">star</i>
 
-                                <asp:DropDownList ID="dllEspecialidades" runat="server" DataSourceID="SqlDataSourceEspecialidades" DataTextField="especialidade" DataValueField="id" AppendDataBoundItems="True">
+                                <asp:DropDownList ID="ddlEspecialidades" runat="server" DataSourceID="SqlDataSourceEspecialidades" DataTextField="especialidade" DataValueField="id" AppendDataBoundItems="True">
                                     <asp:ListItem Text="Especialidade:" Value ="-1"></asp:ListItem>
                                 </asp:DropDownList>
                             </div>
 
-                            <asp:SqlDataSource ID="SqlDataSourceEspecialidades" runat="server" ConnectionString="<%$ ConnectionStrings:ConexaoBD %>" SelectCommand="SELECT * FROM [especialidade] ORDER BY [especialidade]"></asp:SqlDataSource>
+                            <asp:SqlDataSource ID="SqlDataSourceEspecialidades" runat="server" ConnectionString="<%$ ConnectionStrings:ConexaoBD %>" SelectCommand="SELECT * FROM [especialidade] ORDER BY [especialidade]" OnSelected="SqlDataSourceEspecialidades_Selected"></asp:SqlDataSource>
                         </div>
 
                         <asp:Button ID="BtnCadastrar" runat="server" Text="Cadastrar" CssClass="waves-effect waves-light btn-large btn-asp" ForeColor="White" OnClick="BtnCadastrar_Click"/>

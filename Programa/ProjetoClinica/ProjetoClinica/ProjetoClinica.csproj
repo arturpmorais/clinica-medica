@@ -249,6 +249,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DB\BDActions.cs" />
+    <Compile Include="DB\DBO\ConsultaDBO.cs" />
     <Compile Include="DB\DBO\EspecialidadeDBO.cs" />
     <Compile Include="DB\DBO\MedicoDBO.cs" />
     <Compile Include="DB\DBO\PacienteDBO.cs" />

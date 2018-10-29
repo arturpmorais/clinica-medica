@@ -16,19 +16,12 @@ namespace ProjetoClinica.secretaria
 		{
             if (!IsPostBack)
             {
-                try
-                {
-                    CarregarLbPacientes();
-                    TxtAreaEmailBody.Text = "Querido paciente, \n\n" +
-                                            "Nosso sistema diz que você tem uma consulta em nossa clínica daqui a dois dias! \n" +
-                                            "Esperamos você aqui! Caso não puder comparecer, entre em contato conosco. \n \n" +
-                                            "Atenciosamente, \n" +
-                                            "Clínica Médica.";
-                }
-                catch (Exception)
-                {
-                    Response.Redirect(Page.Request.Path);
-                }
+                CarregarLbPacientes();
+                TxtAreaEmailBody.Text = "Querido paciente, \n\n" +
+                                        "Nosso sistema diz que você tem uma consulta em nossa clínica daqui a dois dias! \n" +
+                                        "Esperamos você aqui! Caso não puder comparecer, entre em contato conosco. \n \n" +
+                                        "Atenciosamente, \n" +
+                                        "Clínica Médica.";
             }
         }
 
@@ -69,47 +62,41 @@ namespace ProjetoClinica.secretaria
                                         "Esperamos você aqui! Caso não puder comparecer, entre em contato conosco. \n \n" +
                                         "Atenciosamente, \n" +
                                         "Clínica Médica.";
-                RecarregarLbPacientes();
+                CarregarLbPacientes();
             }
             catch (Exception ex)
             {
                 LblAviso.ForeColor = System.Drawing.ColorTranslator.FromHtml("#CC0000");
                 LblAviso.Text = ex.Message;
 
-                RecarregarLbPacientes();
+                CarregarLbPacientes();
             }
         }
 
         protected void CarregarLbPacientes()
         {
             BDActions bd = new BDActions();
-            string[][] dados = bd.PacientesComConsultaProxima();
-
-            LbPacientes.Items.Clear();
-            if (dados != null)
-            {
-                for (int i = 0; i < dados.Length; i++)
-                {
-                    string texto = dados[i][0] + " - Consulta: " + dados[i][3];
-                    string valor = dados[i][1] + "-" + dados[i][2];
-
-                    ListItem item = new ListItem(texto, valor);
-                    LbPacientes.Items.Add(item);
-                }
-            }
-            else
-            {
-                LbPacientes.Items.Add(new ListItem("Nenhum paciente não avisado possui uma consulta próxima.", ""));
-                LbPacientes.Items[0].Attributes.Add("disabled", "true");
-            }
-            LbPacientes.SelectedIndex = 0;
-        }
-
-        protected void RecarregarLbPacientes()
-        {
             try
             {
-                CarregarLbPacientes();
+                string[][] dados = bd.PacientesComConsultaProxima();
+
+                LbPacientes.Items.Clear();
+                if (dados != null)
+                {
+                    for (int i = 0; i < dados.Length; i++)
+                    {
+                        string texto = dados[i][0] + " - Consulta: " + dados[i][3];
+                        string valor = dados[i][1] + "-" + dados[i][2];
+
+                        ListItem item = new ListItem(texto, valor);
+                        LbPacientes.Items.Add(item);
+                    }
+                }
+                else
+                {
+                    LbPacientes.Items.Add(new ListItem("Nenhum paciente não avisado possui uma consulta próxima.", ""));
+                    LbPacientes.Items[0].Attributes.Add("disabled", "true");
+                }
             }
             catch (Exception)
             {

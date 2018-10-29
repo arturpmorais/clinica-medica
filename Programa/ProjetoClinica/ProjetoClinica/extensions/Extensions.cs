@@ -8,6 +8,14 @@ namespace ProjetoClinica.extensions
 {
     public static class Extensions
     {
+        public static bool IsEmptyString(this string s)
+        {
+            if (s == null || s.Trim() == "")
+                return true;
+
+            return false;
+        }
+
         public static List<ListItem> GetSelectedItems(this ListBox list)
         {
 

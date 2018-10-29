@@ -76,7 +76,7 @@
                             <div class="input-field">
                                 <i class="material-icons prefix">today</i>
                                 <asp:TextBox ID="txtDataNascimento" runat="server" CssClass="datanascimento" MaxLength="10"></asp:TextBox>
-                                <label for="<%= txtDataNascimento.ClientID %>" runat="server">Data de nascimento:</label>
+                                <label for="<%= txtDataNascimento.ClientID %>">Data de nascimento:</label>
                             </div>
                         </div>
 
@@ -88,5 +88,4 @@
             <script src="/Scripts/ajaxcontrols.js"></script>
         </ContentTemplate>
     </asp:UpdatePanel>
-
 </asp:Content>

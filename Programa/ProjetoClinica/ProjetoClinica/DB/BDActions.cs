@@ -10,6 +10,7 @@ using System.Text.RegularExpressions;
 using System.Data;
 using System.Drawing;
 using System.IO;
+using ProjetoClinica.extensions;
 
 namespace ProjetoClinica.DB
 {
@@ -55,7 +56,8 @@ namespace ProjetoClinica.DB
                                             "c.status != 'CANCELADA' AND " +
                                             "DATEDIFF(DAY, GETDATE(), CONVERT(DATE, c.data, 103)) >= 0 AND " +
                                             "DATEDIFF(DAY, GETDATE(), CONVERT(DATE, c.data, 103)) <= 2 AND " +
-                                            "c.pacienteAvisado = 0", conn);
+                                            "c.pacienteAvisado = 0 " +
+                                            "ORDER BY c.data", conn);
 
             SqlDataAdapter adapter = new SqlDataAdapter(cmd);
             DataSet ds = new DataSet();
@@ -110,13 +112,13 @@ namespace ProjetoClinica.DB
             if (idPaciente < 0)
                 throw new Exception("Escolha um paciente!");
 
-            if (IsEmptyString(data))
+            if (data.IsEmptyString())
                 throw new Exception("Escolha uma data!");
 
-            if (IsEmptyString(horario))
+            if (horario.IsEmptyString())
                 throw new Exception("Escolha um horário!");
 
-            if (IsEmptyString(duracao))
+            if (duracao.IsEmptyString())
                 throw new Exception("Escolha uma duração!");
 
             string datetime = VerificarDataNovaConsulta(data, horario);
@@ -151,7 +153,7 @@ namespace ProjetoClinica.DB
 
         public MedicoDBO LoginMedico(string email, string senha)
         {
-            if (IsEmptyString(email))
+            if (email.IsEmptyString())
                 throw new Exception("Digite um e-mail!");
 
             if (!IsValidEmail(email))
@@ -159,7 +161,7 @@ namespace ProjetoClinica.DB
 
             ///
 
-            if (IsEmptyString(senha))
+            if (senha.IsEmptyString())
                 throw new Exception("Digite uma senha!");
 
             ///
@@ -193,7 +195,7 @@ namespace ProjetoClinica.DB
                 adapter.SelectCommand = cmdEspecialidade;
                 adapter.Fill(ds.Tables["Especialidade"]);
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 throw new Exception("Erro ao acessar o Banco de Dados!");
 }
@@ -232,7 +234,7 @@ namespace ProjetoClinica.DB
         }
 
         public PacienteDBO LoginPaciente(string email, string senha) {
-            if (IsEmptyString(email))
+            if (email.IsEmptyString())
                 throw new Exception("Digite um e-mail!");
 
             if (!IsValidEmail(email))
@@ -240,7 +242,7 @@ namespace ProjetoClinica.DB
 
             ///
 
-            if (IsEmptyString(senha))
+            if (senha.IsEmptyString())
                 throw new Exception("Digite uma senha!");
 
             ///
@@ -304,7 +306,7 @@ namespace ProjetoClinica.DB
 
         public SecretariaDBO LoginSecretaria(string codigo, string senha)
         {
-            if (IsEmptyString(codigo))
+            if (codigo.IsEmptyString())
                 throw new Exception("Digite um código!");
 
             if (codigo.Trim().Length != 5)
@@ -312,7 +314,7 @@ namespace ProjetoClinica.DB
 
             ///
 
-            if (IsEmptyString(senha))
+            if (senha.IsEmptyString())
                 throw new Exception("Digite uma senha!");
 
             ///
@@ -395,7 +397,7 @@ namespace ProjetoClinica.DB
                 conn.Open();
                 cmd.ExecuteNonQuery();
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 throw new Exception("Erro ao cadastrar!");
             }
@@ -448,7 +450,7 @@ namespace ProjetoClinica.DB
 
         public void CadastrarEspecialidade(string especialidade)
         {
-            if (IsEmptyString(especialidade))
+            if (especialidade.IsEmptyString())
                 throw new Exception("Digite uma especialidade!");
 
             if (especialidade.Trim().Length > 50)
@@ -628,7 +630,7 @@ namespace ProjetoClinica.DB
 
         private void ValidarInformacoes(string nome_completo, string email, string senha, string senhaConf, string data_de_nascimento, string endereco, string celular, string telefone_residencial)
         {
-            if (IsEmptyString(nome_completo))
+            if (nome_completo.IsEmptyString())
                 throw new Exception("Digite um nome!");
 
             if (!(nome_completo.Length >= 10 && nome_completo.Length <= 100))
@@ -636,7 +638,7 @@ namespace ProjetoClinica.DB
 
             ///
 
-            if (IsEmptyString(email))
+            if (email.IsEmptyString())
                 throw new Exception("Digite um nome!");
 
             if (!(email.Length >= 5 && email.Length <= 50))
@@ -647,7 +649,7 @@ namespace ProjetoClinica.DB
 
             ///
 
-            if (IsEmptyString(senha))
+            if (senha.IsEmptyString())
                 throw new Exception("Digite uma senha!");
 
             if (PasswordCheck.GetPasswordStrength(senha) < PasswordStrength.Medium)
@@ -658,7 +660,7 @@ namespace ProjetoClinica.DB
 
             ///
 
-            if (IsEmptyString(data_de_nascimento))
+            if (data_de_nascimento.IsEmptyString())
                 throw new Exception("Escolha uma data!");
 
             if (data_de_nascimento.Length != 10)
@@ -666,7 +668,7 @@ namespace ProjetoClinica.DB
 
             ///
 
-            if (IsEmptyString(endereco))
+            if (endereco.IsEmptyString())
                 throw new Exception("Digite um endereço!");
 
             if (endereco.Trim().Length < 5)
@@ -674,12 +676,12 @@ namespace ProjetoClinica.DB
 
             ///
 
-            if (IsEmptyString(celular))
+            if (celular.IsEmptyString())
                 throw new Exception("Digite um celular!");
 
             ///
 
-            if (IsEmptyString(telefone_residencial))
+            if (telefone_residencial.IsEmptyString())
                 throw new Exception("Digite um telefone residencial!");
         }
 
@@ -696,14 +698,6 @@ namespace ProjetoClinica.DB
         {
             var plainTextBytes = System.Text.Encoding.UTF8.GetBytes(plainText);
             return System.Convert.ToBase64String(plainTextBytes);
-        }
-
-        private bool IsEmptyString(string s)
-        {
-            if (s == null || s.Trim() == "")
-                return true;
-
-            return false;
         }
     }
 }

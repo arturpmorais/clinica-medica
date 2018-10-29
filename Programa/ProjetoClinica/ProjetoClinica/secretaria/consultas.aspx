@@ -43,7 +43,7 @@
                                         <asp:DropDownList ID="ddlPacienteConsulta" runat="server" AppendDataBoundItems="True" DataSourceID="SqlDataSourcePacientesConsulta" DataTextField="nome_completo" DataValueField="id">
                                             <asp:ListItem Text="Paciente:" Value ="-1"></asp:ListItem>
                                         </asp:DropDownList>
-                                        <asp:SqlDataSource ID="SqlDataSourcePacientesConsulta" runat="server" ConnectionString="<%$ ConnectionStrings:ConexaoBD %>" SelectCommand="SELECT [id], [nome_completo] FROM [paciente] ORDER BY [nome_completo]"></asp:SqlDataSource>
+                                        <asp:SqlDataSource ID="SqlDataSourcePacientesConsulta" runat="server" ConnectionString="<%$ ConnectionStrings:ConexaoBD %>" SelectCommand="SELECT [id], [nome_completo] FROM [paciente] ORDER BY [nome_completo]" OnSelected="SqlDataSourcePacientesConsulta_Selected"></asp:SqlDataSource>
                                     </div>
                                 </div>
 
@@ -53,7 +53,7 @@
                                         <asp:DropDownList ID="ddlMedicoConsulta" runat="server" AppendDataBoundItems="True" DataSourceID="SqlDataSourceMedicosConsulta" DataTextField="nome_completo" DataValueField="id">
                                             <asp:ListItem Text="Médico:" Value ="-1"></asp:ListItem>
                                         </asp:DropDownList>
-                                        <asp:SqlDataSource ID="SqlDataSourceMedicosConsulta" runat="server" ConnectionString="<%$ ConnectionStrings:ConexaoBD %>" SelectCommand="SELECT [id], [nome_completo] FROM [medico] ORDER BY [nome_completo]"></asp:SqlDataSource>
+                                        <asp:SqlDataSource ID="SqlDataSourceMedicosConsulta" runat="server" ConnectionString="<%$ ConnectionStrings:ConexaoBD %>" SelectCommand="SELECT [id], [nome_completo] FROM [medico] ORDER BY [nome_completo]" OnSelected="SqlDataSourceMedicosConsulta_Selected"></asp:SqlDataSource>
                                     </div>
                                 </div>
 
