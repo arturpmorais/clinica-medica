@@ -14,11 +14,7 @@ namespace ProjetoClinica.perfil
         {
             PacienteDBO usuario = (PacienteDBO)Session["Usuario"];
 
-            if (usuario.Imagem == null)
-                ImgPerfil.ImageUrl = "/images/default_profile_picture.png";
-            else
-                ImgPerfil.ImageUrl = usuario.Imagem;
-
+            ImgPerfil.ImageUrl = usuario.Imagem;
             LblApelido.Text = usuario.Nome_Completo.Split(' ')[0];
             LblNome.Text = usuario.Nome_Completo;
             LblEmail.Text = usuario.Email;

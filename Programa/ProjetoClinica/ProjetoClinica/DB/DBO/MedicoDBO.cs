@@ -42,9 +42,6 @@ namespace ProjetoClinica.DB.DBO
 
             if (telefone_residencial.IsEmptyString())
                 throw new Exception("Telefone nulo");
-            
-            if (imagem.IsEmptyString())
-                throw new Exception("Imagem nula");
 
             if (especialidade == null)
                 throw new Exception("Especialidade nulo");
@@ -56,7 +53,10 @@ namespace ProjetoClinica.DB.DBO
             this.Endereco = endereco;
             this.Celular = celular;
             this.Telefone_Residencial = telefone_residencial;
-            this.Imagem = imagem;
+            if (imagem is System.DBNull)
+                this.Imagem = "/images/default_profile_picture.png";
+            else
+                this.Imagem = imagem;
             this.Especialidade = especialidade;
         }
     }
