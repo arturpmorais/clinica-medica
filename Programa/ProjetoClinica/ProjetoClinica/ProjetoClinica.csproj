@@ -132,6 +132,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="css\chartist.css" />
     <Content Include="css\materialize.css" />
     <Content Include="css\fontawesome.css" />
     <Content Include="images\adult-blood.jpg" />
@@ -152,6 +153,7 @@
     <Content Include="paciente\consultas\agenda.aspx" />
     <Content Include="paciente\consultas\historico.aspx" />
     <Content Include="Scripts\ajaxcontrols.js" />
+    <Content Include="Scripts\chartist.js" />
     <Content Include="secretaria\cadastrar\especialidade.aspx" />
     <Content Include="secretaria\cadastrar\medico.aspx" />
     <Content Include="secretaria\cadastrar\paciente.aspx" />
@@ -194,6 +196,7 @@
     <Content Include="fonts\roboto\Roboto-Thin.woff2" />
     <Content Include="Main.Master" />
     <Content Include="medico\Medico.Master" />
+    <Content Include="secretaria\Query.aspx" />
     <Content Include="webfonts\fa-brands-400.svg" />
     <Content Include="webfonts\fa-regular-400.svg" />
     <Content Include="webfonts\fa-solid-900.svg" />
@@ -437,6 +440,13 @@
     </Compile>
     <Compile Include="secretaria\Secretaria.Master.designer.cs">
       <DependentUpon>Secretaria.Master</DependentUpon>
+    </Compile>
+    <Compile Include="secretaria\Query.aspx.cs">
+      <DependentUpon>Query.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="secretaria\Query.aspx.designer.cs">
+      <DependentUpon>Query.aspx</DependentUpon>
     </Compile>
     <Compile Include="ViewSwitcher.ascx.cs">
       <DependentUpon>ViewSwitcher.ascx</DependentUpon>

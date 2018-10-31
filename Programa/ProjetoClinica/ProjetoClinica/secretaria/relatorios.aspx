@@ -10,106 +10,120 @@
             <br />
 
             <div class="row">
-                <div class="col s12 m6">
-                    <center>
-                        <h4>Pacientes por médico</h4>
+                <center>
+                    <div class="relatorios">
+                        <div class="col s12 m6">
+                            <h4>Pacientes por médico</h4>
 
-                        <asp:Chart ID="ChartPacientePorMedico" runat="server" DataSourceID="SqlDataSourcePacientePorMedico">
-                            <Series>
-                                <asp:Series Name="SeriesPacientePorMedico" XValueMember="Medico" YValueMembers="Pacientes">
-                                </asp:Series>
-                            </Series>
-                            <ChartAreas>
-                                <asp:ChartArea Name="ChartAreaPacientePorMedico">
-                                </asp:ChartArea>
-                            </ChartAreas>
-                        </asp:Chart>
-                        <asp:SqlDataSource ID="SqlDataSourcePacientePorMedico" runat="server" ConnectionString="<%$ ConnectionStrings:ConexaoBD %>" SelectCommand="SELECT m.nome_completo as Medico, count(pm.idPaciente) as Pacientes
-                                                                                                                                                                   FROM ( SELECT idMedico, idPaciente FROM consulta WHERE status != 'CANCELADA' GROUP BY idMedico, idPaciente ) AS pm, medico AS m
-                                                                                                                                                                   WHERE pm.idMedico = m.id
-                                                                                                                                                                   GROUP BY m.nome_completo">
-                        </asp:SqlDataSource>
-                    </center>
-                </div>
+                            <div class="ct-chart ct-golden-section" id="ChartPacientesPorMedico"></div>
+                        </div>
 
-                <div class="col s12 m6">
-                    <center>
-                        <h4>Consultas canceladas mensalmente por médico</h4>
+                        <div class="col s12 m6">
+                            <h4>Consultas canceladas mensalmente por médico</h4>
 
-                        <asp:Chart ID="ChartConsultasCanceladasPorMedico" runat="server" DataSourceID="SqlDataSourceConsultasCanceladasPorMedico">
-                            <Series>
-                                <asp:Series Name="SeriesConsultasCanceladasPorMedico" XValueMember="Medico" YValueMembers="Consultas">
-                                </asp:Series>
-                            </Series>
-                            <ChartAreas>
-                                <asp:ChartArea Name="ChartAreaConsultasCanceladasPorMedico">
-                                </asp:ChartArea>
-                            </ChartAreas>
-                        </asp:Chart>
-                        <asp:SqlDataSource ID="SqlDataSourceConsultasCanceladasPorMedico" runat="server" ConnectionString="<%$ ConnectionStrings:ConexaoBD %>" SelectCommand="SELECT m.nome_completo AS Medico, count(c.id) AS Consultas
-                                                                                                                                                                              FROM medico m, consulta c
-                                                                                                                                                                              WHERE 
-                                                                                                                                                                              m.id = c.idMedico AND
-                                                                                                                                                                              c.status = 'CANCELADA' AND
-                                                                                                                                                                              MONTH(CONVERT(DATE, c.data, 103)) = MONTH(GETDATE())
-                                                                                                                                                                              GROUP BY m.nome_completo">
-                        </asp:SqlDataSource>
-                    </center>
-                </div>
+                            <div class="ct-chart ct-golden-section" id="ChartConsultasCanceladasPorMedico"></div>
+                        </div>
+
+                        <div class="col s12 m6">
+                            <h4>Consultas mensais por médico</h4>
+
+                            <div class="ct-chart ct-golden-section" id="ChartConsultasMensaisPorMedico"></div>
+                        </div>
+
+                        <div class="col s12 m6">
+                            <h4>Atendimento diário por especialidade</h4>
+
+                            <div class="ct-chart ct-golden-section" id="ChartAtendimentoPorEspecialidade"></div>
+                        </div>
+                    </div>
+
+                    <h5 class="lblAviso">Não foi possível carregar os relatórios!</h5>
+                    <div class="loader">
+                        <br /><br />
+
+                        <div class="preloader-wrapper active">
+                            <div class="spinner-layer spinner-blue-only">
+                                <div class="circle-clipper left">
+                                    <div class="circle"></div>
+                                </div>
+                                <div class="gap-patch">
+                                    <div class="circle"></div>
+                                </div>
+                                <div class="circle-clipper right">
+                                    <div class="circle"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <br /><br /><br />
+                    </div>
+                </center>
             </div>
-            
-            <div class="row">
-                <div class="col s12 m6">
-                    <center>
-                        <h4>Consultas mensais por médico</h4>
 
-                        <asp:Chart ID="ChartConsultasMensaisPorMedico" runat="server" DataSourceID="SqlDataSourceConsultasMensaisPorMedico">
-                            <Series>
-                                <asp:Series Name="SeriesConsultasMensaisPorMedico" XValueMember="Medico" YValueMembers="Consultas">
-                                </asp:Series>
-                            </Series>
-                            <ChartAreas>
-                                <asp:ChartArea Name="ChartAreaConsultasMensaisPorMedico">
-                                </asp:ChartArea>
-                            </ChartAreas>
-                        </asp:Chart>
-                        <asp:SqlDataSource ID="SqlDataSourceConsultasMensaisPorMedico" runat="server" ConnectionString="<%$ ConnectionStrings:ConexaoBD %>" SelectCommand="SELECT m.nome_completo AS Medico, count(c.id) AS Consultas
-                                                                                                                                                                           FROM medico m, consulta c
-                                                                                                                                                                           WHERE 
-                                                                                                                                                                           m.id = c.idMedico AND
-                                                                                                                                                                           c.status != 'CANCELADA' AND
-                                                                                                                                                                           MONTH(CONVERT(DATE, c.data, 103)) = MONTH(GETDATE())
-                                                                                                                                                                           GROUP BY m.nome_completo">
-                        </asp:SqlDataSource>
-                    </center>
-                </div>
+            <script>
+                $('.relatorios').hide();
+                $('.lblAviso').hide();
+                $('.loader').show();
 
-                <div class="col s12 m6">
-                    <center>
-                        <h4>Atendimento diário por especialidade</h4>
+                $.ajax({
+                    type : "POST",
+                    url : "Query.aspx/CarregarDadosGraficos",
+                    data : "{}",
+                    contentType: "application/json;charset=utf-8",
+                    dataType: "json",
+                    success: carregarGraficos,
+                    error: sinalizarErro
+                });
 
-                        <asp:Chart ID="ChartAtendimentoPorEspecialidade" runat="server" DataSourceID="SqlDataSourceAtendimentoPorEspecialidade">
-                            <Series>
-                                <asp:Series Name="SeriesAtendimentoPorEspecialidade" ChartType="Pie" XValueMember="Especialidade" YValueMembers="Consultas">
-                                </asp:Series>
-                            </Series>
-                            <ChartAreas>
-                                <asp:ChartArea Name="ChartAreaAtendimentoPorEspecialidade">
-                                </asp:ChartArea>
-                            </ChartAreas>
-                        </asp:Chart>
-                        <asp:SqlDataSource ID="SqlDataSourceAtendimentoPorEspecialidade" runat="server" ConnectionString="<%$ ConnectionStrings:ConexaoBD %>" SelectCommand="SELECT e.especialidade as Especialidade, count(c.id) as Consultas
-                                                                                                                                                                             FROM especialidade e, consulta c, medico m
-                                                                                                                                                                             WHERE
-                                                                                                                                                                             e.id = m.especialidade AND
-                                                                                                                                                                             m.id = c.idMedico AND
-                                                                                                                                                                             c.status != 'CANCELADA' AND
-                                                                                                                                                                             DAY(CONVERT(DATE, c.data, 103)) = DAY(GETDATE())
-                                                                                                                                                                             GROUP BY e.especialidade">
-                        </asp:SqlDataSource>
-                    </center>
-                </div>
-            </div>
+                function carregarGraficos(response) {
+                    var data = response.d;
+                    data = $.parseJSON(data);
+
+                    $('.loader').hide();
+
+                    if (data.erro)
+                        $('.lblAviso').show();
+                    else {
+                        // gráfico de barra
+                        new Chartist.Bar('#ChartPacientesPorMedico', {
+                            labels: data.PacientesPorMedico.labels,
+                            series: data.PacientesPorMedico.series
+                        });
+
+                        // gráfico de barra
+                        new Chartist.Bar('#ChartConsultasCanceladasPorMedico', {
+                            labels: data.ConsultasCanceladasPorMedico.labels,
+                            series: data.ConsultasCanceladasPorMedico.series
+                        });
+
+                        // gráfico de barra
+                        new Chartist.Bar('#ChartConsultasMensaisPorMedico', {
+                            labels: data.ConsultasCanceladasPorMedico.labels,
+                            series: data.ConsultasMensaisPorMedico.series
+                        });
+
+                        // gráfico de pizza
+                        var sum = function (a, b) { return a + b };
+                        var labels = data.AtendimentoPorEspecialidade.labels;
+                        new Chartist.Pie('#ChartAtendimentoPorEspecialidade',
+                                         data = data.AtendimentoPorEspecialidade.data,
+                                         {
+                                             labelInterpolationFnc: function (value, i) {
+                                                 var percentage = Math.round(value / data.series.reduce(sum) * 100) + '%';
+                                                 return labels[i] + ' - ' + percentage;
+                                             }
+                                         }
+                        );
+
+                        $('.relatorios').show();
+                    }
+                }
+
+                function sinalizarErro() {
+                    $('.loader').hide();
+                    $('.lblAviso').show();
+                }
+            </script>
         </div>
     </div>
 </asp:Content>

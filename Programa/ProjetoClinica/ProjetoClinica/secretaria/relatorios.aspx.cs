@@ -9,9 +9,5 @@ namespace ProjetoClinica.secretaria
 {
     public partial class relatorios : System.Web.UI.Page
     {
-        protected void Page_Load(object sender, EventArgs e)
-        {
-
-        }
     }
 }

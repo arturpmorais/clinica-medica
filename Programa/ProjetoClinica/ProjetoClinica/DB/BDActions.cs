@@ -11,6 +11,7 @@ using System.Data;
 using System.Drawing;
 using System.IO;
 using ProjetoClinica.extensions;
+using Newtonsoft.Json;
 
 namespace ProjetoClinica.DB
 {
@@ -21,6 +22,167 @@ namespace ProjetoClinica.DB
         public BDActions()
         {
             this.cs = WebConfigurationManager.ConnectionStrings["ConexaoBD"].ConnectionString;
+        }
+
+        public string CarregarDadosRelatorios()
+        {
+            SqlConnection conn = new SqlConnection(cs);
+            
+            // comandos de consulta
+            SqlCommand cmdPacientesPorMedico = new SqlCommand("SELECT m.nome_completo as Medico, count(pm.idPaciente) as Pacientes " +
+                                                              "FROM(SELECT idMedico, idPaciente FROM consulta WHERE status != 'CANCELADA' GROUP BY idMedico, idPaciente) AS pm, medico AS m " +
+                                                              "WHERE pm.idMedico = m.id " +
+                                                              "GROUP BY m.nome_completo", conn);
+
+            SqlCommand cmdConsultasMensaisPorMedico = new SqlCommand("SELECT m.nome_completo AS Medico, count(c.id) AS Consultas " +
+                                                                     "FROM medico m, consulta c " +
+                                                                     "WHERE " +
+                                                                     "m.id = c.idMedico AND " +
+                                                                     "c.status = 'CANCELADA' AND " +
+                                                                     "MONTH(CONVERT(DATE, c.data, 103)) = MONTH(GETDATE()) " +
+                                                                     "GROUP BY m.nome_completo", conn);
+
+            SqlCommand cmdConsultasCanceladasPorMedico = new SqlCommand("SELECT m.nome_completo AS Medico, count(c.id) AS Consultas " +
+                                                                        "FROM medico m, consulta c " +
+                                                                        "WHERE " +
+                                                                        "m.id = c.idMedico AND " +
+                                                                        "c.status != 'CANCELADA' AND " +
+                                                                        "MONTH(CONVERT(DATE, c.data, 103)) = MONTH(GETDATE()) " +
+                                                                        "GROUP BY m.nome_completo", conn);
+
+            SqlCommand cmdAtendimentoPorEspecialidade = new SqlCommand("SELECT e.especialidade as Especialidade, count(c.id) as Consultas " +
+                                                                       "FROM especialidade e, consulta c, medico m " +
+                                                                       "WHERE " +
+                                                                       "e.id = m.especialidade AND " +
+                                                                       "m.id = c.idMedico AND " +
+                                                                       "c.status != 'CANCELADA' AND " +
+                                                                       "DAY(CONVERT(DATE, c.data, 103)) = DAY(GETDATE()) " +
+                                                                       "GROUP BY e.especialidade", conn);
+
+            SqlDataAdapter adapter = new SqlDataAdapter();
+            DataSet ds = new DataSet();
+            DataTable dt = null;
+            DataRow dr = null;
+
+            ds.Tables.Add("PacientesPorMedico");
+            ds.Tables.Add("ConsultasMensaisPorMedico");
+            ds.Tables.Add("ConsultasCanceladasPorMedico");
+            ds.Tables.Add("AtendimentoPorEspecialidade");
+
+            try
+            {
+                // abre conexao
+                conn.Open();
+
+                // executa a consulta
+                adapter.SelectCommand = cmdPacientesPorMedico;
+                adapter.Fill(ds.Tables["PacientesPorMedico"]);
+
+                adapter.SelectCommand = cmdConsultasMensaisPorMedico;
+                adapter.Fill(ds.Tables["ConsultasMensaisPorMedico"]);
+
+                adapter.SelectCommand = cmdConsultasMensaisPorMedico;
+                adapter.Fill(ds.Tables["ConsultasCanceladasPorMedico"]);
+
+                adapter.SelectCommand = cmdAtendimentoPorEspecialidade;
+                adapter.Fill(ds.Tables["AtendimentoPorEspecialidade"]);
+
+                dt = ds.Tables["PacientesPorMedico"];
+
+                string[] labelsPM = new string[dt.Rows.Count];
+                int[] dataPM = new int[dt.Rows.Count];
+                for (int i = 0; i < dt.Rows.Count; i++)
+                {
+                    dr = dt.Rows[i];
+
+                    labelsPM[i] = (string)dr.ItemArray[0];
+                    dataPM[i] = (int)dr.ItemArray[1];
+                }
+
+                dt = ds.Tables["ConsultasMensaisPorMedico"];
+
+                string[] labelsCMM = new string[dt.Rows.Count];
+                int[] dataCMM = new int[dt.Rows.Count];
+                for (int i = 0; i < dt.Rows.Count; i++)
+                {
+                    dr = dt.Rows[i];
+
+                    labelsCMM[i] = (string)dr.ItemArray[0];
+                    dataCMM[i] = (int)dr.ItemArray[1];
+                }
+
+                dt = ds.Tables["ConsultasCanceladasPorMedico"];
+
+                string[] labelsCCM = new string[dt.Rows.Count];
+                int[] dataCCM = new int[dt.Rows.Count];
+                for (int i = 0; i < dt.Rows.Count; i++)
+                {
+                    dr = dt.Rows[i];
+
+                    labelsCCM[i] = (string)dr.ItemArray[0];
+                    dataCCM[i] = (int)dr.ItemArray[1];
+                }
+
+                dt = ds.Tables["AtendimentoPorEspecialidade"];
+
+                string[] labelsAE = new string[dt.Rows.Count];
+                int[] dataAE = new int[dt.Rows.Count];
+                for (int i = 0; i < dt.Rows.Count; i++)
+                {
+                    dr = dt.Rows[i];
+
+                    labelsAE[i] = (string)dr.ItemArray[0];
+                    dataAE[i] = (int)dr.ItemArray[1];
+                }
+
+                // gráfico de barra
+                var dados = new {
+                    PacientesPorMedico = new // gráfico de barra
+                    {
+                        labels = labelsPM,
+                        series = new[]
+                        {
+                            new { data = dataPM }
+                        }
+                    },
+                    ConsultasMensaisPorMedico = new // gráfico de barra
+                    {
+                        labels = labelsCMM,
+                        series = new[]
+                        {
+                            new { data = dataCMM }
+                        }
+                    },
+                    ConsultasCanceladasPorMedico = new // gráfico de barra
+                    {
+                        labels = labelsCCM,
+                        series = new[]
+                        {
+                            new { data = dataCCM }
+                        }
+                    },
+                    AtendimentoPorEspecialidade = new // gráfico de pizza
+                    {
+                        labels = labelsAE,
+                        data = new
+                        {
+                            series = dataAE
+                        }
+                    }
+                };
+
+                return JsonConvert.SerializeObject(dados);
+            }
+            catch (Exception)
+            {
+                throw new Exception("Erro ao acessar o Banco de Dados!");
+            }
+            finally
+            {
+                // fecha conexao
+                conn.Close();
+                conn.Dispose();
+            }
         }
 
         public void MarcarConsultaComoAvisada(int id)
@@ -220,7 +382,7 @@ namespace ProjetoClinica.DB
                 string telefone_residencial = (string)dadosMedico[7];
                 string imagem;
                 if (dadosMedico[8] is System.DBNull)
-                    imagem = null;
+                    imagem = "/images/default_profile_picture.png";
                 else
                     imagem = (string) dadosMedico[8];
                 EspecialidadeDBO especialidade = new EspecialidadeDBO((int)dadosEspecialidade[0], (string)dadosEspecialidade[1]);
@@ -292,7 +454,7 @@ namespace ProjetoClinica.DB
                 string telefone_residencial = (string)dados[7];
                 string imagem;
                 if (dados[8] is System.DBNull)
-                    imagem = null;
+                    imagem = "/images/default_profile_picture.png";
                 else
                     imagem = (string)dados[8];
 

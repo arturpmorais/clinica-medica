@@ -10,6 +10,6 @@
 namespace ProjetoClinica.secretaria {
     
     
-    public partial class relatorios {
+    public partial class Query {
     }
 }

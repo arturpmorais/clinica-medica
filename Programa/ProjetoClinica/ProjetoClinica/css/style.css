@@ -13,6 +13,15 @@ i.btn-asp input, input.btn-asp {
     height: 100%;
     width: 100%;
     color: white;
+    outline: none;
+}
+
+.ct-label {
+    color: black;
+}
+
+text.ct-label {
+    font-size: 105%;
 }
 
 i.btn-asp {
@@ -190,6 +199,10 @@ ul.sidenav {
     width: 375px;
 }
 
+a > i.material-icons {
+    cursor: default;
+}
+
 div.middle-indicator {
     position: absolute;
     top: 45%;
@@ -207,4 +220,12 @@ a.content-indicator {
     -moz-border-radius: 50px;
     -webkit-border-radius: 50px;
     border-radius: 50px;
+}
+
+.ct-series-a .ct-bar {
+    stroke-width: 30px;
+}
+
+.lblAviso {
+    color: #CC0000 !important;
 }

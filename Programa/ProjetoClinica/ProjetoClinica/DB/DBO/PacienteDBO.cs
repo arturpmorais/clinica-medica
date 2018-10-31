@@ -52,10 +52,7 @@ namespace ProjetoClinica.DB.DBO
             this.Endereco = endereco;
             this.Celular = celular;
             this.Telefone_Residencial = telefone_residencial;
-            if (imagem is System.DBNull)
-                this.Imagem = "/images/default_profile_picture.png";
-            else
-                this.Imagem = imagem;
+            this.Imagem = imagem;
         }
     }
 }
