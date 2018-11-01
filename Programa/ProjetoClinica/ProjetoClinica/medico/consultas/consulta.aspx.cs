@@ -9,9 +9,9 @@ using System.Web.UI.WebControls;
 
 namespace ProjetoClinica.medico.consultas
 {
-    public partial class agenda : System.Web.UI.Page
+    public partial class consulta : System.Web.UI.Page
     {
-        private ConsultaDBO[] Consultas;
+        private ConsultaDBO Consulta;
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -20,7 +20,8 @@ namespace ProjetoClinica.medico.consultas
 
             try
             {
-                this.Consultas = bd.CarregarConsultas(usuario.Id);
+                int idConsulta = int.Parse(Request.QueryString["id"]);
+                this.Consulta = bd.CarregarConsulta(idConsulta, usuario.Id);
             }
             catch (Exception ex)
             {

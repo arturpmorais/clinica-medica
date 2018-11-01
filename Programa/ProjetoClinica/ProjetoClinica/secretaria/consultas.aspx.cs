@@ -29,14 +29,16 @@ namespace ProjetoClinica.secretaria
                 bd.MarcarConsulta(idMedico, idPaciente, dataconsulta, horaconsulta, duracao);
 
                 // fecha o modal
-                ScriptManager.RegisterStartupScript(this.Page, this.Page.GetType(), "Pop", "closeModal('#modalNovaConsulta');", true);
+                ScriptManager.RegisterStartupScript(this.Page, this.Page.GetType(), "Pop", "closeModal('#modalNovaConsulta')", true);
 
                 LblAvisoMarcarConsulta.Text = "";
                 txtDataNovaConsulta.Text = "";
                 txtHorarioNovaConsulta.Text = "";
                 ddlMedicoConsulta.SelectedIndex = 0;
                 ddlPacienteConsulta.SelectedIndex = 0;
+                ddlDuracao.SelectedIndex = 0;
 
+                LblAviso.ForeColor = System.Drawing.ColorTranslator.FromHtml("#4BB543");
                 LblAviso.Text = "Consulta marcada com sucesso!";
             }
             catch (Exception ex)

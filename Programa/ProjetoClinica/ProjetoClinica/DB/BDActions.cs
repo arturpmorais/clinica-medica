@@ -24,6 +24,210 @@ namespace ProjetoClinica.DB
             this.cs = WebConfigurationManager.ConnectionStrings["ConexaoBD"].ConnectionString;
         }
 
+        public ConsultaDBO[] CarregarHistorico(int idMedico)
+        {
+            SqlConnection conn = new SqlConnection(cs);
+
+            SqlCommand cmd = new SqlCommand("SELECT id FROM consulta WHERE idMedico=@idMedico AND status != 'PENDENTE'", conn);
+            cmd.Parameters.AddWithValue("@idMedico", idMedico);
+
+            SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+            DataSet ds = new DataSet();
+            DataTable dt = null;
+
+            try
+            {
+                // abre conexao
+                conn.Open();
+                // executa a consulta
+                adapter.Fill(ds);
+            }
+            catch (Exception)
+            {
+                throw new Exception("Erro ao acessar o Banco de Dados!");
+            }
+            finally
+            {
+                // fecha conexao
+                conn.Close();
+                conn.Dispose();
+            }
+
+            dt = ds.Tables[0];
+            if (dt.Rows.Count > 0)
+            {
+                ConsultaDBO[] consultas = new ConsultaDBO[dt.Rows.Count];
+
+                for (int i = 0; i < dt.Rows.Count; i++)
+                {
+                    int idConsulta = (int)dt.Rows[i].ItemArray[0];
+                    consultas[i] = CarregarConsulta(idConsulta, idMedico);
+                }
+
+                return consultas;
+            }
+            else
+                throw new Exception("Você não realizou nenhuma consulta ainda!");
+        }
+
+        public ConsultaDBO[] CarregarConsultas(int idMedico)
+        {
+            SqlConnection conn = new SqlConnection(cs);
+
+            SqlCommand cmd = new SqlCommand("SELECT id FROM consulta WHERE idMedico=@idMedico", conn);
+            cmd.Parameters.AddWithValue("@idMedico", idMedico);
+
+            SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+            DataSet ds = new DataSet();
+            DataTable dt = null;
+
+            try
+            {
+                // abre conexao
+                conn.Open();
+                // executa a consulta
+                adapter.Fill(ds);
+            }
+            catch (Exception)
+            {
+                throw new Exception("Erro ao acessar o Banco de Dados!");
+            }
+            finally
+            {
+                // fecha conexao
+                conn.Close();
+                conn.Dispose();
+            }
+
+            dt = ds.Tables[0];
+            if (dt.Rows.Count > 0)
+            {
+                ConsultaDBO[] consultas = new ConsultaDBO[dt.Rows.Count];
+
+                for (int i = 0; i < dt.Rows.Count; i++)
+                {
+                    int idConsulta = (int)dt.Rows[i].ItemArray[0];
+                    consultas[i] = CarregarConsulta(idConsulta, idMedico);
+                }
+
+                return consultas;
+            }
+            else
+                throw new Exception("Você não possui consultas marcadas!");
+        }
+
+        public ConsultaDBO CarregarConsulta(int idConsulta, int idMedico)
+        {
+            SqlConnection conn = new SqlConnection(cs);
+
+            SqlCommand cmdConsulta = new SqlCommand("SELECT * FROM consulta WHERE id=@idConsulta AND idMedico=@idMedico", conn);
+            SqlCommand cmdPaciente= new SqlCommand("SELECT * FROM paciente p, consulta c " +
+                                                   "WHERE p.id = c.idPaciente AND c.id=@id", conn);
+            SqlCommand cmdMedico = new SqlCommand("SELECT * FROM medico m WHERE m.id=@id", conn);
+            SqlCommand cmdEspecialidade = new SqlCommand("SELECT * FROM especialidade e, medico m " +
+                                                         "WHERE e.id = m.especialidade AND m.id=@id", conn);
+
+            cmdConsulta.Parameters.AddWithValue("@idConsulta", idConsulta);
+            cmdConsulta.Parameters.AddWithValue("@idMedico", idMedico);
+
+            cmdPaciente.Parameters.AddWithValue("@id", idConsulta);
+
+            cmdMedico.Parameters.AddWithValue("@id", idMedico);
+            cmdEspecialidade.Parameters.AddWithValue("@id", idMedico);
+
+            SqlDataAdapter adapter = new SqlDataAdapter();
+            DataSet ds = new DataSet();
+
+            ds.Tables.Add("Consulta");
+            ds.Tables.Add("Paciente");
+            ds.Tables.Add("Medico");
+            ds.Tables.Add("Especialidade");
+
+            try
+            {
+                // abre conexao
+                conn.Open();
+                // executa a consulta
+                adapter.SelectCommand = cmdConsulta;
+                adapter.Fill(ds.Tables["Consulta"]);
+
+                adapter.SelectCommand = cmdPaciente;
+                adapter.Fill(ds.Tables["Paciente"]);
+
+                adapter.SelectCommand = cmdMedico;
+                adapter.Fill(ds.Tables["Medico"]);
+
+                adapter.SelectCommand = cmdEspecialidade;
+                adapter.Fill(ds.Tables["Especialidade"]);
+            }
+            catch (Exception)
+            {
+                throw new Exception("Erro ao acessar o Banco de Dados!");
+            }
+            finally
+            {
+                // fecha conexao
+                conn.Close();
+                conn.Dispose();
+            }
+
+            if (ds.Tables["Consulta"].Rows.Count > 0 && ds.Tables["Paciente"].Rows.Count > 0 && ds.Tables["Medico"].Rows.Count > 0 && ds.Tables["Especialidade"].Rows.Count > 0)
+            {
+                object[] dadosConsulta = ds.Tables["Consulta"].Rows[0].ItemArray;
+                object[] dadosPaciente = ds.Tables["Paciente"].Rows[0].ItemArray;
+                object[] dadosMedico = ds.Tables["Medico"].Rows[0].ItemArray;
+                object[] dadosEspecialidade = ds.Tables["Especialidade"].Rows[0].ItemArray;
+
+                string imagemMedico;
+                if (dadosMedico[8] is System.DBNull)
+                    imagemMedico = "/images/default_profile_picture.png";
+                else
+                    imagemMedico = (string)dadosMedico[8];
+                MedicoDBO m = new MedicoDBO((int)dadosMedico[0], (string)dadosMedico[1], (string)dadosMedico[2], (string)dadosMedico[4],
+                                            (string)dadosMedico[5], (string)dadosMedico[6], (string)dadosMedico[7], imagemMedico,
+                                            new EspecialidadeDBO((int)dadosEspecialidade[0], (string)dadosEspecialidade[1]));
+
+                string imagemPaciente;
+                if (dadosPaciente[8] is System.DBNull)
+                    imagemPaciente = "/images/default_profile_picture.png";
+                else
+                    imagemPaciente = (string)dadosPaciente[8];
+                PacienteDBO p = new PacienteDBO((int)dadosPaciente[0], (string)dadosPaciente[1], (string)dadosPaciente[2], (string)dadosPaciente[4],
+                                            (string)dadosPaciente[5], (string)dadosPaciente[6], (string)dadosPaciente[7], imagemPaciente);
+
+                string sintomas;
+                if (dadosConsulta[6] is System.DBNull)
+                    sintomas = null;
+                else
+                    sintomas = (string)dadosConsulta[6];
+
+                string diagnostico;
+                if (dadosConsulta[7] is System.DBNull)
+                    diagnostico = null;
+                else
+                    diagnostico = (string)dadosConsulta[7];
+
+                string medicacao;
+                if (dadosConsulta[8] is System.DBNull)
+                    medicacao = null;
+                else
+                    medicacao = (string)dadosConsulta[8];
+
+                string observacoes;
+                if (dadosConsulta[9] is System.DBNull)
+                    observacoes = null;
+                else
+                    observacoes = (string)dadosConsulta[9];
+
+                ConsultaDBO c = new ConsultaDBO((int)dadosConsulta[0], (string)dadosConsulta[1], (string)dadosConsulta[2], m, p, 
+                                    (string)dadosConsulta[5], sintomas, diagnostico, medicacao, observacoes);
+
+                return c;
+            }
+            else
+                throw new Exception("Acesso não autorizado!");
+    }
+
         public string CarregarDadosRelatorios()
         {
             SqlConnection conn = new SqlConnection(cs);
@@ -226,7 +430,6 @@ namespace ProjetoClinica.DB
             DataTable dt = null;
             DataRow dr = null;
 
-            string[][] dados = null;
             try
             {
                 // abre conexao
@@ -235,6 +438,9 @@ namespace ProjetoClinica.DB
                 adapter.Fill(ds);
 
                 dt = ds.Tables[0];
+
+                string[][] dados = null;
+
                 int count = dt.Rows.Count;
                 if (count > 0)
                 {
@@ -343,10 +549,6 @@ namespace ProjetoClinica.DB
             ds.Tables.Add("Medico");
             ds.Tables.Add("Especialidade");
 
-            MedicoDBO m = null;
-            object[] dadosMedico;
-            object[] dadosEspecialidade;
-
             try
             {
                 // abre conexao
@@ -370,8 +572,8 @@ namespace ProjetoClinica.DB
 
             if (ds.Tables["Medico"].Rows.Count > 0 && ds.Tables["Especialidade"].Rows.Count > 0)
             {
-                dadosMedico = ds.Tables["Medico"].Rows[0].ItemArray;
-                dadosEspecialidade = ds.Tables["Especialidade"].Rows[0].ItemArray;
+                object[] dadosMedico = ds.Tables["Medico"].Rows[0].ItemArray;
+                object[] dadosEspecialidade = ds.Tables["Especialidade"].Rows[0].ItemArray;
 
                 int id = (int)dadosMedico[0];
                 string nome_completo = (string)dadosMedico[1];
@@ -387,7 +589,7 @@ namespace ProjetoClinica.DB
                     imagem = (string) dadosMedico[8];
                 EspecialidadeDBO especialidade = new EspecialidadeDBO((int)dadosEspecialidade[0], (string)dadosEspecialidade[1]);
 
-                m = new MedicoDBO(id, nome_completo, email, data_de_nascimento, endereco, celular, telefone_residencial, imagem, especialidade);
+                MedicoDBO m = new MedicoDBO(id, nome_completo, email, data_de_nascimento, endereco, celular, telefone_residencial, imagem, especialidade);
 
                 return m;
             }
@@ -420,9 +622,6 @@ namespace ProjetoClinica.DB
             DataSet ds = new DataSet();
             ds.Tables.Add("Paciente");
 
-            PacienteDBO p = null;
-            object[] dados;
-
             try
             {
                 // abre conexao
@@ -443,7 +642,7 @@ namespace ProjetoClinica.DB
 
             if (ds.Tables["Paciente"].Rows.Count > 0)
             {
-                dados = ds.Tables["Paciente"].Rows[0].ItemArray;
+                object[] dados = ds.Tables["Paciente"].Rows[0].ItemArray;
 
                 int id = (int)dados[0];
                 string nome_completo = (string)dados[1];
@@ -458,7 +657,7 @@ namespace ProjetoClinica.DB
                 else
                     imagem = (string)dados[8];
 
-                p = new PacienteDBO(id, nome_completo, email, data_de_nascimento, endereco, celular, telefone_residencial, imagem);
+                PacienteDBO p = new PacienteDBO(id, nome_completo, email, data_de_nascimento, endereco, celular, telefone_residencial, imagem);
 
                 return p;
             }
@@ -491,9 +690,6 @@ namespace ProjetoClinica.DB
             DataSet ds = new DataSet();
             ds.Tables.Add("Secretaria");
 
-            SecretariaDBO s = null;
-            object[] dados;
-
             try
             {
                 // abre conexao
@@ -514,12 +710,12 @@ namespace ProjetoClinica.DB
 
             if (ds.Tables["Secretaria"].Rows.Count > 0)
             {
-                dados = ds.Tables["Secretaria"].Rows[0].ItemArray;
+                object[] dados = ds.Tables["Secretaria"].Rows[0].ItemArray;
 
                 codigo = (string)dados[0];
                 string nome_completo = (string)dados[1];
 
-                s = new SecretariaDBO(codigo, nome_completo);
+                SecretariaDBO s = new SecretariaDBO(codigo, nome_completo);
 
                 return s;
             }

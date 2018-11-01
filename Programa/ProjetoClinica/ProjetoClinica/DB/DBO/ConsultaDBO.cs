@@ -40,18 +40,6 @@ namespace ProjetoClinica.DB.DBO
             if (status.IsEmptyString())
                 throw new Exception("Data nula!");
 
-            if (sintomas.IsEmptyString())
-                throw new Exception("Data nula!");
-
-            if (diagnostico.IsEmptyString())
-                throw new Exception("Data nula!");
-
-            if (medicacao.IsEmptyString())
-                throw new Exception("Data nula!");
-
-            if (observacoes.IsEmptyString())
-                throw new Exception("Data nula!");
-
             this.Id = id;
             this.Data = data;
             this.Duracao = duracao;

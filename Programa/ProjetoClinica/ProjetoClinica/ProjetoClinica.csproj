@@ -148,6 +148,7 @@
     <Content Include="images\exam-checking.jpg" />
     <Content Include="images\default_profile_picture.png" />
     <Content Include="medico\consultas\agenda.aspx" />
+    <Content Include="medico\consultas\consulta.aspx" />
     <Content Include="medico\consultas\historico.aspx" />
     <Content Include="medico\index.aspx" />
     <Content Include="paciente\consultas\agenda.aspx" />
@@ -266,6 +267,13 @@
     </Compile>
     <Compile Include="medico\consultas\agenda.aspx.designer.cs">
       <DependentUpon>agenda.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="medico\consultas\consulta.aspx.cs">
+      <DependentUpon>consulta.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="medico\consultas\consulta.aspx.designer.cs">
+      <DependentUpon>consulta.aspx</DependentUpon>
     </Compile>
     <Compile Include="medico\consultas\historico.aspx.cs">
       <DependentUpon>historico.aspx</DependentUpon>

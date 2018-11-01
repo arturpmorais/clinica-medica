@@ -14,7 +14,7 @@
             <asp:UpdatePanel ID="UpdatePanelLblAviso" runat="server">
                 <ContentTemplate>
                     <div class="row">
-                        <center><asp:Label ID="LblAviso" runat="server" Font-Size="Large" ForeColor="#4BB543"></asp:Label></center>
+                        <center><asp:Label ID="LblAviso" runat="server" Font-Size="Large"></asp:Label></center>
                     </div>
                 </ContentTemplate>
             </asp:UpdatePanel>
