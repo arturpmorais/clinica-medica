@@ -13,7 +13,7 @@
                 <center><asp:Label ID="LblAviso" runat="server" Font-Size="Large"></asp:Label></center>
             </div>
 
-            <div class="consultas"></div>
+            <asp:Panel ID="PanelConsultas" runat="server"></asp:Panel>
         </div>
     </div>
 </asp:Content>

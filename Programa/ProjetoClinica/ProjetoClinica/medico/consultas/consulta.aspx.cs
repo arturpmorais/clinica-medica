@@ -21,7 +21,8 @@ namespace ProjetoClinica.medico.consultas
             try
             {
                 int idConsulta = int.Parse(Request.QueryString["id"]);
-                this.Consulta = bd.CarregarConsulta(idConsulta, usuario.Id);
+                this.Consulta = bd.CarregarConsulta(idConsulta, usuario.Id, "MEDICO");
+                PanelConsulta.Visible = true;
             }
             catch (Exception ex)
             {

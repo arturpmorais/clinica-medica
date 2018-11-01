@@ -20,7 +20,12 @@ namespace ProjetoClinica.medico.consultas
 
             try
             {
-                this.Consultas = bd.CarregarHistorico(usuario.Id);
+                this.Consultas = bd.CarregarHistorico(usuario.Id, "MEDICO");
+
+                for (int i = 0; i < this.Consultas.Length; i++)
+                {
+                    this.Consultas[i] = null;
+                }
             }
             catch (Exception ex)
             {

@@ -24,12 +24,16 @@ namespace ProjetoClinica.DB
             this.cs = WebConfigurationManager.ConnectionStrings["ConexaoBD"].ConnectionString;
         }
 
-        public ConsultaDBO[] CarregarHistorico(int idMedico)
+        public ConsultaDBO[] CarregarHistorico(int id, string funcao)
         {
             SqlConnection conn = new SqlConnection(cs);
 
-            SqlCommand cmd = new SqlCommand("SELECT id FROM consulta WHERE idMedico=@idMedico AND status != 'PENDENTE'", conn);
-            cmd.Parameters.AddWithValue("@idMedico", idMedico);
+            SqlCommand cmd = null;
+            if (funcao == "MEDICO")
+                cmd = new SqlCommand("SELECT id FROM consulta WHERE idMedico=@id AND status != 'PENDENTE'", conn);
+            else
+                cmd = new SqlCommand("SELECT id FROM consulta WHERE idPaciente=@id AND status != 'PENDENTE'", conn);
+            cmd.Parameters.AddWithValue("@id", id);
 
             SqlDataAdapter adapter = new SqlDataAdapter(cmd);
             DataSet ds = new DataSet();
@@ -61,7 +65,7 @@ namespace ProjetoClinica.DB
                 for (int i = 0; i < dt.Rows.Count; i++)
                 {
                     int idConsulta = (int)dt.Rows[i].ItemArray[0];
-                    consultas[i] = CarregarConsulta(idConsulta, idMedico);
+                    consultas[i] = CarregarConsulta(idConsulta, id, funcao);
                 }
 
                 return consultas;
@@ -70,12 +74,17 @@ namespace ProjetoClinica.DB
                 throw new Exception("Você não realizou nenhuma consulta ainda!");
         }
 
-        public ConsultaDBO[] CarregarConsultas(int idMedico)
+        public ConsultaDBO[] CarregarConsultas(int id, string funcao)
         {
             SqlConnection conn = new SqlConnection(cs);
 
-            SqlCommand cmd = new SqlCommand("SELECT id FROM consulta WHERE idMedico=@idMedico", conn);
-            cmd.Parameters.AddWithValue("@idMedico", idMedico);
+            SqlCommand cmd = null;
+            if (funcao == "MEDICO")
+                cmd = new SqlCommand("SELECT id FROM consulta WHERE idMedico=@id", conn);
+            else
+                cmd = new SqlCommand("SELECT id FROM consulta WHERE idPaciente=@id", conn);
+
+            cmd.Parameters.AddWithValue("@id", id);
 
             SqlDataAdapter adapter = new SqlDataAdapter(cmd);
             DataSet ds = new DataSet();
@@ -107,7 +116,7 @@ namespace ProjetoClinica.DB
                 for (int i = 0; i < dt.Rows.Count; i++)
                 {
                     int idConsulta = (int)dt.Rows[i].ItemArray[0];
-                    consultas[i] = CarregarConsulta(idConsulta, idMedico);
+                    consultas[i] = CarregarConsulta(idConsulta, id, funcao);
                 }
 
                 return consultas;
@@ -116,24 +125,29 @@ namespace ProjetoClinica.DB
                 throw new Exception("Você não possui consultas marcadas!");
         }
 
-        public ConsultaDBO CarregarConsulta(int idConsulta, int idMedico)
+        public ConsultaDBO CarregarConsulta(int idConsulta, int idUsuario, string funcao)
         {
             SqlConnection conn = new SqlConnection(cs);
 
-            SqlCommand cmdConsulta = new SqlCommand("SELECT * FROM consulta WHERE id=@idConsulta AND idMedico=@idMedico", conn);
+            SqlCommand cmdConsulta = null;
+            if (funcao == "MEDICO")
+                cmdConsulta = new SqlCommand("SELECT * FROM consulta WHERE id=@idConsulta AND idMedico=@idUsuario AND status='PENDENTE'", conn);
+            else
+                cmdConsulta = new SqlCommand("SELECT * FROM consulta WHERE id=@idConsulta AND idPaciente=@idUsuario AND status = 'PENDENTE'", conn);
+
             SqlCommand cmdPaciente= new SqlCommand("SELECT * FROM paciente p, consulta c " +
                                                    "WHERE p.id = c.idPaciente AND c.id=@id", conn);
-            SqlCommand cmdMedico = new SqlCommand("SELECT * FROM medico m WHERE m.id=@id", conn);
+            SqlCommand cmdMedico = new SqlCommand("SELECT * FROM medico m, consulta c " +
+                                                   "WHERE m.id = c.idMedico AND c.id=@id", conn);
             SqlCommand cmdEspecialidade = new SqlCommand("SELECT * FROM especialidade e, medico m " +
-                                                         "WHERE e.id = m.especialidade AND m.id=@id", conn);
+                                                         "WHERE e.id = m.especialidade AND m.id = c.idMedico AND c.id=@id", conn);
 
             cmdConsulta.Parameters.AddWithValue("@idConsulta", idConsulta);
-            cmdConsulta.Parameters.AddWithValue("@idMedico", idMedico);
+            cmdConsulta.Parameters.AddWithValue("@idUsuario", idUsuario);
 
             cmdPaciente.Parameters.AddWithValue("@id", idConsulta);
-
-            cmdMedico.Parameters.AddWithValue("@id", idMedico);
-            cmdEspecialidade.Parameters.AddWithValue("@id", idMedico);
+            cmdMedico.Parameters.AddWithValue("@id", idConsulta);
+            cmdEspecialidade.Parameters.AddWithValue("@id", idConsulta);
 
             SqlDataAdapter adapter = new SqlDataAdapter();
             DataSet ds = new DataSet();
@@ -494,7 +508,7 @@ namespace ProjetoClinica.DB
             VerificarDisponibilidade(idMedico, idPaciente, datetime);
 
             SqlConnection conn = new SqlConnection(cs);
-            SqlCommand cmd = new SqlCommand("INSERT INTO consulta VALUES(@data, @duracao, @idMedico, @idPaciente, @status, null, null, null, 0)", conn);
+            SqlCommand cmd = new SqlCommand("INSERT INTO consulta VALUES(@data, @duracao, @idMedico, @idPaciente, @status, null, null, null, null, 0)", conn);
             cmd.Parameters.AddWithValue("@data", datetime);
             cmd.Parameters.AddWithValue("@duracao", duracao);
             cmd.Parameters.AddWithValue("@idMedico", idMedico);

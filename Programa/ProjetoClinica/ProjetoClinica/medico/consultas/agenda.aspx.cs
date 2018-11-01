@@ -20,7 +20,7 @@ namespace ProjetoClinica.medico.consultas
 
             try
             {
-                this.Consultas = bd.CarregarConsultas(usuario.Id);
+                this.Consultas = bd.CarregarConsultas(usuario.Id, "MEDICO");
             }
             catch (Exception ex)
             {
