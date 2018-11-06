@@ -65,7 +65,7 @@ namespace ProjetoClinica.DB
                 for (int i = 0; i < dt.Rows.Count; i++)
                 {
                     int idConsulta = (int)dt.Rows[i].ItemArray[0];
-                    consultas[i] = CarregarConsulta(idConsulta, id, funcao);
+                    consultas[i] = CarregarConsultaCompleta(idConsulta, id, funcao);
                 }
 
                 return consultas;
@@ -129,17 +129,89 @@ namespace ProjetoClinica.DB
         {
             SqlConnection conn = new SqlConnection(cs);
 
+            SqlCommand cmd = null;
+            if (funcao == "MEDICO")
+                cmd = new SqlCommand("SELECT * FROM consulta WHERE id=@idConsulta AND idMedico=@idUsuario", conn);
+            else
+                cmd = new SqlCommand("SELECT * FROM consulta WHERE id=@idConsulta AND idPaciente=@idUsuario", conn);
+
+            cmd.Parameters.AddWithValue("@idConsulta", idConsulta);
+            cmd.Parameters.AddWithValue("@idUsuario", idUsuario);
+
+            SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+            DataSet ds = new DataSet();
+            ds.Tables.Add("Consulta");
+
+            try
+            {
+                // abre conexao
+                conn.Open();
+                // executa a consulta
+                adapter.Fill(ds.Tables["Consulta"]);
+            }
+            catch (Exception)
+            {
+                throw new Exception("Erro ao acessar o Banco de Dados!");
+            }
+            finally
+            {
+                // fecha conexao
+                conn.Close();
+                conn.Dispose();
+            }
+
+            if (ds.Tables["Consulta"].Rows.Count > 0)
+            {
+                object[] dados = ds.Tables["Consulta"].Rows[0].ItemArray;
+
+                string sintomas;
+                if (dados[6] is System.DBNull)
+                    sintomas = null;
+                else
+                    sintomas = (string)dados[6];
+
+                string diagnostico;
+                if (dados[7] is System.DBNull)
+                    diagnostico = null;
+                else
+                    diagnostico = (string)dados[7];
+
+                string medicacao;
+                if (dados[8] is System.DBNull)
+                    medicacao = null;
+                else
+                    medicacao = (string)dados[8];
+
+                string observacoes;
+                if (dados[9] is System.DBNull)
+                    observacoes = null;
+                else
+                    observacoes = (string)dados[9];
+
+                ConsultaDBO c = new ConsultaDBO((int)dados[0], (string)dados[1], (string)dados[2], null, null,
+                                    (string)dados[5], sintomas, diagnostico, medicacao, observacoes);
+
+                return c;
+            }
+            else
+                throw new Exception("Acesso não autorizado!");
+        }
+
+        public ConsultaDBO CarregarConsultaCompleta(int idConsulta, int idUsuario, string funcao)
+        {
+            SqlConnection conn = new SqlConnection(cs);
+
             SqlCommand cmdConsulta = null;
             if (funcao == "MEDICO")
-                cmdConsulta = new SqlCommand("SELECT * FROM consulta WHERE id=@idConsulta AND idMedico=@idUsuario AND status='PENDENTE'", conn);
+                cmdConsulta = new SqlCommand("SELECT * FROM consulta WHERE id=@idConsulta AND idMedico=@idUsuario", conn);
             else
-                cmdConsulta = new SqlCommand("SELECT * FROM consulta WHERE id=@idConsulta AND idPaciente=@idUsuario AND status = 'PENDENTE'", conn);
+                cmdConsulta = new SqlCommand("SELECT * FROM consulta WHERE id=@idConsulta AND idPaciente=@idUsuario", conn);
 
             SqlCommand cmdPaciente= new SqlCommand("SELECT * FROM paciente p, consulta c " +
                                                    "WHERE p.id = c.idPaciente AND c.id=@id", conn);
             SqlCommand cmdMedico = new SqlCommand("SELECT * FROM medico m, consulta c " +
                                                    "WHERE m.id = c.idMedico AND c.id=@id", conn);
-            SqlCommand cmdEspecialidade = new SqlCommand("SELECT * FROM especialidade e, medico m " +
+            SqlCommand cmdEspecialidade = new SqlCommand("SELECT * FROM especialidade e, medico m, consulta c " +
                                                          "WHERE e.id = m.especialidade AND m.id = c.idMedico AND c.id=@id", conn);
 
             cmdConsulta.Parameters.AddWithValue("@idConsulta", idConsulta);
@@ -174,7 +246,7 @@ namespace ProjetoClinica.DB
                 adapter.SelectCommand = cmdEspecialidade;
                 adapter.Fill(ds.Tables["Especialidade"]);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 throw new Exception("Erro ao acessar o Banco de Dados!");
             }
@@ -240,7 +312,7 @@ namespace ProjetoClinica.DB
             }
             else
                 throw new Exception("Acesso não autorizado!");
-    }
+        }
 
         public string CarregarDadosRelatorios()
         {

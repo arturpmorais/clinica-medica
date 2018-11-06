@@ -31,11 +31,11 @@ namespace ProjetoClinica.DB.DBO
             if (duracao.IsEmptyString())
                 throw new Exception("Duração nula!");
 
-            if (medico == null)
-                throw new Exception("Médico nulo!");
+            //if (medico == null)
+            //    throw new Exception("Médico nulo!");
 
-            if (paciente == null)
-                throw new Exception("Paciente nulo!");
+            //if (paciente == null)
+            //    throw new Exception("Paciente nulo!");
 
             if (status.IsEmptyString())
                 throw new Exception("Data nula!");

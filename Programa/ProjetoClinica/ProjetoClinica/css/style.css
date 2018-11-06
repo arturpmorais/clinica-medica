@@ -16,6 +16,14 @@ i.btn-asp input, input.btn-asp {
     outline: none;
 }
 
+a.btn-arrow i {
+    cursor: pointer !important;
+}
+
+.title-size {
+    font-size: 20px;
+}
+
 .ct-label {
     color: black;
 }

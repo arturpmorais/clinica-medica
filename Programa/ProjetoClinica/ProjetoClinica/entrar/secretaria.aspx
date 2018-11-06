@@ -8,7 +8,7 @@
         <ContentTemplate>
             <div class="container whitecontainer containerform">
                 <div class="col m9 s12">
-                    <center><h2>Secretária</h2></center>
+                    <center><h2>Secretaria</h2></center>
 
                     <div class="divider"></div>
                     <br />

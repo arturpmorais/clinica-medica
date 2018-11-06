@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
+using System.Web.UI.HtmlControls;
 using System.Web.UI.WebControls;
 
 namespace ProjetoClinica.medico.consultas
@@ -22,10 +23,43 @@ namespace ProjetoClinica.medico.consultas
             {
                 this.Consultas = bd.CarregarHistorico(usuario.Id, "MEDICO");
 
+                HtmlGenericControl collection = new HtmlGenericControl("ul");
+                collection.Attributes.Add("class", "collection");
+
                 for (int i = 0; i < this.Consultas.Length; i++)
                 {
-                    this.Consultas[i] = null;
+                    HtmlGenericControl item = new HtmlGenericControl("li");
+                    item.Attributes.Add("class", "collection-item avatar");
+
+                    HtmlGenericControl img = new HtmlGenericControl("i");
+                    img.Attributes.Add("class", "material-icons circle cyan custom-reallydarkcyan");
+                    img.InnerHtml = "access_time";
+
+                    HtmlGenericControl title = new HtmlGenericControl("span");
+                    if (this.Consultas[i].Status == "REALIZADA")
+                        title.InnerHtml = "Consulta: <label class=\"green-text title-size\">" + this.Consultas[i].Status + "</label>";
+                    else if (this.Consultas[i].Status == "CANCELADA")
+                        title.InnerHtml = "Consulta: <label class=\"red-text title-size\">" + this.Consultas[i].Status + "</label>";
+                    title.Attributes.Add("class", "title title-size");
+
+                    HtmlGenericControl content = new HtmlGenericControl("p");
+                    content.InnerHtml = "Paciente: " +  this.Consultas[i].Paciente.Nome_Completo + "<br/> Data: " + this.Consultas[i].Data;
+
+                    HtmlGenericControl arrow = new HtmlGenericControl("a");
+                    arrow.Attributes.Add("href", "consulta?id=" + this.Consultas[i].Id);
+                    arrow.Attributes.Add("class", "secondary-content btn-floating waves-effect waves-light btn-arrow");
+                    arrow.InnerHtml = "<i class=\"material-icons\">arrow_forward</i>";
+
+                    item.Controls.Add(img);
+                    item.Controls.Add(title);
+                    item.Controls.Add(content);
+                    item.Controls.Add(arrow);
+
+                    collection.Controls.Add(item);
                 }
+
+                PanelConsultas.Controls.Add(collection);
+                PanelConsultas.Visible = true;
             }
             catch (Exception ex)
             {
