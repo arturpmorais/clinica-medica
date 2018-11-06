@@ -273,3 +273,42 @@ C:\Users\caiop\OneDrive\Área de Trabalho\ClinicaMedica\Programa\ProjetoClinica\
 C:\Users\caiop\OneDrive\Área de Trabalho\ClinicaMedica\Programa\ProjetoClinica\ProjetoClinica\obj\Debug\ProjetoClinica.csproj.CopyComplete
 C:\Users\caiop\OneDrive\Área de Trabalho\ClinicaMedica\Programa\ProjetoClinica\ProjetoClinica\obj\Debug\ProjetoClinica.dll
 C:\Users\caiop\OneDrive\Área de Trabalho\ClinicaMedica\Programa\ProjetoClinica\ProjetoClinica\obj\Debug\ProjetoClinica.pdb
+C:\Users\u17164\Desktop\pratica\ClinicaMedica\Programa\ProjetoClinica\ProjetoClinica\bin\ApplicationInsights.config
+C:\Users\u17164\Desktop\pratica\ClinicaMedica\Programa\ProjetoClinica\ProjetoClinica\bin\ProjetoClinica.dll.config
+C:\Users\u17164\Desktop\pratica\ClinicaMedica\Programa\ProjetoClinica\ProjetoClinica\bin\ProjetoClinica.dll
+C:\Users\u17164\Desktop\pratica\ClinicaMedica\Programa\ProjetoClinica\ProjetoClinica\bin\ProjetoClinica.pdb
+C:\Users\u17164\Desktop\pratica\ClinicaMedica\Programa\ProjetoClinica\ProjetoClinica\bin\Antlr3.Runtime.dll
+C:\Users\u17164\Desktop\pratica\ClinicaMedica\Programa\ProjetoClinica\ProjetoClinica\bin\AspNet.ScriptManager.bootstrap.dll
+C:\Users\u17164\Desktop\pratica\ClinicaMedica\Programa\ProjetoClinica\ProjetoClinica\bin\AspNet.ScriptManager.jQuery.dll
+C:\Users\u17164\Desktop\pratica\ClinicaMedica\Programa\ProjetoClinica\ProjetoClinica\bin\Microsoft.AI.Agent.Intercept.dll
+C:\Users\u17164\Desktop\pratica\ClinicaMedica\Programa\ProjetoClinica\ProjetoClinica\bin\Microsoft.AI.DependencyCollector.dll
+C:\Users\u17164\Desktop\pratica\ClinicaMedica\Programa\ProjetoClinica\ProjetoClinica\bin\Microsoft.AI.PerfCounterCollector.dll
+C:\Users\u17164\Desktop\pratica\ClinicaMedica\Programa\ProjetoClinica\ProjetoClinica\bin\Microsoft.AI.ServerTelemetryChannel.dll
+C:\Users\u17164\Desktop\pratica\ClinicaMedica\Programa\ProjetoClinica\ProjetoClinica\bin\Microsoft.AI.Web.dll
+C:\Users\u17164\Desktop\pratica\ClinicaMedica\Programa\ProjetoClinica\ProjetoClinica\bin\Microsoft.AI.WindowsServer.dll
+C:\Users\u17164\Desktop\pratica\ClinicaMedica\Programa\ProjetoClinica\ProjetoClinica\bin\Microsoft.ApplicationInsights.dll
+C:\Users\u17164\Desktop\pratica\ClinicaMedica\Programa\ProjetoClinica\ProjetoClinica\bin\Microsoft.AspNet.FriendlyUrls.dll
+C:\Users\u17164\Desktop\pratica\ClinicaMedica\Programa\ProjetoClinica\ProjetoClinica\bin\Microsoft.AspNet.Web.Optimization.WebForms.dll
+C:\Users\u17164\Desktop\pratica\ClinicaMedica\Programa\ProjetoClinica\ProjetoClinica\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+C:\Users\u17164\Desktop\pratica\ClinicaMedica\Programa\ProjetoClinica\ProjetoClinica\bin\Microsoft.ScriptManager.MSAjax.dll
+C:\Users\u17164\Desktop\pratica\ClinicaMedica\Programa\ProjetoClinica\ProjetoClinica\bin\Microsoft.ScriptManager.WebForms.dll
+C:\Users\u17164\Desktop\pratica\ClinicaMedica\Programa\ProjetoClinica\ProjetoClinica\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\u17164\Desktop\pratica\ClinicaMedica\Programa\ProjetoClinica\ProjetoClinica\bin\Newtonsoft.Json.dll
+C:\Users\u17164\Desktop\pratica\ClinicaMedica\Programa\ProjetoClinica\ProjetoClinica\bin\System.Web.Optimization.dll
+C:\Users\u17164\Desktop\pratica\ClinicaMedica\Programa\ProjetoClinica\ProjetoClinica\bin\WebGrease.dll
+C:\Users\u17164\Desktop\pratica\ClinicaMedica\Programa\ProjetoClinica\ProjetoClinica\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\Users\u17164\Desktop\pratica\ClinicaMedica\Programa\ProjetoClinica\ProjetoClinica\bin\System.Web.Optimization.xml
+C:\Users\u17164\Desktop\pratica\ClinicaMedica\Programa\ProjetoClinica\ProjetoClinica\bin\Antlr3.Runtime.pdb
+C:\Users\u17164\Desktop\pratica\ClinicaMedica\Programa\ProjetoClinica\ProjetoClinica\bin\Microsoft.AspNet.FriendlyUrls.xml
+C:\Users\u17164\Desktop\pratica\ClinicaMedica\Programa\ProjetoClinica\ProjetoClinica\bin\Newtonsoft.Json.xml
+C:\Users\u17164\Desktop\pratica\ClinicaMedica\Programa\ProjetoClinica\ProjetoClinica\bin\Microsoft.ApplicationInsights.xml
+C:\Users\u17164\Desktop\pratica\ClinicaMedica\Programa\ProjetoClinica\ProjetoClinica\bin\Microsoft.AI.DependencyCollector.xml
+C:\Users\u17164\Desktop\pratica\ClinicaMedica\Programa\ProjetoClinica\ProjetoClinica\bin\Microsoft.AI.ServerTelemetryChannel.xml
+C:\Users\u17164\Desktop\pratica\ClinicaMedica\Programa\ProjetoClinica\ProjetoClinica\bin\Microsoft.AI.WindowsServer.xml
+C:\Users\u17164\Desktop\pratica\ClinicaMedica\Programa\ProjetoClinica\ProjetoClinica\bin\Microsoft.AI.Web.xml
+C:\Users\u17164\Desktop\pratica\ClinicaMedica\Programa\ProjetoClinica\ProjetoClinica\bin\pt-br\System.Web.Optimization.resources.dll
+C:\Users\u17164\Desktop\pratica\ClinicaMedica\Programa\ProjetoClinica\ProjetoClinica\bin\pt-br\Microsoft.AspNet.FriendlyUrls.resources.dll
+C:\Users\u17164\Desktop\pratica\ClinicaMedica\Programa\ProjetoClinica\ProjetoClinica\obj\Debug\ProjetoClinica.csprojResolveAssemblyReference.cache
+C:\Users\u17164\Desktop\pratica\ClinicaMedica\Programa\ProjetoClinica\ProjetoClinica\obj\Debug\ProjetoClinica.csproj.CoreCompileInputs.cache
+C:\Users\u17164\Desktop\pratica\ClinicaMedica\Programa\ProjetoClinica\ProjetoClinica\obj\Debug\ProjetoClinica.dll
+C:\Users\u17164\Desktop\pratica\ClinicaMedica\Programa\ProjetoClinica\ProjetoClinica\obj\Debug\ProjetoClinica.pdb

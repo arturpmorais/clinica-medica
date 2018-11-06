@@ -25,6 +25,8 @@
                 draggable: true
             });
 
+            $('.collapsible').collapsible();
+
             M.updateTextFields();
         });
     </script>
@@ -64,7 +66,7 @@
                             <a class="collapsible-header"><i class="fa fa-heartbeat"></i>Consultas</a>
                             <div class="collapsible-body">
                                 <ul>
-                                    <li><a runat="server" href="~/paciente/consultas/agenda.aspx"><i class="material-icons">list</i>Agenda</a></li>
+                                    <li><a runat="server" href="~/paciente/consultas/agenda.aspx"><i class="material-icons">event_note</i>Agenda</a></li>
                                     <li><a runat="server" href="~/paciente/consultas/historico.aspx"><i class="material-icons">restore</i>Histórico</a></li>
                                 </ul>
                             </div>

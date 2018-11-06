@@ -66,7 +66,7 @@
                             <a class="collapsible-header"><i class="material-icons">event_note</i>Consultas</a>
                             <div class="collapsible-body">
                                 <ul>
-                                    <li><a runat="server" href="~/medico/consultas/agenda.aspx"><i class="material-icons">list</i>Agenda</a></li>
+                                    <li><a runat="server" href="~/medico/consultas/agenda.aspx"><i class="material-icons">event_note</i>Agenda</a></li>
                                     <li><a runat="server" href="~/medico/consultas/historico.aspx"><i class="material-icons">restore</i>Histórico</a></li>
                                 </ul>
                             </div>
