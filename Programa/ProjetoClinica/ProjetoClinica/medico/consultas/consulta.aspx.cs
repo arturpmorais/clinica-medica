@@ -20,8 +20,35 @@ namespace ProjetoClinica.medico.consultas
 
             try
             {
-                int idConsulta = int.Parse(Request.QueryString["id"]);
-                this.Consulta = bd.CarregarConsulta(idConsulta, usuario.Id, "MEDICO");
+                int idConsulta;
+                string query = Request.QueryString["id"];
+                if (query == null || !int.TryParse(query, out idConsulta))
+                    throw new Exception("Consulta não encontrada!");
+
+                this.Consulta = bd.CarregarConsultaCompleta(idConsulta, usuario.Id, "MEDICO");
+
+                LblPaciente.Text = this.Consulta.Paciente.Nome_Completo;
+                LblData.Text = this.Consulta.Data.Split(' ')[0];
+                LblHorario.Text = this.Consulta.Data.Split(' ')[1];
+                LblDuracao.Text = this.Consulta.Duracao + "h";
+
+                if (this.Consulta.Diagnostico != null)
+                    TxtAreaDiagnostico.Text = this.Consulta.Diagnostico;
+                if (this.Consulta.Medicacao != null)
+                    TxtAreaMedicacao.Text = this.Consulta.Medicacao;
+                if (this.Consulta.Observacoes != null)
+                    TxtAreaObservacoes.Text = this.Consulta.Observacoes;
+                if (this.Consulta.Sintomas != null)
+                    TxtAreaSintomas.Text = this.Consulta.Sintomas;
+
+                if (this.Consulta.Status == "PENDENTE")
+                {
+                    TxtAreaDiagnostico.ReadOnly = false;
+                    TxtAreaMedicacao.ReadOnly = false;
+                    TxtAreaObservacoes.ReadOnly = false;
+                    TxtAreaSintomas.ReadOnly = false;
+                }
+
                 PanelConsulta.Visible = true;
             }
             catch (Exception ex)
