@@ -84,7 +84,7 @@ namespace ProjetoClinica.medico.consultas
 
                         HtmlGenericControl content = new HtmlGenericControl("p");
                         content.InnerHtml = "&nbsp;Horário: " + this.Consultas[i].Data.Split(' ')[1] +
-                                            "<br/> &nbsp;Paciente: " + this.Consultas[i].Paciente.Nome_Completo +
+                                            "<br/> &nbsp;Médico: " + this.Consultas[i].Medico.Nome_Completo +
                                             "<br/> &nbsp;Duração: " + this.Consultas[i].Duracao + "h";
 
 

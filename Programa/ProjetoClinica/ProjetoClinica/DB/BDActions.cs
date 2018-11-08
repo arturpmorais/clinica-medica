@@ -29,7 +29,7 @@ namespace ProjetoClinica.DB
             SqlConnection conn = new SqlConnection(cs);
 
             SqlCommand cmd = null;
-            if (funcao == "MEDICO")
+            if (funcao.ToUpper() == "MEDICO")
                 cmd = new SqlCommand("SELECT id FROM consulta WHERE idMedico=@id AND status != 'PENDENTE' ORDER BY data DESC", conn);
             else
                 cmd = new SqlCommand("SELECT id FROM consulta WHERE idPaciente=@id AND status != 'PENDENTE' ORDER BY data DESC", conn);
@@ -79,7 +79,7 @@ namespace ProjetoClinica.DB
             SqlConnection conn = new SqlConnection(cs);
 
             SqlCommand cmd = null;
-            if (funcao == "MEDICO")
+            if (funcao.ToUpper() == "MEDICO")
                 cmd = new SqlCommand("SELECT id FROM consulta WHERE idMedico=@id AND status = 'PENDENTE' ORDER BY data", conn);
             else
                 cmd = new SqlCommand("SELECT id FROM consulta WHERE idPaciente=@id AND status = 'PENDENTE' ORDER BY data", conn);
@@ -129,7 +129,7 @@ namespace ProjetoClinica.DB
             SqlConnection conn = new SqlConnection(cs);
 
             SqlCommand cmd = null;
-            if (funcao == "MEDICO")
+            if (funcao.ToUpper() == "MEDICO")
                 cmd = new SqlCommand("SELECT * FROM consulta WHERE id=@idConsulta AND idMedico=@idUsuario", conn);
             else
                 cmd = new SqlCommand("SELECT * FROM consulta WHERE id=@idConsulta AND idPaciente=@idUsuario", conn);
@@ -201,7 +201,7 @@ namespace ProjetoClinica.DB
             SqlConnection conn = new SqlConnection(cs);
 
             SqlCommand cmdConsulta = null;
-            if (funcao == "MEDICO")
+            if (funcao.ToUpper() == "MEDICO")
                 cmdConsulta = new SqlCommand("SELECT * FROM consulta WHERE id=@idConsulta AND idMedico=@idUsuario", conn);
             else
                 cmdConsulta = new SqlCommand("SELECT * FROM consulta WHERE id=@idConsulta AND idPaciente=@idUsuario", conn);
