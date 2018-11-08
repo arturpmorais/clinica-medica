@@ -55,10 +55,11 @@
                     <div class="card-reveal">
                         <span class="card-title grey-text text-darken-4">Consultas<i class="material-icons right">close</i></span>
                         <p>
-                            Praesent ac ante et sem pretium fringilla. Duis vitae tempus quam, ut auctor turpis. Cras quis pharetra leo. 
-                            Mauris bibendum metus nec commodo viverra.
-                            Aliquam aliquet ornare velit vitae finibus. Suspendisse ac mollis ex, nec molestie turpis. 
-                            Pellentesque tristique velit quis sapien ornare, eu semper neque blandit. Pellentesque ultrices imperdiet erat ut mattis. 
+                            Nossas consultas são pré-agendadas para que nós possamos lhe oferecer o melhor atendimento médico.
+                            <br />
+                            <br />
+                            Trabalhamos com o conceito de atendimento personalizado para cada paciente, analisando as diferenças e necessidades de cada um e
+                            fornecendo assim os cuidados necessários. Isso nos leva a ser a melhor clínica da região e justifica os prêmios que conquistamos.
                         </p>
                     </div>
                 </div>
@@ -76,10 +77,12 @@
                     <div class="card-reveal">
                         <span class="card-title grey-text text-darken-4">Equipe Médica<i class="material-icons right">close</i></span>
                         <p>
-                            Nam ultricies mi ac quam tempor, sit amet sodales odio tristique. Cras ornare malesuada risus, malesuada porta tortor gravida quis. 
-                            Phasellus mollis dui et nisi cursus, ut vestibulum urna elementum. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; 
-                            Mauris vitae suscipit magna. Aenean at varius turpis. Proin ut auctor metus. In id maximus orci. Nulla facilisi. 
-                            Nam venenatis ipsum ut lectus aliquet, in pretium tortor molestie. Curabitur tincidunt porta sapien, et volutpat urna commodo eu. 
+                            Nós temos os melhores profissionais. 
+                            <br />
+                            <br />
+                            Após anos de pesquisas, descobrimos a sua real necessidade. Reunimos em um só lugar o que há de melhor em 
+                            serviços médicos, clínicos e laboratórios. Neste momento, somos todos parceiros para lhe proporcionar um atendimento 
+                            perfeito!
                         </p>
                     </div>
                 </div>
@@ -97,12 +100,15 @@
                     <div class="card-reveal">
                         <span class="card-title grey-text text-darken-4">Nossos Princípios<i class="material-icons right">close</i></span>
                         <p>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. In gravida magna malesuada ante viverra lacinia. 
-                            Aliquam dapibus mauris malesuada ligula sodales sollicitudin. Sed eu ultricies dolor, sodales imperdiet tellus. 
-                            Ut vitae ornare diam. Vestibulum vel ipsum ultricies nibh pellentesque varius eu a sapien. 
-                            Aenean tempus nisi nisl, vel ornare lectus pellentesque nec. In hac habitasse platea dictumst. 
-                            Ut a ornare sapien. Proin ac turpis scelerisque, eleifend arcu ut, fermentum mi. 
-                            Suspendisse orci urna, cursus at posuere a, vulputate sed elit. 
+                            Acreditamos no valor humano como o mais importante investimento, por isso a política de nossa clínica foca no bem 
+                            estar de nossos clientes. Mais que pacientes, os vemos como parceiros diante dos desafios colocados a cada novo 
+                            projeto.
+                            <br /> 
+                            <br /> 
+                            A responsabilidade, a ética e a transparência na execução de todos os procedimentos desenvolvidos bem como em qualquer 
+                            ação que empreendemos, são os pilares para o nosso sucesso. Entendemos que uma boa comunicação gera 
+                            resultados positivos e rápidos, por isso valorizamos o diálogo claro e estamos sempre 
+                            prontos a ouvir nossos pacientes para podermos corresponder às suas necessidades e expectativas.
                         </p>
                     </div>
                 </div>
