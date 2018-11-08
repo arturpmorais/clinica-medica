@@ -77,6 +77,7 @@ namespace ProjetoClinica.secretaria
             }
             catch (Exception ex)
             {
+                RowAviso.Visible = true;
                 LblAviso.ForeColor = System.Drawing.ColorTranslator.FromHtml("#CC0000");
                 LblAviso.Text = ex.Message;
 

@@ -31,6 +31,15 @@ namespace ProjetoClinica.secretaria {
         protected global::System.Web.UI.UpdatePanel UpdatePanel;
         
         /// <summary>
+        /// Controle RowAviso.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl RowAviso;
+        
+        /// <summary>
         /// Controle LblAviso.
         /// </summary>
         /// <remarks>
@@ -38,6 +47,24 @@ namespace ProjetoClinica.secretaria {
         /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label LblAviso;
+        
+        /// <summary>
+        /// Controle GridViewConsultasProximas.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView GridViewConsultasProximas;
+        
+        /// <summary>
+        /// Controle SqlDataSourceConsultasProximas.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSourceConsultasProximas;
         
         /// <summary>
         /// Controle LbPacientes.

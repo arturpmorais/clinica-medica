@@ -13,12 +13,30 @@
                     <div class="divider"></div>
                     <br />
 
-                    <div class="row">
+                    <div class="row" runat="server" id="RowAviso" visible="false">
                         <center><asp:Label ID="LblAviso" runat="server" Font-Size="Large"></asp:Label></center>
                     </div>
 
                     <form>
+                        <div class="title-table">
+                            <center><label>Consultas próximas</label></center>
+                        </div>
                         <div class="row">
+                            <asp:GridView ID="GridViewConsultasProximas" runat="server" CssClass="centered" AutoGenerateColumns="False" DataKeyNames="id" DataSourceID="SqlDataSourceConsultasProximas" EmptyDataText="Não há nenhuma consulta próxima a ser avisada!" ShowHeaderWhenEmpty="True">
+                                <Columns>
+                                    <asp:BoundField DataField="id" HeaderText="ID" InsertVisible="False" ReadOnly="True" SortExpression="id" />
+                                    <asp:BoundField DataField="data" HeaderText="Data/Horário" SortExpression="data" />
+                                    <asp:BoundField DataField="duracao" HeaderText="Duração" SortExpression="duracao" />
+                                    <asp:BoundField DataField="paciente" HeaderText="Paciente" SortExpression="paciente" />
+                                    <asp:BoundField DataField="medico" HeaderText="Médico" SortExpression="medico" />
+                                    <asp:BoundField DataField="status" HeaderText="Status" SortExpression="status" />
+                                </Columns>
+                            </asp:GridView>
+                            <asp:SqlDataSource ID="SqlDataSourceConsultasProximas" runat="server" ConnectionString="<%$ ConnectionStrings:ConexaoBD %>" SelectCommand="SELECT c.id, c. data, c.duracao, p.nome_completo as paciente, m.nome_completo as medico, c.status FROM consulta c, paciente p, medico m WHERE p.id = c.idPaciente AND m.id = c.idMedico AND c.status != 'CANCELADA' AND DATEDIFF(DAY, GETDATE(), CONVERT(DATE, c.data, 103)) &gt;= 0 AND DATEDIFF(DAY, GETDATE(), CONVERT(DATE, c.data, 103)) &lt;= 2 AND c.pacienteAvisado = 0 ORDER BY c.data"></asp:SqlDataSource>
+                        </div>
+
+                        <div class="row containerPacientesNaoAvisados">
+                            <label>Pacientes:</label>
                             <div class="input-field ddl">
                                 <i class="material-icons prefix">hourglass_empty</i>
                                 <asp:ListBox ID="LbPacientes" runat="server" SelectionMode="Multiple"></asp:ListBox>
