@@ -49,39 +49,75 @@ namespace ProjetoClinica.medico.consultas {
         protected global::System.Web.UI.WebControls.Panel PanelConsulta;
         
         /// <summary>
-        /// Controle TxtAreaEmailBody.
+        /// Controle LblPaciente.
         /// </summary>
         /// <remarks>
         /// Campo gerado automaticamente.
         /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TxtAreaEmailBody;
+        protected global::System.Web.UI.WebControls.Label LblPaciente;
         
         /// <summary>
-        /// Controle TextBox1.
+        /// Controle LblData.
         /// </summary>
         /// <remarks>
         /// Campo gerado automaticamente.
         /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox1;
+        protected global::System.Web.UI.WebControls.Label LblData;
         
         /// <summary>
-        /// Controle TextBox2.
+        /// Controle LblHorario.
         /// </summary>
         /// <remarks>
         /// Campo gerado automaticamente.
         /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox2;
+        protected global::System.Web.UI.WebControls.Label LblHorario;
         
         /// <summary>
-        /// Controle TextBox3.
+        /// Controle LblDuracao.
         /// </summary>
         /// <remarks>
         /// Campo gerado automaticamente.
         /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox3;
+        protected global::System.Web.UI.WebControls.Label LblDuracao;
+        
+        /// <summary>
+        /// Controle TxtAreaSintomas.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TxtAreaSintomas;
+        
+        /// <summary>
+        /// Controle TxtAreaDiagnostico.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TxtAreaDiagnostico;
+        
+        /// <summary>
+        /// Controle TxtAreaMedicacao.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TxtAreaMedicacao;
+        
+        /// <summary>
+        /// Controle TxtAreaObservacoes.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TxtAreaObservacoes;
     }
 }

@@ -230,6 +230,10 @@ a.content-indicator {
     border-radius: 50px;
 }
 
+div.prox-consulta {
+    margin-top: 0 !important;
+}
+
 .ct-series-a .ct-bar {
     stroke-width: 30px;
 }

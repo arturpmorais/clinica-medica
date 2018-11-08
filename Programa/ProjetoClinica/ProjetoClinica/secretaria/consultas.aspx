@@ -49,7 +49,7 @@
 
                                 <div class="row">
                                     <div class="input-field ddl">
-                                        <i class="material-icons prefix">local_hospital</i>
+                                        <i class="fas fa-user-md prefix"></i>
                                         <asp:DropDownList ID="ddlMedicoConsulta" runat="server" AppendDataBoundItems="True" DataSourceID="SqlDataSourceMedicosConsulta" DataTextField="nome_completo" DataValueField="id">
                                             <asp:ListItem Text="Médico:" Value ="-1"></asp:ListItem>
                                         </asp:DropDownList>

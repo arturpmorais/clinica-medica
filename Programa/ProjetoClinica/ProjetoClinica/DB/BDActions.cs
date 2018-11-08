@@ -30,9 +30,9 @@ namespace ProjetoClinica.DB
 
             SqlCommand cmd = null;
             if (funcao == "MEDICO")
-                cmd = new SqlCommand("SELECT id FROM consulta WHERE idMedico=@id AND status != 'PENDENTE'", conn);
+                cmd = new SqlCommand("SELECT id FROM consulta WHERE idMedico=@id AND status != 'PENDENTE' ORDER BY data DESC", conn);
             else
-                cmd = new SqlCommand("SELECT id FROM consulta WHERE idPaciente=@id AND status != 'PENDENTE'", conn);
+                cmd = new SqlCommand("SELECT id FROM consulta WHERE idPaciente=@id AND status != 'PENDENTE' ORDER BY data DESC", conn);
             cmd.Parameters.AddWithValue("@id", id);
 
             SqlDataAdapter adapter = new SqlDataAdapter(cmd);
@@ -74,16 +74,15 @@ namespace ProjetoClinica.DB
                 throw new Exception("Você não realizou nenhuma consulta ainda!");
         }
 
-        public ConsultaDBO[] CarregarConsultas(int id, string funcao)
+        public ConsultaDBO[] CarregarAgenda(int id, string funcao)
         {
             SqlConnection conn = new SqlConnection(cs);
 
             SqlCommand cmd = null;
             if (funcao == "MEDICO")
-                cmd = new SqlCommand("SELECT id FROM consulta WHERE idMedico=@id", conn);
+                cmd = new SqlCommand("SELECT id FROM consulta WHERE idMedico=@id AND status = 'PENDENTE' ORDER BY data", conn);
             else
-                cmd = new SqlCommand("SELECT id FROM consulta WHERE idPaciente=@id", conn);
-
+                cmd = new SqlCommand("SELECT id FROM consulta WHERE idPaciente=@id AND status = 'PENDENTE' ORDER BY data", conn);
             cmd.Parameters.AddWithValue("@id", id);
 
             SqlDataAdapter adapter = new SqlDataAdapter(cmd);
@@ -116,13 +115,13 @@ namespace ProjetoClinica.DB
                 for (int i = 0; i < dt.Rows.Count; i++)
                 {
                     int idConsulta = (int)dt.Rows[i].ItemArray[0];
-                    consultas[i] = CarregarConsulta(idConsulta, id, funcao);
+                    consultas[i] = CarregarConsultaCompleta(idConsulta, id, funcao);
                 }
 
                 return consultas;
             }
             else
-                throw new Exception("Você não possui consultas marcadas!");
+                throw new Exception("Você não possui nenhuma consulta agendada!");
         }
 
         public ConsultaDBO CarregarConsulta(int idConsulta, int idUsuario, string funcao)
@@ -194,7 +193,7 @@ namespace ProjetoClinica.DB
                 return c;
             }
             else
-                throw new Exception("Acesso não autorizado!");
+                throw new Exception("Consulta não encontrada!");
         }
 
         public ConsultaDBO CarregarConsultaCompleta(int idConsulta, int idUsuario, string funcao)

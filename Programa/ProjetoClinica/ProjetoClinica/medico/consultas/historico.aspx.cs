@@ -43,7 +43,11 @@ namespace ProjetoClinica.medico.consultas
                     title.Attributes.Add("class", "title title-size");
 
                     HtmlGenericControl content = new HtmlGenericControl("p");
-                    content.InnerHtml = "Paciente: " +  this.Consultas[i].Paciente.Nome_Completo + "<br/> Data: " + this.Consultas[i].Data;
+                    content.InnerHtml = "&nbsp;Paciente: " +  this.Consultas[i].Paciente.Nome_Completo +
+                                        "<br/> &nbsp;Data: " + this.Consultas[i].Data.Split(' ')[0] +
+                                        "<br/> &nbsp;Horário: " + this.Consultas[i].Data.Split(' ')[1] +
+                                        "<br/> &nbsp;Duração: " + this.Consultas[i].Duracao + "h";
+
 
                     HtmlGenericControl arrow = new HtmlGenericControl("a");
                     arrow.Attributes.Add("href", "consulta?id=" + this.Consultas[i].Id);
