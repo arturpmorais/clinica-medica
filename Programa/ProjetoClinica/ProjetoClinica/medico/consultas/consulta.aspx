@@ -21,7 +21,7 @@
                         <form>
                             <div class="consultainfo">
                                 <div class="row">
-                                    <label><i class="material-icons">arrow_forward</i>Paciente: &nbsp;</label>
+                                    <label>Paciente: &nbsp;</label>
                                     <asp:Label ID="LblPaciente" runat="server" Text="Label"></asp:Label>
                                 </div>
 
@@ -43,7 +43,7 @@
 
                             <div class="row">
                                 <div class="input-field">
-                                    <i class="material-icons prefix">mode_edit</i>
+                                    <i class="fas fa-notes-medical prefix"></i>
                                     <asp:TextBox ID="TxtAreaSintomas" runat="server" TextMode="MultiLine" CssClass="materialize-textarea" ReadOnly="True"></asp:TextBox>
                                     <label for="<%= TxtAreaSintomas.ClientID %>">Sintomas:</label>
                                 </div>
@@ -51,7 +51,7 @@
 
                             <div class="row">
                                 <div class="input-field">
-                                    <i class="material-icons prefix">mode_edit</i>
+                                    <i class="fa fa-heartbeat prefix"></i>
                                     <asp:TextBox ID="TxtAreaDiagnostico" runat="server" TextMode="MultiLine" CssClass="materialize-textarea" ReadOnly="True"></asp:TextBox>
                                     <label for="<%= TxtAreaDiagnostico.ClientID %>">Diagnóstico:</label>
                                 </div>
@@ -67,11 +67,22 @@
 
                             <div class="row">
                                 <div class="input-field">
-                                    <i class="fas fa-notes-medical prefix"></i>
+                                    <i class="fas fa-file-medical-alt prefix"></i>
                                     <asp:TextBox ID="TxtAreaObservacoes" runat="server" TextMode="MultiLine" CssClass="materialize-textarea" ReadOnly="True"></asp:TextBox>
                                     <label for="<%= TxtAreaObservacoes.ClientID %>">Observações:</label>
                                 </div>
                             </div>
+
+                            <div class="row">
+                                <center>
+                                    <label>
+                                        <asp:CheckBox ID="CheckBoxRealizada" runat="server" Enabled="False"></asp:CheckBox>
+                                        <span>Consulta finalizada?</span>
+                                    </label>
+                                </center>
+                            </div>
+
+                            <asp:Button ID="BtnAtualizarConsulta" runat="server" Text="Atualizar Consulta" CssClass="waves-effect waves-light btn-large btn-asp" ForeColor="White" Enabled="False" />                            
                         </form>
                     </asp:Panel>
                 </div>

@@ -119,5 +119,23 @@ namespace ProjetoClinica.medico.consultas {
         /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox TxtAreaObservacoes;
+        
+        /// <summary>
+        /// Controle CheckBoxRealizada.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CheckBox CheckBoxRealizada;
+        
+        /// <summary>
+        /// Controle BtnAtualizarConsulta.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button BtnAtualizarConsulta;
     }
 }

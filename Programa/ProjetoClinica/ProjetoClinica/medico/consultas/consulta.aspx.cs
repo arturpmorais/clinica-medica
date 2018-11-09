@@ -41,8 +41,12 @@ namespace ProjetoClinica.medico.consultas
                 if (this.Consulta.Sintomas != null)
                     TxtAreaSintomas.Text = this.Consulta.Sintomas;
 
-                if (this.Consulta.Status == "PENDENTE")
+                if (this.Consulta.Status == "REALIZADA")
+                    CheckBoxRealizada.Checked = true;
+                else if (this.Consulta.Status == "PENDENTE")
                 {
+                    BtnAtualizarConsulta.Enabled = true;
+                    CheckBoxRealizada.Enabled = true;
                     TxtAreaDiagnostico.ReadOnly = false;
                     TxtAreaMedicacao.ReadOnly = false;
                     TxtAreaObservacoes.ReadOnly = false;
