@@ -32,6 +32,28 @@ namespace ProjetoClinica.medico.consultas
                 LblHorario.Text = this.Consulta.Data.Split(' ')[1];
                 LblDuracao.Text = this.Consulta.Duracao + "h";
 
+                if (this.Consulta.Status == "PENDENTE")
+                {
+                    BtnAtualizarConsulta.Enabled = true;
+
+                    TxtAreaDiagnostico.ReadOnly = false;
+                    TxtAreaMedicacao.ReadOnly = false;
+                    TxtAreaObservacoes.ReadOnly = false;
+                    TxtAreaSintomas.ReadOnly = false;
+                }
+                else
+                {
+                    TxtAreaDiagnostico.ReadOnly = true;
+                    TxtAreaMedicacao.ReadOnly = true;
+                    TxtAreaObservacoes.ReadOnly = true;
+                    TxtAreaSintomas.ReadOnly = true;
+
+                    BtnAtualizarConsulta.Enabled = false;
+                    BtnAtualizarConsulta.Attributes.Add("disabled", "true");
+
+                    CheckBoxRealizada.Attributes.Add("disabled", "true");
+                }
+
                 if (this.Consulta.Diagnostico != null)
                     TxtAreaDiagnostico.Text = this.Consulta.Diagnostico;
                 if (this.Consulta.Medicacao != null)
@@ -40,18 +62,8 @@ namespace ProjetoClinica.medico.consultas
                     TxtAreaObservacoes.Text = this.Consulta.Observacoes;
                 if (this.Consulta.Sintomas != null)
                     TxtAreaSintomas.Text = this.Consulta.Sintomas;
-
                 if (this.Consulta.Status == "REALIZADA")
-                    CheckBoxRealizada.Checked = true;
-                else if (this.Consulta.Status == "PENDENTE")
-                {
-                    BtnAtualizarConsulta.Enabled = true;
-                    CheckBoxRealizada.Enabled = true;
-                    TxtAreaDiagnostico.ReadOnly = false;
-                    TxtAreaMedicacao.ReadOnly = false;
-                    TxtAreaObservacoes.ReadOnly = false;
-                    TxtAreaSintomas.ReadOnly = false;
-                }
+                    CheckBoxRealizada.Attributes.Add("checked", "checked");
 
                 PanelConsulta.Visible = true;
             }

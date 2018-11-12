@@ -46,6 +46,10 @@ text.ct-label {
     font-size: 105%;
 }
 
+span.big-text {
+    font-size: 16px !important;
+}
+
 div.consultainfo {
     padding: 0 42px;
 }
@@ -69,6 +73,10 @@ div.ddl input {
 }
 
 div.last-item, div.last-item div {
+    margin-bottom: 0;
+}
+
+div.last-input-field {
     margin-bottom: 0;
 }
 
