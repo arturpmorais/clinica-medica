@@ -124,6 +124,68 @@ namespace ProjetoClinica.DB
                 throw new Exception("Você não possui nenhuma consulta agendada!");
         }
 
+        public void AtualizarConsulta(int id, string sintomas, string diagnostico, string medicacao, string observacoes, bool realizada)
+        {
+            if (sintomas.IsEmptyString())
+                sintomas = null;
+
+            if (diagnostico.IsEmptyString())
+                diagnostico = null;
+
+            if (medicacao.IsEmptyString())
+                medicacao = null;
+
+            if (observacoes.IsEmptyString())
+                observacoes = null;
+
+            SqlConnection conn = new SqlConnection(cs);
+
+            SqlCommand cmd = null;
+            if (realizada)
+                cmd = new SqlCommand("UPDATE consulta SET sintomas=@sintomas, diagnostico=@diagnostico, medicacao=@medicacao, observacoes=@observacoes, status='REALIZADA' WHERE id=@id", conn);
+            else
+                cmd = new SqlCommand("UPDATE consulta SET sintomas=@sintomas, diagnostico=@diagnostico, medicacao=@medicacao, observacoes=@observacoes WHERE id=@id", conn);
+
+            if (sintomas == null)
+                cmd.Parameters.AddWithValue("@sintomas", System.DBNull.Value);
+            else
+                cmd.Parameters.AddWithValue("@sintomas", sintomas);
+
+            if (diagnostico == null)
+                cmd.Parameters.AddWithValue("@diagnostico", System.DBNull.Value);
+            else
+                cmd.Parameters.AddWithValue("@diagnostico", diagnostico);
+
+            if (medicacao == null)
+                cmd.Parameters.AddWithValue("@medicacao", System.DBNull.Value);
+            else
+                cmd.Parameters.AddWithValue("@medicacao", medicacao);
+
+            if (observacoes == null)
+                cmd.Parameters.AddWithValue("@observacoes", System.DBNull.Value);
+            else
+                cmd.Parameters.AddWithValue("@observacoes", observacoes);
+
+            cmd.Parameters.AddWithValue("@id", id);
+
+            try
+            {
+                // abre conexao
+                conn.Open();
+                cmd.ExecuteNonQuery();
+            }
+            catch (Exception)
+            {
+                throw new Exception("Erro ao atualizar consulta!");
+            }
+            finally
+            {
+                // fecha conexao
+                conn.Close();
+                conn.Dispose();
+            }
+        }
+
         public ConsultaDBO CarregarConsulta(int idConsulta, int idUsuario, string funcao)
         {
             SqlConnection conn = new SqlConnection(cs);
@@ -245,7 +307,7 @@ namespace ProjetoClinica.DB
                 adapter.SelectCommand = cmdEspecialidade;
                 adapter.Fill(ds.Tables["Especialidade"]);
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 throw new Exception("Erro ao acessar o Banco de Dados!");
             }

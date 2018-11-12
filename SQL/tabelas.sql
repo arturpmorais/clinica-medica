@@ -36,8 +36,8 @@ CREATE TABLE consulta (
 	idMedico int not null,
 	idPaciente int not null, 
 	status varchar(9) not null, /* PENDENTE CANCELADA REALIZADA */
-	diagnostico ntext,
 	sintomas ntext,
+	diagnostico ntext,
 	medicacao ntext,
 	observacoes ntext,
 	pacienteAvisado bit not null default 0,

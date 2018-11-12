@@ -7,6 +7,12 @@
     padding-left: 375px;
 }
 
+button.btn-html {
+    width: 100%;
+    color: white;
+    outline: none;
+}
+
 i.btn-asp input, input.btn-asp {
     padding: 0;
     margin: 0;
@@ -52,6 +58,7 @@ span.big-text {
 
 div.consultainfo {
     padding: 0 42px;
+    margin-bottom: 32px;
 }
 
 i.btn-asp {

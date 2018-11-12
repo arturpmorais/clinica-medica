@@ -82,7 +82,7 @@
                                 </center>
                             </div>
 
-                            <asp:Button ID="BtnAtualizarConsulta" runat="server" Text="Atualizar Consulta" CssClass="waves-effect waves-light btn-large btn-asp" ForeColor="White" />                            
+                            <asp:Button ID="BtnAtualizarConsulta" runat="server" UseSubmitBehavior="false" Text="Atualizar Consulta" CssClass="waves-effect waves-light btn-large btn-asp" OnClick="BtnAtualizarConsulta_Click"/>
                         </form>
                     </asp:Panel>
                 </div>
