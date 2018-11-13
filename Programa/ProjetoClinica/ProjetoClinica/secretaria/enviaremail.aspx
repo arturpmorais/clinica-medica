@@ -26,7 +26,7 @@
                                 <Columns>
                                     <asp:BoundField DataField="id" HeaderText="ID" InsertVisible="False" ReadOnly="True" SortExpression="id" />
                                     <asp:BoundField DataField="data" HeaderText="Data/Horário" SortExpression="data" />
-                                    <asp:BoundField DataField="duracao" HeaderText="Duração" SortExpression="duracao" />
+                                    <asp:BoundField DataField="duracao" HeaderText="Duração (em horas)" SortExpression="duracao" />
                                     <asp:BoundField DataField="paciente" HeaderText="Paciente" SortExpression="paciente" />
                                     <asp:BoundField DataField="medico" HeaderText="Médico" SortExpression="medico" />
                                     <asp:BoundField DataField="status" HeaderText="Status" SortExpression="status" />

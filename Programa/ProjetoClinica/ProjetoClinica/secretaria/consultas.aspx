@@ -11,6 +11,18 @@
             <div class="divider"></div>
             <br />
 
+            <asp:GridView ID="GridViewConsultas" runat="server" CssClass="highlight" AutoGenerateColumns="False" DataKeyNames="id" DataSourceID="SqlDataSourceConsultas">
+                <Columns>
+                    <asp:BoundField DataField="id" HeaderText="ID" InsertVisible="False" ReadOnly="True" SortExpression="id" />
+                    <asp:BoundField DataField="data" HeaderText="Data/Horário" SortExpression="data" />
+                    <asp:BoundField DataField="duracao" HeaderText="Duração (em horas)" SortExpression="duracao" />
+                    <asp:BoundField DataField="paciente" HeaderText="Paciente" SortExpression="paciente" />
+                    <asp:BoundField DataField="medico" HeaderText="Médico" SortExpression="medico" />
+                    <asp:BoundField DataField="status" HeaderText="Status" SortExpression="status" />
+                </Columns>
+            </asp:GridView>
+            <asp:SqlDataSource ID="SqlDataSourceConsultas" runat="server" ConnectionString="<%$ ConnectionStrings:ConexaoBD %>" SelectCommand="SELECT c.id, c. data, c.duracao, p.nome_completo as paciente, m.nome_completo as medico, c.status FROM consulta c, paciente p, medico m WHERE m.id = c.idMedico AND p.id = c.idPaciente  ORDER BY c.data, m.nome_completo, c.duracao"></asp:SqlDataSource>
+
             <asp:UpdatePanel ID="UpdatePanelLblAviso" runat="server">
                 <ContentTemplate>
                     <div class="row">
@@ -20,6 +32,10 @@
             </asp:UpdatePanel>
 
             <a class="waves-effect waves-light btn btn-small right modal-trigger" href="#modalNovaConsulta">Nova consulta</a>
+
+            <a class="waves-effect waves-light btn btn-small right modal-trigger" href="#modalNovaConsulta">Reagendar consulta</a>
+
+            <a class="waves-effect waves-light btn btn-small right modal-trigger" href="#modalNovaConsulta">Cancelar consulta</a>
 
             <div class="containerpicker"></div>
 

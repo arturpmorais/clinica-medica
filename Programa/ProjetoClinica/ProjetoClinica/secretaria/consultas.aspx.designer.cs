@@ -22,6 +22,24 @@ namespace ProjetoClinica.secretaria {
         protected global::System.Web.UI.ScriptManager ScriptManager;
         
         /// <summary>
+        /// Controle GridViewConsultas.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView GridViewConsultas;
+        
+        /// <summary>
+        /// Controle SqlDataSourceConsultas.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSourceConsultas;
+        
+        /// <summary>
         /// Controle UpdatePanelLblAviso.
         /// </summary>
         /// <remarks>
