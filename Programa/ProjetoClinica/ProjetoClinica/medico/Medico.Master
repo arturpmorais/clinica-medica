@@ -25,6 +25,8 @@
                 draggable: true
             });
 
+            $('select').formSelect();
+
             $('.collapsible').collapsible();
 
             M.updateTextFields();

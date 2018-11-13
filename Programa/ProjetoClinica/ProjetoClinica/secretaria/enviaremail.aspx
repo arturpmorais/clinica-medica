@@ -22,7 +22,7 @@
                             <center><label>Consultas próximas</label></center>
                         </div>
                         <div class="row">
-                            <asp:GridView ID="GridViewConsultasProximas" runat="server" CssClass="centered" AutoGenerateColumns="False" DataKeyNames="id" DataSourceID="SqlDataSourceConsultasProximas" EmptyDataText="Não há nenhuma consulta próxima a ser avisada!" ShowHeaderWhenEmpty="True">
+                            <asp:GridView ID="GridViewConsultasProximas" runat="server" CssClass="highlight" AutoGenerateColumns="False" DataKeyNames="id" DataSourceID="SqlDataSourceConsultasProximas" EmptyDataText="<center>Não há nenhuma consulta próxima a ser avisada!</center>" ShowHeaderWhenEmpty="True">
                                 <Columns>
                                     <asp:BoundField DataField="id" HeaderText="ID" InsertVisible="False" ReadOnly="True" SortExpression="id" />
                                     <asp:BoundField DataField="data" HeaderText="Data/Horário" SortExpression="data" />

@@ -34,9 +34,12 @@ a.btn-arrow i {
     color: black;
 }
 
+.title-table {
+    margin-bottom: 8px !important;
+}
+
 div.title-table {
     font-size: 28px !important;
-    margin-bottom: 8px;
 }
 
 .containerPacientesNaoAvisados > label {
@@ -52,8 +55,12 @@ text.ct-label {
     font-size: 105%;
 }
 
-span.big-text {
+.big-text {
     font-size: 16px !important;
+}
+
+.bigger-text {
+    font-size: 32px !important;
 }
 
 div.consultainfo {
