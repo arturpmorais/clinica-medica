@@ -124,8 +124,93 @@ namespace ProjetoClinica.DB
                 throw new Exception("Você não possui nenhuma consulta agendada!");
         }
 
+        public void ReagendarConsulta(int idConsulta, int idMedico, int idPaciente, string data, string horario, string duracao)
+        {
+            if (idConsulta < 0)
+                throw new Exception("Consulta inválida!");
+
+            if (idMedico < 0)
+                throw new Exception("Médico inválido!");
+
+            if (idPaciente < 0)
+                throw new Exception("Paciente inválido!");
+
+            if (data.IsEmptyString())
+                throw new Exception("Escolha uma data!");
+
+            if (data.Length != 10)
+                throw new Exception("Data inválida!");
+
+            if (horario.IsEmptyString())
+                throw new Exception("Escolha um horário!");
+
+            if (horario.Length != 10)
+                throw new Exception("Horário inválido!");
+
+            if (duracao.IsEmptyString())
+                throw new Exception("Escolha uma duração!");
+
+            string datetime = VerificarDataNovaConsulta(data, horario);
+            VerificarDisponibilidade(idMedico, idPaciente, datetime);
+
+            SqlConnection conn = new SqlConnection(cs);
+
+            SqlCommand cmd = new SqlCommand("UPDATE consulta SET data=@datata, duracao=@duracao, status='PENDENTE' WHERE id=@idConsulta", conn);
+            cmd.Parameters.AddWithValue("@idConsulta", idConsulta);
+            cmd.Parameters.AddWithValue("@data", datetime);
+            cmd.Parameters.AddWithValue("@duracao", duracao);
+
+            try
+            {
+                // abre conexao
+                conn.Open();
+                cmd.ExecuteNonQuery();
+            }
+            catch (Exception)
+            {
+                throw new Exception("Erro ao cancelar consulta!");
+            }
+            finally
+            {
+                // fecha conexao
+                conn.Close();
+                conn.Dispose();
+            }
+        }
+
+        public void CancelarConsulta(int id)
+        {
+            if (id < 0)
+                throw new Exception("Consulta inválida!");
+
+            SqlConnection conn = new SqlConnection(cs);
+
+            SqlCommand cmd = new SqlCommand("UPDATE consulta SET status='CANCELADA' WHERE id=@id", conn);
+            cmd.Parameters.AddWithValue("@id", id);
+
+            try
+            {
+                // abre conexao
+                conn.Open();
+                cmd.ExecuteNonQuery();
+            }
+            catch (Exception)
+            {
+                throw new Exception("Erro ao cancelar consulta!");
+            }
+            finally
+            {
+                // fecha conexao
+                conn.Close();
+                conn.Dispose();
+            }
+        }
+
         public void AtualizarConsulta(int id, string sintomas, string diagnostico, string medicacao, string observacoes, bool realizada)
         {
+            if (id < 0)
+                throw new Exception("Consulta inválida!");
+
             if (sintomas.IsEmptyString())
                 sintomas = null;
 
@@ -630,14 +715,19 @@ namespace ProjetoClinica.DB
             if (data.IsEmptyString())
                 throw new Exception("Escolha uma data!");
 
+            if (data.Length != 10)
+                throw new Exception("Data inválida!");
+
             if (horario.IsEmptyString())
                 throw new Exception("Escolha um horário!");
+
+            if (horario.Length != 10)
+                throw new Exception("Horário inválido!");
 
             if (duracao.IsEmptyString())
                 throw new Exception("Escolha uma duração!");
 
             string datetime = VerificarDataNovaConsulta(data, horario);
-
             VerificarDisponibilidade(idMedico, idPaciente, datetime);
 
             SqlConnection conn = new SqlConnection(cs);

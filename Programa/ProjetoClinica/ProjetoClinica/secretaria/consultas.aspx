@@ -21,7 +21,7 @@
                     <asp:BoundField DataField="status" HeaderText="Status" SortExpression="status" />
                 </Columns>
             </asp:GridView>
-            <asp:SqlDataSource ID="SqlDataSourceConsultas" runat="server" ConnectionString="<%$ ConnectionStrings:ConexaoBD %>" SelectCommand="SELECT c.id, c. data, c.duracao, p.nome_completo as paciente, m.nome_completo as medico, c.status FROM consulta c, paciente p, medico m WHERE m.id = c.idMedico AND p.id = c.idPaciente  ORDER BY c.data, m.nome_completo, c.duracao"></asp:SqlDataSource>
+            <asp:SqlDataSource ID="SqlDataSourceConsultas" runat="server" ConnectionString="<%$ ConnectionStrings:ConexaoBD %>" SelectCommand="SELECT c.id, c. data, c.duracao, p.id as idPaciente, p.nome_completo as paciente, m.id as idMedico, m.nome_completo as medico, c.status FROM consulta c, paciente p, medico m WHERE m.id = c.idMedico AND p.id = c.idPaciente  ORDER BY c.data, m.nome_completo, c.duracao"></asp:SqlDataSource>
 
             <asp:UpdatePanel ID="UpdatePanelLblAviso" runat="server">
                 <ContentTemplate>
