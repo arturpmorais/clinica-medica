@@ -49,17 +49,7 @@
         vibrate: true
     });
 
-    M.updateTextFields();;
+    $('.emailcontent').characterCounter();
+
+    M.updateTextFields();
 });
-
-function closeModal(elem) {
-    var modal = M.Modal.getInstance($(elem));
-
-    modal.close();
-}
-
-function openModal(elem) {
-    var modal = M.Modal.getInstance($(elem));
-
-    modal.open();
-}

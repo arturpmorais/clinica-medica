@@ -17,14 +17,19 @@ namespace ProjetoClinica.secretaria.consultas
         protected void SqlDataSourceConsultas_Selected(object sender, SqlDataSourceStatusEventArgs e)
         {
             if (e.Exception != null)
+            {
                 e.ExceptionHandled = true;
+                GridViewConsultas.EmptyDataText = "Não foi possível carregar os históricos!";
+            }
         }
 
         protected void SqlDataSourceConsultasPorMedico_Selected(object sender, SqlDataSourceStatusEventArgs e)
         {
             if (e.Exception != null)
+            {
                 e.ExceptionHandled = true;
-          
+                GridViewConsultasPorMedico.EmptyDataText = "Não foi possível carregar o histórico do médico!";
+            }
         }
 
         protected void SqlDataSourceMedicos_Selected(object sender, SqlDataSourceStatusEventArgs e)

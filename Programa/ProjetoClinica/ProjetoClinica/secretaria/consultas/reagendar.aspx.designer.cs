@@ -10,7 +10,7 @@
 namespace ProjetoClinica.secretaria.consultas {
     
     
-    public partial class agendas {
+    public partial class reagendar {
         
         /// <summary>
         /// Controle ScriptManager.
@@ -40,57 +40,66 @@ namespace ProjetoClinica.secretaria.consultas {
         protected global::System.Web.UI.WebControls.Label LblAviso;
         
         /// <summary>
-        /// Controle GridViewConsultas.
+        /// Controle PanelConsulta.
         /// </summary>
         /// <remarks>
         /// Campo gerado automaticamente.
         /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView GridViewConsultas;
+        protected global::System.Web.UI.WebControls.Panel PanelConsulta;
         
         /// <summary>
-        /// Controle SqlDataSourceConsultas.
+        /// Controle txtMedico.
         /// </summary>
         /// <remarks>
         /// Campo gerado automaticamente.
         /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSourceConsultas;
+        protected global::System.Web.UI.WebControls.TextBox txtMedico;
         
         /// <summary>
-        /// Controle ddlMedicos.
+        /// Controle txtPaciente.
         /// </summary>
         /// <remarks>
         /// Campo gerado automaticamente.
         /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlMedicos;
+        protected global::System.Web.UI.WebControls.TextBox txtPaciente;
         
         /// <summary>
-        /// Controle SqlDataSourceMedicos.
+        /// Controle txtDataNovaConsulta.
         /// </summary>
         /// <remarks>
         /// Campo gerado automaticamente.
         /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSourceMedicos;
+        protected global::System.Web.UI.WebControls.TextBox txtDataNovaConsulta;
         
         /// <summary>
-        /// Controle GridViewConsultasPorMedico.
+        /// Controle txtHorarioNovaConsulta.
         /// </summary>
         /// <remarks>
         /// Campo gerado automaticamente.
         /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView GridViewConsultasPorMedico;
+        protected global::System.Web.UI.WebControls.TextBox txtHorarioNovaConsulta;
         
         /// <summary>
-        /// Controle SqlDataSourceConsultasPorMedico.
+        /// Controle ddlDuracao.
         /// </summary>
         /// <remarks>
         /// Campo gerado automaticamente.
         /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSourceConsultasPorMedico;
+        protected global::System.Web.UI.WebControls.DropDownList ddlDuracao;
+        
+        /// <summary>
+        /// Controle BtnReagendarConsulta.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button BtnReagendarConsulta;
     }
 }

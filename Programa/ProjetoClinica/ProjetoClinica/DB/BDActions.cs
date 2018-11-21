@@ -144,18 +144,21 @@ namespace ProjetoClinica.DB
             if (horario.IsEmptyString())
                 throw new Exception("Escolha um horário!");
 
-            if (horario.Length != 10)
+            if (horario.Length != 5)
                 throw new Exception("Horário inválido!");
 
             if (duracao.IsEmptyString())
                 throw new Exception("Escolha uma duração!");
+
+            if (duracao.Length != 5)
+                throw new Exception("Duração inválida!");
 
             string datetime = VerificarDataNovaConsulta(data, horario);
             VerificarDisponibilidade(idMedico, idPaciente, datetime);
 
             SqlConnection conn = new SqlConnection(cs);
 
-            SqlCommand cmd = new SqlCommand("UPDATE consulta SET data=@datata, duracao=@duracao, status='PENDENTE' WHERE id=@idConsulta", conn);
+            SqlCommand cmd = new SqlCommand("UPDATE consulta SET data=@data, duracao=@duracao, status='PENDENTE' WHERE id=@idConsulta", conn);
             cmd.Parameters.AddWithValue("@idConsulta", idConsulta);
             cmd.Parameters.AddWithValue("@data", datetime);
             cmd.Parameters.AddWithValue("@duracao", duracao);
@@ -350,8 +353,10 @@ namespace ProjetoClinica.DB
             SqlCommand cmdConsulta = null;
             if (funcao.ToUpper() == "MEDICO")
                 cmdConsulta = new SqlCommand("SELECT * FROM consulta WHERE id=@idConsulta AND idMedico=@idUsuario", conn);
-            else
+            else if (funcao.ToUpper() == "PACIENTE")
                 cmdConsulta = new SqlCommand("SELECT * FROM consulta WHERE id=@idConsulta AND idPaciente=@idUsuario", conn);
+            else
+                cmdConsulta = new SqlCommand("SELECT * FROM consulta WHERE id=@idConsulta", conn);
 
             SqlCommand cmdPaciente= new SqlCommand("SELECT * FROM paciente p, consulta c " +
                                                    "WHERE p.id = c.idPaciente AND c.id=@id", conn);
@@ -721,7 +726,7 @@ namespace ProjetoClinica.DB
             if (horario.IsEmptyString())
                 throw new Exception("Escolha um horário!");
 
-            if (horario.Length != 10)
+            if (horario.Length != 5)
                 throw new Exception("Horário inválido!");
 
             if (duracao.IsEmptyString())

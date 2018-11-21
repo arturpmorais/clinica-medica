@@ -162,6 +162,7 @@
     <Content Include="secretaria\consultas\agendas.aspx" />
     <Content Include="secretaria\consultas\historicos.aspx" />
     <Content Include="secretaria\consultas\marcarconsulta.aspx" />
+    <Content Include="secretaria\consultas\reagendar.aspx" />
     <Content Include="secretaria\enviaremail.aspx" />
     <Content Include="secretaria\index.aspx" />
     <Content Include="contato.aspx" />
@@ -354,6 +355,13 @@
     </Compile>
     <Compile Include="secretaria\consultas\marcarconsulta.aspx.designer.cs">
       <DependentUpon>marcarconsulta.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="secretaria\consultas\reagendar.aspx.cs">
+      <DependentUpon>reagendar.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="secretaria\consultas\reagendar.aspx.designer.cs">
+      <DependentUpon>reagendar.aspx</DependentUpon>
     </Compile>
     <Compile Include="secretaria\enviaremail.aspx.cs">
       <DependentUpon>enviaremail.aspx</DependentUpon>

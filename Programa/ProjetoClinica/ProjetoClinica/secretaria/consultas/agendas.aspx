@@ -2,7 +2,10 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="SecretariaContent" runat="server">
-    <asp:ScriptManager ID="ScriptManager" runat="server"></asp:ScriptManager>
+    <asp:ScriptManager ID="ScriptManager" runat="server"
+        EnableCdn="true"
+        LoadScriptsBeforeUI="false"
+        EnablePageMethods="true"></asp:ScriptManager>
 
     <asp:UpdatePanel ID="UpdatePanel" runat="server">
         <ContentTemplate>
@@ -14,74 +17,6 @@
                     <br />
 
                     <center><asp:Label ID="LblAviso" runat="server" Font-Size="Large"></asp:Label></center>
-
-                    <!------------------------------------------------------------- MODAL ------------------------------------------------------------------------>
-
-                    <div class="containerpicker"></div>
-                    <div id="modalReagendarConsulta" class="modal modal-fixed-footer">
-                        <div class="modal-content">
-                            <h4>Reagendar consulta</h4>
-                            <div class="divider"></div>
-
-                            <br />
-
-                            <center><asp:Label ID="LblAvisoModal" runat="server" Font-Size="Large" ForeColor="#CC0000"></asp:Label></center>
-
-                            <p>Escolha os novos dados da consulta:</p>
-
-                            <div class="col s12 modalform">
-                                <div class="row">
-                                    <div class="input-field">
-                                        <i class="material-icons prefix">person</i>
-                                        <asp:TextBox ID="txtMedico" runat="server" ReadOnly="True"></asp:TextBox>
-                                        <label for="<%= txtMedico.ClientID %>">Médico:</label>
-                                    </div>
-                                </div>
-
-                                <div class="row">
-                                    <div class="input-field">
-                                        <i class="fas fa-user-md prefix"></i>
-                                        <asp:TextBox ID="txtPaciente" runat="server" ReadOnly="True"></asp:TextBox>
-                                        <label for="<%= txtPaciente.ClientID %>">Paciente:</label>
-                                    </div>
-                                </div>
-
-                                <div class="row">
-                                    <div class="input-field">
-                                        <i class="material-icons prefix">today</i>
-                                        <asp:TextBox ID="txtDataNovaConsulta" runat="server" CssClass="datanovaconsulta"></asp:TextBox>
-                                        <label for="<%= txtDataNovaConsulta.ClientID %>">Data:</label>
-                                    </div>
-                                </div>
-
-                                <div class="row">
-                                    <div class="input-field">
-                                        <i class="material-icons prefix">access_time</i>
-                                        <asp:TextBox ID="txtHorarioNovaConsulta" runat="server" CssClass="horarionovaconsulta"></asp:TextBox>
-                                        <label for="<%= txtHorarioNovaConsulta.ClientID %>">Horário:</label>
-                                    </div>
-                                </div>
-
-                                <div class="row last-item">
-                                    <div class="input-field ddl">
-                                        <i class="material-icons prefix">hourglass_empty</i>
-                                        <asp:DropDownList ID="ddlDuracao" runat="server" AppendDataBoundItems="True">
-                                            <asp:ListItem Text="Escolha a duração:" Value =""></asp:ListItem>
-                                            <asp:ListItem Text="30 minutos" Value="00:30"></asp:ListItem>
-                                            <asp:ListItem Text="1 hora" Value="01:00"></asp:ListItem>
-                                        </asp:DropDownList>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="modal-footer">
-                            <a class="modal-close waves-effect btn-flat">VOLTAR</a>
-                            <asp:LinkButton ID="LbReagendarConsulta" runat="server" CssClass="waves-effect btn-flat" OnClick="LbReagendarConsulta_Click">REAGENDAR CONSULTA</asp:LinkButton>
-                        </div>
-                    </div>
-
-                    <!-------------------------------------------------------------------------------------------------------------------------------------------->
 
                     <div class="row">
                         <center>
@@ -99,8 +34,8 @@
                                     <ItemTemplate>
                                         <center>
                                             <div class="operacoes" >
-                                                <asp:LinkButton ID="LbReagendar" Consulta='<%# Eval("id")%>' MedicoID='<%# Eval("idMedico")%>' MedicoName='<%# Eval("Medico")%>' PacienteName='<%# Eval("Paciente")%>' PacienteID='<%# Eval("idPaciente")%>' runat="server" OnClick="LbReagendar_Click">Reagendar</asp:LinkButton>
-                                                <br />
+                                                <asp:LinkButton ID="LbReagendar" Consulta='<%# Eval("id")%>' runat="server" OnClick="LbReagendar_Click">Reagendar</asp:LinkButton>
+                                                <br /><br />
                                                 <asp:LinkButton ID="LbCancelar" Consulta='<%# Eval("id")%>' runat="server" OnClick="LbCancelar_Click">Cancelar</asp:LinkButton>
                                             </div>
                                         </center>
@@ -141,9 +76,9 @@
                                     <ItemTemplate>
                                         <center>
                                             <div class="operacoes" >
-                                                <asp:LinkButton ID="LbReagendar" Consulta='<%# Eval("id")%>' MedicoID='<%# Eval("idMedico")%>' MedicoName='<%# Eval("Medico")%>' PacienteName='<%# Eval("Paciente")%>' PacienteID='<%# Eval("idPaciente")%>' runat="server" OnClick="LbReagendar_Click">Reagendar</asp:LinkButton>
-                                                <br />
-                                                <asp:LinkButton ID="LbCancelar" Consulta='<%# Eval("id")%>' runat="server">Cancelar</asp:LinkButton>
+                                                <asp:LinkButton ID="LbReagendar" Consulta='<%# Eval("id")%>' runat="server" OnClick="LbReagendar_Click">Reagendar</asp:LinkButton>
+                                                <br /><br />
+                                                <asp:LinkButton ID="LbCancelar" Consulta='<%# Eval("id")%>' runat="server" OnClick="LbCancelar_Click">Cancelar</asp:LinkButton>
                                             </div>
                                         </center>
                                     </ItemTemplate>
