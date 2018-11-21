@@ -7,63 +7,63 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace ProjetoClinica.entrar {
+namespace ProjetoClinica.secretaria.consultas {
     
     
-    public partial class paciente {
+    public partial class historicos {
         
         /// <summary>
-        /// ScriptManager control.
+        /// GridViewConsultas control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.ScriptManager ScriptManager;
+        protected global::System.Web.UI.WebControls.GridView GridViewConsultas;
         
         /// <summary>
-        /// UpdatePanel control.
+        /// SqlDataSourceConsultas control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.UpdatePanel UpdatePanel;
+        protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSourceConsultas;
         
         /// <summary>
-        /// LblAviso control.
+        /// ddlMedicos control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label LblAviso;
+        protected global::System.Web.UI.WebControls.DropDownList ddlMedicos;
         
         /// <summary>
-        /// txtEmail control.
+        /// SqlDataSourceMedicos control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtEmail;
+        protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSourceMedicos;
         
         /// <summary>
-        /// txtPassword control.
+        /// GridViewConsultasPorMedico control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtPassword;
+        protected global::System.Web.UI.WebControls.GridView GridViewConsultasPorMedico;
         
         /// <summary>
-        /// BtnEntrar control.
+        /// SqlDataSourceConsultasPorMedico control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button BtnEntrar;
+        protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSourceConsultasPorMedico;
     }
 }

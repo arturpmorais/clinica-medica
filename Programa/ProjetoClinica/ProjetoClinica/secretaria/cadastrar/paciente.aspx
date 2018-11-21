@@ -6,7 +6,7 @@
 
     <asp:UpdatePanel ID="UpdatePanel" EnableViewState="true" runat="server">
         <ContentTemplate>
-            <div class="container whitecontainer containerform">
+            <div class="z-depth-3 container whitecontainer containerform">
                 <div class="col m9 s12">
                     <center><h3>Cadastrar paciente</h3></center>
 
@@ -18,6 +18,8 @@
                     </div>
 
                     <form>
+                        <div class="containerpicker"></div>
+
                         <div class="row">
                             <div class="input-field">
                                 <i class="material-icons prefix">account_circle</i>

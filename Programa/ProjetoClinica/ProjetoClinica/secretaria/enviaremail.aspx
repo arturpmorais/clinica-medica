@@ -6,7 +6,7 @@
 
     <asp:UpdatePanel ID="UpdatePanel" runat="server">
         <ContentTemplate>
-            <div class="container whitecontainer containerform">
+            <div class="z-depth-3 container whitecontainer containerform">
                 <div class="col s12">
                     <center><h2>Enviar e-mail</h2></center>
 
@@ -32,7 +32,7 @@
                                     <asp:BoundField DataField="status" HeaderText="Status" SortExpression="status" />
                                 </Columns>
                             </asp:GridView>
-                            <asp:SqlDataSource ID="SqlDataSourceConsultasProximas" runat="server" ConnectionString="<%$ ConnectionStrings:ConexaoBD %>" SelectCommand="SELECT c.id, c. data, c.duracao, p.nome_completo as paciente, m.nome_completo as medico, c.status FROM consulta c, paciente p, medico m WHERE p.id = c.idPaciente AND m.id = c.idMedico AND c.status != 'CANCELADA' AND DATEDIFF(DAY, GETDATE(), CONVERT(DATE, c.data, 103)) &gt;= 0 AND DATEDIFF(DAY, GETDATE(), CONVERT(DATE, c.data, 103)) &lt;= 2 AND c.pacienteAvisado = 0 ORDER BY c.data"></asp:SqlDataSource>
+                            <asp:SqlDataSource ID="SqlDataSourceConsultasProximas" runat="server" ConnectionString="<%$ ConnectionStrings:ConexaoBD %>" SelectCommand="SELECT c.id, c. data, c.duracao, p.nome_completo as paciente, m.nome_completo as medico, c.status FROM consulta c, paciente p, medico m WHERE p.id = c.idPaciente AND m.id = c.idMedico AND c.status != 'CANCELADA' AND DATEDIFF(DAY, GETDATE(), CONVERT(DATE, c.data, 103)) &gt;= 0 AND DATEDIFF(DAY, GETDATE(), CONVERT(DATE, c.data, 103)) &lt;= 2 AND c.pacienteAvisado = 0 ORDER BY c.data, m.nome_completo, p.nome_completo, c.duracao"></asp:SqlDataSource>
                         </div>
 
                         <div class="row containerPacientesNaoAvisados">

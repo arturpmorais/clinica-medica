@@ -7,10 +7,10 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace ProjetoClinica.secretaria {
+namespace ProjetoClinica.secretaria.consultas {
     
     
-    public partial class enviaremail {
+    public partial class marcarconsulta {
         
         /// <summary>
         /// ScriptManager control.
@@ -31,15 +31,6 @@ namespace ProjetoClinica.secretaria {
         protected global::System.Web.UI.UpdatePanel UpdatePanel;
         
         /// <summary>
-        /// RowAviso control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl RowAviso;
-        
-        /// <summary>
         /// LblAviso control.
         /// </summary>
         /// <remarks>
@@ -49,48 +40,75 @@ namespace ProjetoClinica.secretaria {
         protected global::System.Web.UI.WebControls.Label LblAviso;
         
         /// <summary>
-        /// GridViewConsultasProximas control.
+        /// ddlPacienteConsulta control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView GridViewConsultasProximas;
+        protected global::System.Web.UI.WebControls.DropDownList ddlPacienteConsulta;
         
         /// <summary>
-        /// SqlDataSourceConsultasProximas control.
+        /// SqlDataSourcePacientesConsulta control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSourceConsultasProximas;
+        protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSourcePacientesConsulta;
         
         /// <summary>
-        /// LbPacientes control.
+        /// ddlMedicoConsulta control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ListBox LbPacientes;
+        protected global::System.Web.UI.WebControls.DropDownList ddlMedicoConsulta;
         
         /// <summary>
-        /// TxtAreaEmailBody control.
+        /// SqlDataSourceMedicosConsulta control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TxtAreaEmailBody;
+        protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSourceMedicosConsulta;
         
         /// <summary>
-        /// BtnEnviar control.
+        /// txtDataNovaConsulta control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button BtnEnviar;
+        protected global::System.Web.UI.WebControls.TextBox txtDataNovaConsulta;
+        
+        /// <summary>
+        /// txtHorarioNovaConsulta control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtHorarioNovaConsulta;
+        
+        /// <summary>
+        /// ddlDuracao control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlDuracao;
+        
+        /// <summary>
+        /// BtnMarcarConsulta control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button BtnMarcarConsulta;
     }
 }

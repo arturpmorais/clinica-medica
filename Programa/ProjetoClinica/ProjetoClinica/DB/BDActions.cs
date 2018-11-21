@@ -168,7 +168,7 @@ namespace ProjetoClinica.DB
             }
             catch (Exception)
             {
-                throw new Exception("Erro ao cancelar consulta!");
+                throw new Exception("Erro ao reagendar consulta!");
             }
             finally
             {

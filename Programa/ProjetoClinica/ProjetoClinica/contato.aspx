@@ -2,28 +2,28 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
-    <div class="whitecontainer contentcontainer">
-        <center>
-            <h2 class="page-title">Deseja nos contatar?</h2>
+    <div class="z-depth-3 container whitecontainer contentcontainer">
+        <center><h2 class="page-title">Deseja nos contatar?</h2></center>
 
-            <div class="divider"></div>
+        <div class="divider"></div>
+        <br />
 
-            <div class="row">
-                <div class="col s12 m6">
-                    <p></p>
-                </div>
-
-                <div class="col s12 m6">
-                    <div id="map"></div>
-                </div>
+        <div class="row">
+            <div class="col m6 s12">
+                <p></p>
             </div>
-        </center>
+
+            <div class="col m6 s12">
+                <div id="map"></div>
+            </div>
+        </div>
     </div>
 
     <script>
         var map;
 
-        function initMap() {
+        function initMap()
+        {
             map = new google.maps.Map(document.getElementById('map'),
             {
                 center: { lat: -22.864352239618317, lng: -47.049325704574585 },

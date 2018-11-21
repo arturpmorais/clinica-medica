@@ -7,10 +7,10 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace ProjetoClinica.secretaria.cadastrar {
+namespace ProjetoClinica.secretaria.consultas {
     
     
-    public partial class paciente {
+    public partial class agendas {
         
         /// <summary>
         /// ScriptManager control.
@@ -40,84 +40,120 @@ namespace ProjetoClinica.secretaria.cadastrar {
         protected global::System.Web.UI.WebControls.Label LblAviso;
         
         /// <summary>
-        /// txtNomeCompleto control.
+        /// LblAvisoModal control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtNomeCompleto;
+        protected global::System.Web.UI.WebControls.Label LblAvisoModal;
         
         /// <summary>
-        /// txtEmail control.
+        /// txtMedico control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtEmail;
+        protected global::System.Web.UI.WebControls.TextBox txtMedico;
         
         /// <summary>
-        /// txtPassword control.
+        /// txtPaciente control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtPassword;
+        protected global::System.Web.UI.WebControls.TextBox txtPaciente;
         
         /// <summary>
-        /// txtConfirmPassword control.
+        /// txtDataNovaConsulta control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtConfirmPassword;
+        protected global::System.Web.UI.WebControls.TextBox txtDataNovaConsulta;
         
         /// <summary>
-        /// txtEndereco control.
+        /// txtHorarioNovaConsulta control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtEndereco;
+        protected global::System.Web.UI.WebControls.TextBox txtHorarioNovaConsulta;
         
         /// <summary>
-        /// txtCelular control.
+        /// ddlDuracao control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtCelular;
+        protected global::System.Web.UI.WebControls.DropDownList ddlDuracao;
         
         /// <summary>
-        /// txtTelefoneResidencial control.
+        /// LbReagendarConsulta control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtTelefoneResidencial;
+        protected global::System.Web.UI.WebControls.LinkButton LbReagendarConsulta;
         
         /// <summary>
-        /// txtDataNascimento control.
+        /// GridViewConsultas control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtDataNascimento;
+        protected global::System.Web.UI.WebControls.GridView GridViewConsultas;
         
         /// <summary>
-        /// BtnCadastrar control.
+        /// SqlDataSourceConsultas control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button BtnCadastrar;
+        protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSourceConsultas;
+        
+        /// <summary>
+        /// ddlMedicos control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlMedicos;
+        
+        /// <summary>
+        /// SqlDataSourceMedicos control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSourceMedicos;
+        
+        /// <summary>
+        /// GridViewConsultasPorMedico control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView GridViewConsultasPorMedico;
+        
+        /// <summary>
+        /// SqlDataSourceConsultasPorMedico control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSourceConsultasPorMedico;
     }
 }

@@ -13,6 +13,11 @@ button.btn-html {
     outline: none;
 }
 
+i.btn-asp {
+    padding: 0;
+    width: 100%;
+}
+
 i.btn-asp input, input.btn-asp {
     padding: 0;
     margin: 0;
@@ -213,9 +218,9 @@ div.containerform {
     padding: 1px 40px 30px 40px;
 }
 
-div.containerform *:not(h1):not(h2):not(h3):not(h4):not(i) {
-    font-size: 100%;
-}
+    div.containerform *:not(h1):not(h2):not(h3):not(h4):not(i):not(div.containerpicker) {
+        font-size: 100%;
+    }
 
 ul.sidenav *:not(h1):not(h2):not(h3):not(h4):not(i) {
     font-size: 100%;

@@ -54,7 +54,7 @@
 
                         <center>
                             <a runat="server" href="~/medico/index.aspx"><asp:Image ID="ImgPerfil" runat="server" CssClass="circle sidenav-profile-pic"></asp:Image></a>
-                            <a runat="server" href="~/medico/perfil.aspx"><asp:Label ID="LblNome" runat="server" Text="" class="black-text name" Font-Size="X-Large"></asp:Label></a>
+                            <a runat="server" href="~/medico/perfil.aspx"><asp:Label ID="LblNome" runat="server" Text="" class="white-text name" Font-Size="X-Large"></asp:Label></a>
                         </center>
                     </div>
                 </li>

@@ -6,9 +6,9 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-namespace ProjetoClinica.secretaria
+namespace ProjetoClinica.secretaria.consultas
 {
-    public partial class consultas : System.Web.UI.Page
+    public partial class marcarconsulta : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -29,9 +29,7 @@ namespace ProjetoClinica.secretaria
                 bd.MarcarConsulta(idMedico, idPaciente, dataconsulta, horaconsulta, duracao);
 
                 // fecha o modal
-                ScriptManager.RegisterStartupScript(this.Page, this.Page.GetType(), "Pop", "closeModal('#modalNovaConsulta')", true);
-
-                LblAvisoMarcarConsulta.Text = "";
+                LblAviso.Text = "";
                 txtDataNovaConsulta.Text = "";
                 txtHorarioNovaConsulta.Text = "";
                 ddlMedicoConsulta.SelectedIndex = 0;
@@ -43,7 +41,7 @@ namespace ProjetoClinica.secretaria
             }
             catch (Exception ex)
             {
-                LblAvisoMarcarConsulta.Text = ex.Message;
+                LblAviso.Text = ex.Message;
             }
         }
 

@@ -13,6 +13,8 @@ namespace ProjetoClinica
 
         protected void Page_Init(object sender, EventArgs e)
         {
+            Session["Usuario"] = new SecretariaDBO("17167", "Caio");
+
             object usuario = Session["Usuario"];
 
             if (Session.IsNewSession || usuario == null || usuario.GetType() != typeof(SecretariaDBO))

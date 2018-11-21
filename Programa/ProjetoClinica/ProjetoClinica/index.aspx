@@ -15,29 +15,29 @@
         </div>
 
         <div class="carousel-item white-text arms-care-check">
-            <h2>First Panel</h2>
-            <p class="white-text">This is your first panel</p>
+            <h2>Atendimento especializado</h2>
+            <p class="white-text">Os melhores especialistas de São Paulo estão aqui</p>
         </div>
         <div class="carousel-item white-text exam-checking">
-            <h2>Second Panel</h2>
-            <p class="white-text">This is your second panel</p>;
+            <h2>Exames precisos</h2>
+            <p class="white-text">Realizamos diversos exames de ótimas precisão</p>;
         </div>
         <div class="carousel-item white-text bed-clinic-empty">
-            <h2>Third Panel</h2>
-            <p class="white-text">This is your third panel</p>
+            <h2>Hospitalidade máxima</h2>
+            <p class="white-text">Oferecemos a acomodidade e o conforto de casa</p>
         </div>
         <div class="carousel-item white-text adult-blood">
-            <h2>Fourth Panel</h2>
-            <p class="white-text">This is your fourth panel</p>
+            <h2>Consultas cuidadosas</h2>
+            <p class="white-text">Nossas consultas são de extremo cuidado e atenção</p>
         </div>
         <div class="carousel-item white-text chart-check-up">
-            <h2>Third Panel</h2>
-            <p class="white-text">This is your third panel</p>
+            <h2>Ánalise de dados</h2>
+            <p class="white-text">Os dados dos usuários são analisados para otimização do funcionamento da clínica</p>
         </div>
     </div>
 
     <br />
-    <center><h3>A Clínica perfeita para você!</h3></center>
+    <center><h3 class="white-text">A Clínica perfeita para você!</h3></center>
 
     <br /><br />
 
@@ -115,6 +115,7 @@
             </div>
         </div>
     </div>
+
     <script>
         $(document).ready(function () {
             $('.main-slider').carousel({

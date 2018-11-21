@@ -2,7 +2,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
-    <div class="whitecontainer contentcontainer">
+    <div class="z-depth-3 container whitecontainer contentcontainer">
         <center><h2 class="page-title">Quem somos?</h2></center>
 
         <div class="divider"></div>

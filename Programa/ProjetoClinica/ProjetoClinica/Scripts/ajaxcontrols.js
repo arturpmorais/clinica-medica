@@ -5,6 +5,7 @@
         format: 'dd/mm/yyyy',
         maxDate: new Date(),
         yearRange: 90,
+        container: '.containerpicker',
         i18n: {
             cancel: 'Cancelar',
             clear: 'Limpar',
@@ -21,10 +22,9 @@
 
     $('.datanovaconsulta').datepicker({
         format: 'dd/mm/yyyy',
-        //minDate: new Date(new Date().setDate(new Date().getDate() + 1)), // no mínino o dia seguinte
-        minDate: new Date(),
+        minDate: new Date(new Date().setDate(new Date().getDate() + 1)), // no mínino o dia seguinte
         yearRange: 2,
-        container: $('.containerpicker'),
+        container: '.containerpicker',
         i18n: {
             cancel: 'Cancelar',
             clear: 'Limpar',
@@ -56,4 +56,10 @@ function closeModal(elem) {
     var modal = M.Modal.getInstance($(elem));
 
     modal.close();
+}
+
+function openModal(elem) {
+    var modal = M.Modal.getInstance($(elem));
+
+    modal.open();
 }

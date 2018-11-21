@@ -2,7 +2,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="PacienteContent" runat="server">
-    <div class="container whitecontainer contentcontainer">
+    <div class="z-depth-3 container whitecontainer contentcontainer">
         <div class="col s12">
             <center><h4 class="apelido"><asp:Label ID="LblApelido" runat="server" Text=""></asp:Label></h4></center>
 
