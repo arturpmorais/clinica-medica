@@ -39,7 +39,23 @@
                                     <label>Duração: &nbsp;</label>
                                     <asp:Label ID="LblDuracao" runat="server" Text=""></asp:Label>
                                 </div>
+
+                                <div class="row">
+                                    <label>Status: &nbsp;</label>
+                                    <asp:Label ID="LblStatus" runat="server" Text=""></asp:Label>
+                                </div>
                             </div>
+
+                            <!--
+                            <div class="row container-ddl-with-header">
+                                <label>Solicitar exames:</label>
+                                <div class="input-field ddl">
+                                    <i class="fas fa-file-medical-alt prefix"></i>
+                                    <asp:ListBox ID="LbExamesPossiveis" runat="server" SelectionMode="Multiple" DataSourceID="SqlDataSourceExamesPossiveis" DataTextField="exame" DataValueField="id"></asp:ListBox>
+                                    <asp:SqlDataSource ID="SqlDataSourceExamesPossiveis" runat="server" ConnectionString="<%$ ConnectionStrings:ConexaoBD %>" SelectCommand="SELECT * FROM [exame] ORDER BY [exame]"></asp:SqlDataSource>
+                                </div>
+                            </div>
+                            -->
 
                             <div class="row">
                                 <div class="input-field">
@@ -67,7 +83,7 @@
 
                             <div class="row last-input-field">
                                 <div class="input-field">
-                                    <i class="fas fa-file-medical-alt prefix"></i>
+                                    <i class="fas fa-file-medical prefix"></i>
                                     <asp:TextBox ID="TxtAreaObservacoes" runat="server" TextMode="MultiLine" CssClass="materialize-textarea"></asp:TextBox>
                                     <label for="<%= TxtAreaObservacoes.ClientID %>">Observações:</label>
                                 </div>

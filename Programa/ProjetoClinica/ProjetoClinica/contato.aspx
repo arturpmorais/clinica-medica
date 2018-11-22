@@ -10,11 +10,27 @@
 
         <div class="row">
             <div class="col m6 s12">
-                <p></p>
+                <p>
+                    <h5>Por telefone:</h5>
+                    219478239 (Telefone fixo)
+                    <br />
+                    989238592 (Celular - Operadora Claro)
+                    <br />
+                    984128352 (Whatsapp)
+
+                    <br /><br />
+
+                    <h5>Por e-mail:</h5>
+                    atendimento@clinica.br (Agendamento de consultas)
+                    <br />
+                    reclameaqui@clinica.br (Dúvidas e reclamações)
+                    <br />
+                    admin@clinica.br (Parcerias e negociações)
+                </p>
             </div>
 
             <div class="col m6 s12">
-                <div id="map"></div>
+                <div id="map" class="z-depth-3"></div>
             </div>
         </div>
     </div>

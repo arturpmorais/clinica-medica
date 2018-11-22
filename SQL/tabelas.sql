@@ -51,15 +51,16 @@ CREATE TABLE secretaria (
 	senha varchar(400) not null
 )
 
-CREATE TABLE exameConsulta (
-	idConsulta int not null,
-	idExame int not null,
-	resultado ntext not null,
-	constraint fkIdConsulta foreign key(idConsulta) references consulta(id),
-	constraint fkIdExame foreign key(idExame) references exame(id)
-)
-
 CREATE TABLE exame (
 	id int identity(1,1) primary key,
 	exame varchar(50) not null
+)
+
+CREATE TABLE exameConsulta (
+	idConsulta int not null,
+	idExame int not null,
+	status varchar(9) not null,
+	resultado ntext,
+	constraint fkIdConsulta foreign key(idConsulta) references consulta(id),
+	constraint fkIdExame foreign key(idExame) references exame(id)
 )

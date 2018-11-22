@@ -47,12 +47,12 @@ div.title-table {
     font-size: 28px !important;
 }
 
-.containerPacientesNaoAvisados > label {
+.container-ddl-with-header > label {
     margin-left: 42px;
     font-size: 16px !important;
 }
 
-.containerPacientesNaoAvisados > .ddl {
+.container-ddl-with-header > .ddl {
     margin-top: 0;
 }
 
@@ -206,6 +206,7 @@ div.pagecontent {
 }
 
 div#map {
+    border-radius: 15px;
     height: 500px;
 }
 
@@ -218,9 +219,13 @@ div.containerform {
     padding: 1px 40px 30px 40px;
 }
 
-    div.containerform *:not(h1):not(h2):not(h3):not(h4):not(i):not(div.containerpicker) {
-        font-size: 100%;
-    }
+div.consultainfo label, div.consultainfo span {
+    font-size: 115% !important;
+}
+
+div.containerform *:not(h1):not(h2):not(h3):not(h4):not(i):not(div.containerpicker) {
+    font-size: 110% !important;
+}
 
 ul.sidenav *:not(h1):not(h2):not(h3):not(h4):not(i) {
     font-size: 100%;

@@ -35,7 +35,7 @@
                             <asp:SqlDataSource ID="SqlDataSourceConsultasProximas" runat="server" ConnectionString="<%$ ConnectionStrings:ConexaoBD %>" SelectCommand="SELECT c.id, c. data, c.duracao, p.nome_completo as paciente, m.nome_completo as medico, c.status FROM consulta c, paciente p, medico m WHERE p.id = c.idPaciente AND m.id = c.idMedico AND c.status != 'CANCELADA' AND DATEDIFF(DAY, GETDATE(), CONVERT(DATE, c.data, 103)) &gt;= 0 AND DATEDIFF(DAY, GETDATE(), CONVERT(DATE, c.data, 103)) &lt;= 2 AND c.pacienteAvisado = 0 ORDER BY c.data, m.nome_completo, p.nome_completo, c.duracao"></asp:SqlDataSource>
                         </div>
 
-                        <div class="row containerPacientesNaoAvisados">
+                        <div class="row container-ddl-with-header">
                             <label>Pacientes:</label>
                             <div class="input-field ddl">
                                 <i class="material-icons prefix">hourglass_empty</i>

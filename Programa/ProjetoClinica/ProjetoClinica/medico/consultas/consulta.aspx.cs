@@ -48,6 +48,7 @@ namespace ProjetoClinica.medico.consultas
             LblData.Text = this.Consulta.Data.Split(' ')[0];
             LblHorario.Text = this.Consulta.Data.Split(' ')[1];
             LblDuracao.Text = this.Consulta.Duracao + "h";
+            LblStatus.Text = this.Consulta.Status;
 
             if (this.Consulta.Sintomas != null)
                 TxtAreaSintomas.Text = this.Consulta.Sintomas;
@@ -61,9 +62,6 @@ namespace ProjetoClinica.medico.consultas
             if (this.Consulta.Observacoes != null)
                 TxtAreaObservacoes.Text = this.Consulta.Observacoes;
 
-            if (this.Consulta.Status == "REALIZADA")
-                CheckBoxRealizada.Attributes.Add("checked", "checked");
-
             if (this.Consulta.Status == "PENDENTE")
             {
                 BtnAtualizarConsulta.Enabled = true;
@@ -75,6 +73,14 @@ namespace ProjetoClinica.medico.consultas
             }
             else
             {
+                if (this.Consulta.Status == "REALIZADA")
+                {
+                    CheckBoxRealizada.Attributes.Add("checked", "checked");
+                    LblStatus.CssClass = "green-text";
+                }
+                else if (this.Consulta.Status == "CANCELADA")
+                    LblStatus.CssClass = "red-text";
+
                 TxtAreaSintomas.ReadOnly = true;
                 TxtAreaDiagnostico.ReadOnly = true;
                 TxtAreaMedicacao.ReadOnly = true;
