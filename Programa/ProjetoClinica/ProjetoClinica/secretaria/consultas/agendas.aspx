@@ -35,7 +35,7 @@
                                         <center>
                                             <div class="operacoes" >
                                                 <asp:LinkButton ID="LbReagendar" Consulta='<%# Eval("id")%>' runat="server" OnClick="LbReagendar_Click">Reagendar</asp:LinkButton>
-                                                <br /><br />
+                                                <br />
                                                 <asp:LinkButton ID="LbCancelar" Consulta='<%# Eval("id")%>' runat="server" OnClick="LbCancelar_Click">Cancelar</asp:LinkButton>
                                             </div>
                                         </center>
@@ -77,7 +77,7 @@
                                         <center>
                                             <div class="operacoes" >
                                                 <asp:LinkButton ID="LbReagendar" Consulta='<%# Eval("id")%>' runat="server" OnClick="LbReagendar_Click">Reagendar</asp:LinkButton>
-                                                <br /><br />
+                                                <br />
                                                 <asp:LinkButton ID="LbCancelar" Consulta='<%# Eval("id")%>' runat="server" OnClick="LbCancelar_Click">Cancelar</asp:LinkButton>
                                             </div>
                                         </center>
