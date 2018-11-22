@@ -7,7 +7,7 @@
 // </gerado automaticamente>
 //------------------------------------------------------------------------------
 
-namespace ProjetoClinica.medico.consultas {
+namespace ProjetoClinica.paciente.consultas {
     
     
     public partial class consulta {
@@ -94,24 +94,6 @@ namespace ProjetoClinica.medico.consultas {
         protected global::System.Web.UI.WebControls.Label LblStatus;
         
         /// <summary>
-        /// Controle LbExamesPossiveis.
-        /// </summary>
-        /// <remarks>
-        /// Campo gerado automaticamente.
-        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.ListBox LbExamesPossiveis;
-        
-        /// <summary>
-        /// Controle SqlDataSourceExamesPossiveis.
-        /// </summary>
-        /// <remarks>
-        /// Campo gerado automaticamente.
-        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSourceExamesPossiveis;
-        
-        /// <summary>
         /// Controle PanelDadosConsulta.
         /// </summary>
         /// <remarks>
@@ -166,21 +148,12 @@ namespace ProjetoClinica.medico.consultas {
         protected global::System.Web.UI.WebControls.TextBox TxtAreaAvaliacao;
         
         /// <summary>
-        /// Controle CheckBoxRealizada.
+        /// Controle BtnConfirmar.
         /// </summary>
         /// <remarks>
         /// Campo gerado automaticamente.
         /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputCheckBox CheckBoxRealizada;
-        
-        /// <summary>
-        /// Controle BtnAtualizarConsulta.
-        /// </summary>
-        /// <remarks>
-        /// Campo gerado automaticamente.
-        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button BtnAtualizarConsulta;
+        protected global::System.Web.UI.WebControls.Button BtnConfirmar;
     }
 }

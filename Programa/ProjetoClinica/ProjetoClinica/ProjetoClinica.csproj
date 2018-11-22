@@ -153,6 +153,7 @@
     <Content Include="medico\index.aspx" />
     <Content Include="medico\relatorio.aspx" />
     <Content Include="paciente\consultas\agenda.aspx" />
+    <Content Include="paciente\consultas\consulta.aspx" />
     <Content Include="paciente\consultas\historico.aspx" />
     <Content Include="Scripts\ajaxcontrols.js" />
     <Content Include="Scripts\chartist.js" />
@@ -306,6 +307,13 @@
     </Compile>
     <Compile Include="paciente\consultas\agenda.aspx.designer.cs">
       <DependentUpon>agenda.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="paciente\consultas\consulta.aspx.cs">
+      <DependentUpon>consulta.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="paciente\consultas\consulta.aspx.designer.cs">
+      <DependentUpon>consulta.aspx</DependentUpon>
     </Compile>
     <Compile Include="paciente\consultas\historico.aspx.cs">
       <DependentUpon>historico.aspx</DependentUpon>

@@ -1,7 +1,7 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/medico/Medico.Master" AutoEventWireup="true" CodeBehind="consulta.aspx.cs" Inherits="ProjetoClinica.medico.consultas.consulta" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/paciente/Paciente.Master" AutoEventWireup="true" CodeBehind="consulta.aspx.cs" Inherits="ProjetoClinica.paciente.consultas.consulta" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
-<asp:Content ID="Content2" ContentPlaceHolderID="MedicoContent" runat="server">
+<asp:Content ID="Content2" ContentPlaceHolderID="PacienteContent" runat="server">
     <asp:ScriptManager ID="ScriptManager" runat="server"></asp:ScriptManager>
 
     <asp:UpdatePanel ID="UpdatePanel" runat="server">
@@ -46,22 +46,11 @@
                                 </div>
                             </div>
 
-                            <!--
-                            <div class="row container-ddl-with-header">
-                                <label>Solicitar exames:</label>
-                                <div class="input-field ddl">
-                                    <i class="fas fa-file-medical-alt prefix"></i>
-                                    <asp:ListBox ID="LbExamesPossiveis" runat="server" SelectionMode="Multiple" DataSourceID="SqlDataSourceExamesPossiveis" DataTextField="exame" DataValueField="id"></asp:ListBox>
-                                    <asp:SqlDataSource ID="SqlDataSourceExamesPossiveis" runat="server" ConnectionString="<%$ ConnectionStrings:ConexaoBD %>" SelectCommand="SELECT * FROM [exame] ORDER BY [exame]"></asp:SqlDataSource>
-                                </div>
-                            </div>
-                            -->
-
                             <asp:Panel ID="PanelDadosConsulta" runat="server">
                                 <div class="row">
                                     <div class="input-field">
                                         <i class="fas fa-notes-medical prefix"></i>
-                                        <asp:TextBox ID="TxtAreaSintomas" runat="server" TextMode="MultiLine" CssClass="materialize-textarea"></asp:TextBox>
+                                        <asp:TextBox ID="TxtAreaSintomas" runat="server" TextMode="MultiLine" CssClass="materialize-textarea" ReadOnly="true"></asp:TextBox>
                                         <label for="<%= TxtAreaSintomas.ClientID %>">Sintomas:</label>
                                     </div>
                                 </div>
@@ -69,7 +58,7 @@
                                 <div class="row">
                                     <div class="input-field">
                                         <i class="fa fa-heartbeat prefix"></i>
-                                        <asp:TextBox ID="TxtAreaDiagnostico" runat="server" TextMode="MultiLine" CssClass="materialize-textarea"></asp:TextBox>
+                                        <asp:TextBox ID="TxtAreaDiagnostico" runat="server" TextMode="MultiLine" CssClass="materialize-textarea" ReadOnly="true"></asp:TextBox>
                                         <label for="<%= TxtAreaDiagnostico.ClientID %>">Diagnóstico:</label>
                                     </div>
                                 </div>
@@ -77,7 +66,7 @@
                                 <div class="row">
                                     <div class="input-field">
                                         <i class="fas fa-prescription-bottle prefix"></i>
-                                        <asp:TextBox ID="TxtAreaMedicacao" runat="server" TextMode="MultiLine" CssClass="materialize-textarea"></asp:TextBox>
+                                        <asp:TextBox ID="TxtAreaMedicacao" runat="server" TextMode="MultiLine" CssClass="materialize-textarea" ReadOnly="true"></asp:TextBox>
                                         <label for="<%= TxtAreaMedicacao.ClientID %>">Medicação:</label>
                                     </div>
                                 </div>
@@ -85,7 +74,7 @@
                                 <div class="row">
                                     <div class="input-field">
                                         <i class="fas fa-file-medical prefix"></i>
-                                        <asp:TextBox ID="TxtAreaObservacoes" runat="server" TextMode="MultiLine" CssClass="materialize-textarea"></asp:TextBox>
+                                        <asp:TextBox ID="TxtAreaObservacoes" runat="server" TextMode="MultiLine" CssClass="materialize-textarea" ReadOnly="true"></asp:TextBox>
                                         <label for="<%= TxtAreaObservacoes.ClientID %>">Observações:</label>
                                     </div>
                                 </div>
@@ -93,22 +82,13 @@
                                 <div class="row last-input-field">
                                     <div class="input-field">
                                         <i class="fas fa-file-medical prefix"></i>
-                                        <asp:TextBox ID="TxtAreaAvaliacao" runat="server" TextMode="MultiLine" CssClass="materialize-textarea" ReadOnly="true"></asp:TextBox>
+                                        <asp:TextBox ID="TxtAreaAvaliacao" runat="server" TextMode="MultiLine" CssClass="materialize-textarea" data-length="50" ReadOnly="true"></asp:TextBox>
                                         <label for="<%= TxtAreaAvaliacao.ClientID %>">Avaliação do Paciente:</label>
                                     </div>
                                 </div>
                             </asp:Panel>
 
-                            <div class="row">
-                                <center>
-                                    <label>
-                                        <input id="CheckBoxRealizada" type="checkbox" runat="server"/>
-                                        <span class="big-text">Consulta finalizada?</span>
-                                    </label>
-                                </center>
-                            </div>
-
-                            <asp:Button ID="BtnAtualizarConsulta" runat="server" UseSubmitBehavior="false" Text="Atualizar Consulta" CssClass="waves-effect waves-light btn-large btn-asp" OnClick="BtnAtualizarConsulta_Click"/>
+                            <asp:Button ID="BtnConfirmar" runat="server" UseSubmitBehavior="false" Text="Atualizar Consulta" CssClass="waves-effect waves-light btn-large btn-asp" OnClick="BtnConfirmar_Click" Enabled="False" Visible="False" />
                         </form>
                     </asp:Panel>
                 </div>

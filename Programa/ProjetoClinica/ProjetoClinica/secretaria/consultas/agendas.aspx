@@ -52,7 +52,7 @@
 
                     <div class="container">
                         <center>
-                            <label class="big-text">Médicos:</label>
+                            <label class="big-text">Médico:</label>
                         </center>
                         <div class="input-field ddl">
                             <i class="fas fa-user-md prefix"></i>

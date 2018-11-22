@@ -8,7 +8,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-namespace ProjetoClinica.medico.consultas
+namespace ProjetoClinica.paciente.consultas
 {
     public partial class consulta : System.Web.UI.Page
     {
@@ -29,17 +29,17 @@ namespace ProjetoClinica.medico.consultas
                 LblAviso.Text = ex.Message;
             }
         }
-        
+
         protected void CarregarConsulta()
         {
-            MedicoDBO usuario = (MedicoDBO)Session["Usuario"];
+            PacienteDBO usuario = (PacienteDBO)Session["Usuario"];
             BDActions bd = new BDActions();
 
             string query = Request.QueryString["id"];
             if (query == null || !int.TryParse(query, out int idConsulta))
                 throw new Exception("Consulta não encontrada!");
 
-            this.Consulta = bd.CarregarConsultaCompleta(idConsulta, usuario.Id, "MEDICO");
+            this.Consulta = bd.CarregarConsultaCompleta(idConsulta, usuario.Id, "PACIENTE");
         }
 
         protected void CarregarCamposConsulta()
@@ -65,35 +65,19 @@ namespace ProjetoClinica.medico.consultas
             if (this.Consulta.Avaliacao != null)
                 TxtAreaAvaliacao.Text = this.Consulta.Avaliacao;
 
-            if (this.Consulta.Status == "PENDENTE")
+            if (this.Consulta.Status == "REALIZADA")
             {
-                BtnAtualizarConsulta.Enabled = true;
+                LblStatus.CssClass = "green-text";
 
-                TxtAreaSintomas.ReadOnly = false;
-                TxtAreaDiagnostico.ReadOnly = false;
-                TxtAreaMedicacao.ReadOnly = false;
-                TxtAreaObservacoes.ReadOnly = false;
-            }
-            else
-            {
-                if (this.Consulta.Status == "REALIZADA")
+                if (this.Consulta.Avaliacao == null)
                 {
-                    CheckBoxRealizada.Attributes.Add("checked", "checked");
-                    LblStatus.CssClass = "green-text";
+                    TxtAreaAvaliacao.ReadOnly = false;
+                    BtnConfirmar.Visible = true;
+                    BtnConfirmar.Enabled = true;
                 }
-                else if (this.Consulta.Status == "CANCELADA")
-                    LblStatus.CssClass = "red-text";
-
-                TxtAreaSintomas.ReadOnly = true;
-                TxtAreaDiagnostico.ReadOnly = true;
-                TxtAreaMedicacao.ReadOnly = true;
-                TxtAreaObservacoes.ReadOnly = true;
-
-                BtnAtualizarConsulta.Enabled = false;
-                BtnAtualizarConsulta.Visible = false;
-
-                CheckBoxRealizada.Attributes.Add("disabled", "true");
             }
+            else if (this.Consulta.Status == "CANCELADA")
+                LblStatus.CssClass = "red-text";
 
             if (this.Consulta.Status != "CANCELADA")
                 PanelDadosConsulta.Visible = true;
@@ -103,18 +87,14 @@ namespace ProjetoClinica.medico.consultas
             PanelConsulta.Visible = true;
         }
 
-        protected void BtnAtualizarConsulta_Click(object sender, EventArgs e)
+        protected void BtnConfirmar_Click(object sender, EventArgs e)
         {
-            string sintomas = TxtAreaSintomas.Text;
-            string diagnostico = TxtAreaDiagnostico.Text;
-            string medicacao = TxtAreaMedicacao.Text;
-            string observacoes = TxtAreaObservacoes.Text;
-            bool realizada = CheckBoxRealizada.Checked;
+            string avaliacao = TxtAreaAvaliacao.Text.Trim();
 
             BDActions bd = new BDActions();
             try
             {
-                bd.AtualizarConsulta(this.Consulta.Id, sintomas, diagnostico, medicacao, observacoes, realizada);
+                bd.AtualizarAvaliacao(this.Consulta.Id, avaliacao);
 
                 CarregarConsulta();
                 CarregarCamposConsulta();

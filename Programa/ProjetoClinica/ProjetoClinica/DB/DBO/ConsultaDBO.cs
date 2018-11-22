@@ -18,9 +18,10 @@ namespace ProjetoClinica.DB.DBO
         public string Diagnostico { get; private set; }
         public string Medicacao { get; private set; }
         public string Observacoes { get; private set; }
+        public string Avaliacao { get; private set; }
 
         public ConsultaDBO(int id, string data, string duracao, MedicoDBO medico, PacienteDBO paciente, string status, 
-                           string sintomas, string diagnostico, string medicacao, string observacoes)
+                           string sintomas, string diagnostico, string medicacao, string observacoes, string avaliacao)
         {
             if (id < 0)
                 throw new Exception("ID inválido");
@@ -50,6 +51,7 @@ namespace ProjetoClinica.DB.DBO
             this.Diagnostico = diagnostico;
             this.Medicacao = medicacao;
             this.Observacoes = observacoes;
+            this.Avaliacao = avaliacao;
         }
     }
 }

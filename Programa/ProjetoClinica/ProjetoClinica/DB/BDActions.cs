@@ -274,6 +274,48 @@ namespace ProjetoClinica.DB
             }
         }
 
+        public void AtualizarAvaliacao(int id, string avaliacao)
+        {
+            if (id < 0)
+                throw new Exception("Consulta inválida!");
+
+            if (avaliacao.IsEmptyString())
+                avaliacao = null;
+
+            if (avaliacao.Length > 50)
+                throw new Exception("Avaliação muito grande!");
+
+            SqlConnection conn = new SqlConnection(cs);
+
+            SqlCommand cmd = null;
+
+            cmd = new SqlCommand("UPDATE consulta SET avaliacao=@avaliacao WHERE id=@id", conn);
+
+            if (avaliacao == null)
+                cmd.Parameters.AddWithValue("@avaliacao", System.DBNull.Value);
+            else
+                cmd.Parameters.AddWithValue("@avaliacao", avaliacao);
+
+            cmd.Parameters.AddWithValue("@id", id);
+
+            try
+            {
+                // abre conexao
+                conn.Open();
+                cmd.ExecuteNonQuery();
+            }
+            catch (Exception)
+            {
+                throw new Exception("Erro ao atualizar consulta!");
+            }
+            finally
+            {
+                // fecha conexao
+                conn.Close();
+                conn.Dispose();
+            }
+        }
+
         public ConsultaDBO CarregarConsulta(int idConsulta, int idUsuario, string funcao)
         {
             SqlConnection conn = new SqlConnection(cs);
@@ -337,8 +379,14 @@ namespace ProjetoClinica.DB
                 else
                     observacoes = (string)dados[9];
 
+                string avaliacao;
+                if (dados[10] is System.DBNull)
+                    avaliacao = null;
+                else
+                    avaliacao = (string)dados[10];
+
                 ConsultaDBO c = new ConsultaDBO((int)dados[0], (string)dados[1], (string)dados[2], null, null,
-                                    (string)dados[5], sintomas, diagnostico, medicacao, observacoes);
+                                    (string)dados[5], sintomas, diagnostico, medicacao, observacoes, avaliacao);
 
                 return c;
             }
@@ -456,8 +504,14 @@ namespace ProjetoClinica.DB
                 else
                     observacoes = (string)dadosConsulta[9];
 
+                string avaliacao;
+                if (dadosConsulta[11] is System.DBNull)
+                    avaliacao = null;
+                else
+                    avaliacao = (string)dadosConsulta[11];
+
                 ConsultaDBO c = new ConsultaDBO((int)dadosConsulta[0], (string)dadosConsulta[1], (string)dadosConsulta[2], m, p, 
-                                    (string)dadosConsulta[5], sintomas, diagnostico, medicacao, observacoes);
+                                    (string)dadosConsulta[5], sintomas, diagnostico, medicacao, observacoes, avaliacao);
 
                 return c;
             }
@@ -736,7 +790,7 @@ namespace ProjetoClinica.DB
             VerificarDisponibilidade(idMedico, idPaciente, datetime);
 
             SqlConnection conn = new SqlConnection(cs);
-            SqlCommand cmd = new SqlCommand("INSERT INTO consulta VALUES(@data, @duracao, @idMedico, @idPaciente, @status, null, null, null, null, 0)", conn);
+            SqlCommand cmd = new SqlCommand("INSERT INTO consulta VALUES(@data, @duracao, @idMedico, @idPaciente, @status, null, null, null, null, 0, null)", conn);
             cmd.Parameters.AddWithValue("@data", datetime);
             cmd.Parameters.AddWithValue("@duracao", duracao);
             cmd.Parameters.AddWithValue("@idMedico", idMedico);
